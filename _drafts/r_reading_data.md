@@ -11,7 +11,7 @@ Before we can start working with data we need to import it into the R environmen
 
 The following examples are provided for some of the most common types of data. Whilst by no means an exhaustive list of all options, the functions detailed are performant, stable, and easy to use.
 
-## CSV Data
+## CSV
 
 One of the most common cross-platform methods for storing typically tabular data.
 
@@ -141,7 +141,7 @@ The `data.table` package is very widely used and is actively maintained and deve
 `readr::read_csv()` and `data.table::fread()` are both solid choices for reading a CSV file. The most pressing factors may come down to speed and the libraries you intend to use for the rest of your process. If relying heavily upon the tidyverse it makes sense to lean toward `readr`, whereas if working with large datasets `data.table` will likely make more sense. 
 
 
-## XLSX Data
+## XLSX
 
 The ubiquitous format for excel spreadsheets since 2007. Still pervasively popular and [sometimes misused](https://www.bbc.co.uk/news/technology-54423988) despite a wide array of alternatives. Being able to confidently read `.xlsx` files will definitely be come in handy.
 
@@ -164,6 +164,8 @@ The ubiquitous format for excel spreadsheets since 2007. Still pervasively popul
 Dates in particular can be read as integers, but this is easily overcome by supplying the argument `detectDates=TRUE`. Generally, the column type detection is adequate.
 
 ```r
+> dat <- openxlsx::read.xlsx("example1.xlsx", detectDates=TRUE)
+
 > print(dat)
 #>   uid       date      col_b        col_c
 #> 1   a 2022-08-01 -0.3082584 -0.942751791
@@ -189,15 +191,118 @@ openxlsx::read.xlsx("example.xlsx",sheet="example_sheet",cols=c(1:4),rows(4:10))
 
 A full list of `read.xlsx`'s arguments can be found by running `?openxlsx::read.xlsx`.
 
-## JSON
+## RDS
 
-## YAML
+One of R's own formats for storing data, RDS files store a single R object. Reading them is achieved with the base function `readRDS`.
+
+```r
+> dat <- readRDS("example1.RDS")
+
+> print(dat)
+#>   uid       date      col_b        col_c
+#> 1   a 2022-08-01 -0.3082584 -0.942751791
+#> 2   b 2022-08-01  0.6946568  0.058719041
+#> 3   c 2022-08-01  1.1463694 -0.621216248
+#> 4   d 2022-08-01  0.2453974 -1.408545363
+#> 5   e 2022-08-01  0.4482430  0.006183595
+```
+
+An RDS file is created by R and captures the state of an object and as such each column of our data reads in with the same type and class attributes as when it was created.
+
+A full list of `readRDS`'s arguments can be found by running `?readRDS`.
 
 ## ZIP
 
+ZIP is an archive format used for data compression. A ZIP file can contain multiple files and even directories that have been compressed, however, we may often encounter a ZIP file containing a single CSV file.
+
+We have a couple of options for unzipping and reading the CSV for which we welcome back the `readr` and `data.table` packages.
+
+`readr` offers the simplest option with the `read_csv` function, it detects that the target is compressed and using its internal method dispatch handles the unzip and import.
+
+```r
+> readr::read_csv("/home/jrh/Coding/example_files/example1.zip")
+#> Rows: 5 Columns: 4 
+#> ── Column specification ──────────────────────────────────────────────────
+#> Delimiter: ","
+#> chr  (1): uid
+#> dbl  (2): col_b, col_c
+#> date (1): date
+#> 
+#> ℹ Use `spec()` to retrieve the full column specification for this data.
+#> ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
+
+> print(dat)
+#> # A tibble: 5 × 4
+#> uid   date        col_b    col_c
+#> <chr> <date>      <dbl>    <dbl>
+#> 1 a     2022-08-01 -0.308 -0.943  
+#> 2 b     2022-08-01  0.695  0.0587 
+#> 3 c     2022-08-01  1.15  -0.621  
+#> 4 d     2022-08-01  0.245 -1.41   
+#> 5 e     2022-08-01  0.448  0.00618
+```
+The `data.table` option once again uses `fread`. The usage is a little more complex but is also highly customizable. We can use the `cmd` argument to pass a shell command to handle the preprocessing of the target file.
+
+Our shell command will contain;
+
+* `unzip` to extract the file
+* `-p` an option to extract files to stdout
+* `example1.zip` the path to the target file
+
+```r
+dat <- data.table::fread(cmd = "unzip -p /home/jrh/Coding/example_files/example1.zip")
+
+> print(dat)
+#>  uid       date      col_b        col_c
+#> 1   a 2022-08-01 -0.3082584 -0.942751791
+#> 2   b 2022-08-01  0.6946568  0.058719041
+#> 3   c 2022-08-01  1.1463694 -0.621216248
+#> 4   d 2022-08-01  0.2453974 -1.408545363
+#> 5   e 2022-08-01  0.4482430  0.006183595
+```
+
+## JSON
+
+JSON (JavaScript Object Notation) is a standardized file format used to store key value attributes in a format specifically designed to be human readable. It is commonly used for configuration files and transmitting data over the internet.
+
+We can read JSON files using `fromJSON` from the `jsonlite` library.
+
+```r
+> jsonlite::fromJSON("example1.json")
+#> $value_a
+#> [1] 123
+#> 
+#> $value_b
+#> [1] 123
+#> 
+#> $value_c
+#> [1] "abc"
+```
+A full list of `fromJSON`'s arguments can be found by running `?jsonlite::fromJSON`.
+
+## YAML
+
+YAML (~~Yet Another Markup Language~~ YAML Ain't Markup Language) is another format commonly used for configuration files.
+
+We can read YAML using the `yaml.load_file` function from the `yaml` library.
+
+```r
+> yaml::yaml.load_file("/home/jrh/Coding/example_files/example1.yaml")
+#> $value_a
+#> [1] 123
+#> 
+#> $value_b
+#> [1] 123
+#> 
+#> $value_c
+#> [1] "abc"
+```
+
+A full list of `yaml.load_file`'s arguments can be found by running `?yaml::yaml.load_file`.
+
 ## RData
 
-## RDS
+
 
 ## SPSS
 
