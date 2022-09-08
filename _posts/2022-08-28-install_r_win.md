@@ -23,7 +23,7 @@ We start by navigating to the [CRAN download page](https://cloud.r-project.org/i
 
 The final page contains a link to download the R executable, so we click on 'Download R-X.X.X for Windows'.
 
-![](/assets/img/2305627060720672324/r_dl_win.gif)
+![](/assets/img/install_r_win_img/r_dl_win.gif)
 
 <div class="alert alert-info" role="alert">
     <strong>Information:</strong> CRAN (Comprehensive R Archive Network) is a network of  servers, located around the world that, store identical, up-to-date, versions of code and documentation for R.
@@ -37,7 +37,7 @@ Having located the downloaded executable, `R-X.X.X-win.exe`, we can start instal
 
 A GUI will open to guide us through the rest of the installation. If you are new to R you will most likely want to choose the default options. More advanced users can adjust the setup as necessary.
 
-![](/assets/img/2305627060720672324/r_install_win.gif)
+![](/assets/img/install_r_win_img/r_install_win.gif)
 
 Once the installer completes click 'Finish' and R is ready to use.
 

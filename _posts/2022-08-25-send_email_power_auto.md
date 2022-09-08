@@ -13,17 +13,17 @@ Power Automate allows us to build automated workflows and can link into many app
 
 We start by navigating to the [Power Automate](https://make.powerautomate.com/) home page. Once signed in we can click 'Create' on the navigation bar to the left.
 
-![](/assets/img/8076185178569640868/img01.png)
+![](/assets/img/send_email_power_auto_img/img01.png)
 
 We then select the 'Instant cloud flow' option from the choices presented under the 'Three ways to make a flow - Start from blank' section.
 
-![](/assets/img/8076185178569640868/img02.png)
+![](/assets/img/send_email_power_auto_img/img02.png)
 
 The next page allows us to give our flow a name, in this case we're going to name it 'send from me' which we can abbreviate to 'sfm'.
 
 For the 'Choose how to trigger this flow' section, we will select 'When an HTTP request is received', and click 'Create'.
 
-![](/assets/img/8076185178569640868/img03.png)
+![](/assets/img/send_email_power_auto_img/img03.png)
 
 ## Creating a JSON schema
 
@@ -51,27 +51,27 @@ Our newly created flow initially contains only one step, 'When a HTTP request is
 
 After clicking on 'Use sample payload to generate schema', we can paste our JSON schema into the text box, and Power Automate will automatically generate the schema in the format it requires once we click "Done".
 
-![](/assets/img/8076185178569640868/img05.png)
+![](/assets/img/send_email_power_auto_img/img05.png)
 
-![](/assets/img/8076185178569640868/img06.png)
+![](/assets/img/send_email_power_auto_img/img06.png)
 
 ## Configuring the email
 
 Now that we have finished telling Power Automate what to do when our HTTP request is received we can click on 'next step' and choose 'Send an email (V2)' from the available operations.
 
-![](/assets/img/8076185178569640868/img07.png)
+![](/assets/img/send_email_power_auto_img/img07.png)
 
 Having added the 'Send an email (V2)' step, we can now populate the parameters. Clicking in the 'To' text box and then on the hyper-linked text underneath it to the right, 'Add dynamic content', will allow us to use the values from the JSON schema we set up earlier.
 
 We can add the relevant elements from our JSON schema to each field by dragging and dropping.
 
-![](/assets/img/8076185178569640868/img08.png)
+![](/assets/img/send_email_power_auto_img/img08.png)
 
 When we have finished we click 'Save' at the bottom of the page.
 
 If we now click back onto the 'When a HTTP request is received' step, we can see that the URL we need to send our HTTP request to has now been generated.
 
-![](/assets/img/8076185178569640868/img09.png)
+![](/assets/img/send_email_power_auto_img/img09.png)
 
 ## Sending the HTTP request
 
@@ -110,7 +110,7 @@ There are many ways in which R can be used to send HTTP requests directly, howev
 
 From Rstudio we can click `File > New File > Text File`.
 
-![](/assets/img/8076185178569640868/img10.png)
+![](/assets/img/send_email_power_auto_img/img10.png)
 
 We will save the file to our home directory, naming it `sfm.sh`
 
@@ -200,11 +200,11 @@ sfm(
 
 We can view flows that we have created by returning to the [Power Automate](https://make.powerautomate.com/) home page and clicking 'My flows' on the navigation bar to the left.
 
-![](/assets/img/8076185178569640868/img11.png)
+![](/assets/img/send_email_power_auto_img/img11.png)
 
 Clicking on the name of an individual flow presents a useful overview. Including a 28 day run history. If a flow has failed it is possible to get further details by clicking on the links under 'Status'.
 
-![](/assets/img/8076185178569640868/img12.png)
+![](/assets/img/send_email_power_auto_img/img12.png)
 
 ## Next steps
 
