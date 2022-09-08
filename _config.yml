@@ -29,7 +29,7 @@ description: >-                        # used by seo meta and the atom feed
   A place to store my own how to guides, primarily to remind myself how I did things.
 
 # fill in the protocol & hostname for your site, e.g., 'https://username.github.io'
-url: 'https://jrh-dev.github.io'
+url: 'https://jrh-dev.github.io/'
 
 github:
   username: jrh-dev             # change to your github username
