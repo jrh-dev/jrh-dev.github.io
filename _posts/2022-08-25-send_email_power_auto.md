@@ -11,19 +11,17 @@ Power Automate allows us to build automated workflows and can link into many app
 
 ## Creating a ***flow***
 
-We start by navigating to the [Power Automate](https://make.powerautomate.com/) home page. Once signed in we can click 'Create' on the navigation bar to the left.
+* We start by navigating to the [Power Automate](https://make.powerautomate.com/) home page and signing in. 
 
-![](/assets/img/send_email_power_auto_img/img01.png)
+* Once signed in we can click ***'Create'*** on the navigation bar to the left.
 
-We then select the 'Instant cloud flow' option from the choices presented under the 'Three ways to make a flow - Start from blank' section.
+* We then select the ***'Instant cloud flow'*** option from the choices presented under the ***'Three ways to make a flow - Start from blank'*** section.
 
-![](/assets/img/send_email_power_auto_img/img02.png)
+* The next page allows us to give our flow a name, in this case we're going to name it ***'send from me'*** which we can abbreviate to ***'sfm'***.
 
-The next page allows us to give our flow a name, in this case we're going to name it 'send from me' which we can abbreviate to 'sfm'.
+* For the ***'Choose how to trigger this flow'*** section, we will select ***'When an HTTP request is received'***, and click ***'Create'***.
 
-For the 'Choose how to trigger this flow' section, we will select 'When an HTTP request is received', and click 'Create'.
-
-![](/assets/img/send_email_power_auto_img/img03.png)
+![](/assets/img/send_email_power_auto_img/gif01.gif)
 
 ## Creating a JSON schema
 
@@ -47,39 +45,35 @@ We will be using the JSON format to build a schema so that Power Automate knows 
 }    
 ```
 
-Our newly created flow initially contains only one step, 'When a HTTP request is received', if we click on it we can start configuration.
+Our newly created flow initially contains only one step, ***'When a HTTP request is received'***, if we click on it we can start configuration.
 
-After clicking on 'Use sample payload to generate schema', we can paste our JSON schema into the text box, and Power Automate will automatically generate the schema in the format it requires once we click "Done".
+If we click on ***'Use sample payload to generate schema'***, we can paste our JSON schema into the text box and Power Automate will automatically generate the schema in the format it requires once we click '***Done***'.
 
-![](/assets/img/send_email_power_auto_img/img05.png)
-
-![](/assets/img/send_email_power_auto_img/img06.png)
+![](/assets/img/send_email_power_auto_img/gif02.gif)
 
 ## Configuring the email
 
-Now that we have finished telling Power Automate what to do when our HTTP request is received we can click on 'next step' and choose 'Send an email (V2)' from the available operations.
+Now that we have finished telling Power Automate what to do when our HTTP request is received.
 
-![](/assets/img/send_email_power_auto_img/img07.png)
+* We can click on ***'next step'*** and choose ***'Send an email (V2)'*** from the available operations.
 
-Having added the 'Send an email (V2)' step, we can now populate the parameters. Clicking in the 'To' text box and then on the hyper-linked text underneath it to the right, 'Add dynamic content', will allow us to use the values from the JSON schema we set up earlier.
+* Having added the ***'Send an email (V2)'*** step, we can now populate the parameters. Clicking in the ***'To'*** text box and then on the hyper-linked text underneath it to the right, ***'Add dynamic content'***, will allow us to use the values from the JSON schema we set up earlier.
 
-We can add the relevant elements from our JSON schema to each field by dragging and dropping.
+* We add the relevant elements from our JSON schema by clocking the option that matches our selected field.
 
-![](/assets/img/send_email_power_auto_img/img08.png)
+* When we have finished we click ***'Save'*** at the bottom of the page.
 
-When we have finished we click 'Save' at the bottom of the page.
+![](/assets/img/send_email_power_auto_img/gif03.gif)
 
-If we now click back onto the 'When a HTTP request is received' step, we can see that the URL we need to send our HTTP request to has now been generated.
+If we click back onto the ***'When a HTTP request is received'*** step, we can see that the URL we need to send our HTTP request to has now been generated.
 
 ![](/assets/img/send_email_power_auto_img/img09.png)
 
-## Sending the HTTP request
+## Triggering a ***flow*** with a HTTP request
 
 ### Using R
 
 We can create the HTTP request in R using the `httr` package.
-
-Note that the single quotes (`'`) used within `data` are escaped (with `\`). The `\n` syntax is used to specify a new line and is used here in order to abide to the JSON schema.
 
 ```r
 library(httr)
@@ -101,6 +95,7 @@ res <- httr::POST(
   body = data
   )
 ```
+Note that the single quotes (`'`) used within `data` are escaped (with `\`). The `\n` syntax is used to specify a new line and is used here in order to abide to the JSON schema.
 
 ### Using bash
 
@@ -108,7 +103,7 @@ There are many ways in which R can be used to send HTTP requests directly, howev
 
 ### Create a bash shell script
 
-From Rstudio we can click `File > New File > Text File`.
+If working from RStudio we can click `File > New File > Text File` to create the file, but a text editor of your choice can perform the same role.
 
 ![](/assets/img/send_email_power_auto_img/img10.png)
 
@@ -200,12 +195,12 @@ sfm(
 
 We can view flows that we have created by returning to the [Power Automate](https://make.powerautomate.com/) home page and clicking 'My flows' on the navigation bar to the left.
 
-![](/assets/img/send_email_power_auto_img/img11.png)
-
 Clicking on the name of an individual flow presents a useful overview. Including a 28 day run history. If a flow has failed it is possible to get further details by clicking on the links under 'Status'.
 
-![](/assets/img/send_email_power_auto_img/img12.png)
+![](/assets/img/send_email_power_auto_img/gif04.gif)
 
 ## Next steps
 
-The Power Automate [website](https://powerautomate.microsoft.com/en-gb/) offers further support, tutorials, templates, and suggestions for automating typical workflows.
+If your email doesn't need to be from a specified person, try using ***'Send an email (V3)'*** for an even simpler set-up.
+
+If you're feeling inspired, the Power Automate [website](https://powerautomate.microsoft.com/en-gb/) offers further support, tutorials, templates, and suggestions for automating typical workflows.
