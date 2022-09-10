@@ -11,15 +11,15 @@ Power Automate allows us to build automated workflows and can link into many app
 
 ## Creating a ***flow***
 
-* We start by navigating to the [Power Automate](https://make.powerautomate.com/) home page and signing in. 
+1. We start by navigating to the [Power Automate](https://make.powerautomate.com/) home page and signing in. 
 
-* Once signed in we can click ***'Create'*** on the navigation bar to the left.
+2. Once signed in we can click ***'Create'*** on the navigation bar to the left.
 
-* We then select the ***'Instant cloud flow'*** option from the choices presented under the ***'Three ways to make a flow - Start from blank'*** section.
+3. We then select the ***'Instant cloud flow'*** option from the choices presented under the ***'Three ways to make a flow - Start from blank'*** section.
 
-* The next page allows us to give our flow a name, in this case we're going to name it ***'send from me'*** which we can abbreviate to ***'sfm'***.
+4. The next page allows us to give our flow a name, in this case we're going to name it ***'send from me'*** which we can abbreviate to ***'sfm'***.
 
-* For the ***'Choose how to trigger this flow'*** section, we will select ***'When an HTTP request is received'***, and click ***'Create'***.
+5. For the ***'Choose how to trigger this flow'*** section, we will select ***'When an HTTP request is received'***, and click ***'Create'***.
 
 ![](/assets/img/send_email_power_auto_img/gif01.gif)
 
@@ -45,27 +45,29 @@ We will be using the JSON format to build a schema so that Power Automate knows 
 }    
 ```
 
-Our newly created flow initially contains only one step, ***'When a HTTP request is received'***, if we click on it we can start configuration.
+Our newly created flow initially contains only one step, ***'When a HTTP request is received'***, we can click on it to can start configuration.
 
-If we click on ***'Use sample payload to generate schema'***, we can paste our JSON schema into the text box and Power Automate will automatically generate the schema in the format it requires once we click '***Done***'.
+Clicking on ***'Use sample payload to generate schema'***, we can paste our JSON schema into the text box and Power Automate will automatically generate the schema in the format it requires once we click '***Done***'.
 
 ![](/assets/img/send_email_power_auto_img/gif02.gif)
 
 ## Configuring the email
 
-Now that we have finished telling Power Automate what to do when our HTTP request is received.
+Now that we have finished telling Power Automate how to parse our HTTP request, we can configure the email itself.
 
-* We can click on ***'next step'*** and choose ***'Send an email (V2)'*** from the available operations.
+1. Click on ***'next step'*** and choose ***'Send an email (V2)'*** from the available options.
 
-* Having added the ***'Send an email (V2)'*** step, we can now populate the parameters. Clicking in the ***'To'*** text box and then on the hyper-linked text underneath it to the right, ***'Add dynamic content'***, will allow us to use the values from the JSON schema we set up earlier.
+2. We can now populate the parameters. Clicking in the ***'To'*** text box and then on the hyper-linked text underneath it to the right, ***'Add dynamic content'***, will allow us to use the values from the JSON schema we set up earlier.
 
-* We add the relevant elements from our JSON schema by clocking the option that matches our selected field.
+3. We now click into each of the fields that we want to pass a value to, and click on the relevant elements from our JSON schema to populate them.
 
-* When we have finished we click ***'Save'*** at the bottom of the page.
+4. Finally, we click ***'Save'*** at the bottom of the page.
 
 ![](/assets/img/send_email_power_auto_img/gif03.gif)
 
-If we click back onto the ***'When a HTTP request is received'*** step, we can see that the URL we need to send our HTTP request to has now been generated.
+We have now configured our ***flow*** to parse a HTTP request and generate an email using the provided parameters.
+
+If we click back into the ***'When a HTTP request is received'*** step, we can now see that the URL we need to send our HTTP request has been generated.
 
 ![](/assets/img/send_email_power_auto_img/img09.png)
 
@@ -73,7 +75,7 @@ If we click back onto the ***'When a HTTP request is received'*** step, we can s
 
 ### Using R
 
-We can create the HTTP request in R using the `httr` package.
+We can create and send a HTTP request in R using the `httr` package.
 
 ```r
 library(httr)
@@ -83,25 +85,27 @@ headers <- c(
 )
 
 data <- paste0(
-  '{\n \'emailfrom\': \'jim@example.com\',\n',
+  '{\n',
+  '\'emailfrom\': \'jim@example.com\',\n',
   '\'emailto\': \'jim@example.com\',\n',
   '\'emailsubject\': \'Test Subject\',\n',
-  '\'emailbody\': \'Test body of email text.\'\n}'
+  '\'emailbody\': \'Test body of email text.\'\n',
+  '}'
   )   
 
 res <- httr::POST(
   url = 'https://generated_url/workflows/12345',
-  httr::add_headers(.headers=headers),
+  config = list(httr::add_headers(.headers=headers)),
   body = data
   )
 ```
 Note that the single quotes (`'`) used within `data` are escaped (with `\`). The `\n` syntax is used to specify a new line and is used here in order to abide to the JSON schema.
 
-### Using bash
+### Using bash *(linux users)*
 
-There are many ways in which R can be used to send HTTP requests directly, however, formatting JSON headers correctly can be challenging. One simple solution when using R on top of a Linux OS is to use bash scripting, and then call the bash script from R. This method has the advantage of being callable from other languages and the command line.
+There are many ways in which R can be used to send HTTP requests directly, however, formatting JSON headers correctly can be challenging. One simple solution when using R on top of a Linux OS is to use bash scripting, and then call the bash script from R. This method has the advantage of creating a script which is then callable from other languages and the terminal.
 
-### Create a bash shell script
+#### Create a bash shell script
 
 If working from RStudio we can click `File > New File > Text File` to create the file, but a text editor of your choice can perform the same role.
 
@@ -117,7 +121,7 @@ The first line of the script will be;
 
 This line instructs the operating system to use the bash program to execute the code that follows.
 
-We next specify the arguments we want to be able to accept when we call the shell script. The arguments are positional, so we would first supply the `url`, then `emailfrom`, etc.
+We next specify the arguments we want to be able to accept when we call the shell script. The arguments are positional, so we would first supply the `url`, then `emailfrom`, and so on.
 
 ```bash
 url="$1"
@@ -165,13 +169,14 @@ We can now use the bash script from the command line to send an email by using t
 bash "~/sfm.sh" "https://generated_url/workflows/12345" "jim@example.com" "jim@example.com" "Test Subject" "Test body of email text."
 ```
 
+#### Call a bash script from R
 We can use the `system()` function to execute the same syntax from R.
 
 ```r
 system('bash "~/sfm.sh" "https://generated_url/workflows/12345" "jim@example.com" "jim@example.com" "Test Subject" "Test body of email text."')
 ```
 
-We can also create a function to make calling the bash script within R simpler, are more intuitive. This also makes it easier to reuse the function for different purposes.
+We can also create a function to make calling the bash script within R simpler, and more intuitive. This also makes it easier to reuse the function for different purposes.
 
 ```r
 # function definition
@@ -191,11 +196,11 @@ sfm(
 )
 ```
 
-## Maintaining flows
+## Maintaining a ***flow***
 
-We can view flows that we have created by returning to the [Power Automate](https://make.powerautomate.com/) home page and clicking 'My flows' on the navigation bar to the left.
+We can view ***flows*** that we have created by returning to the [Power Automate](https://make.powerautomate.com/) home page and clicking ***'My flows'*** on the navigation bar to the left.
 
-Clicking on the name of an individual flow presents a useful overview. Including a 28 day run history. If a flow has failed it is possible to get further details by clicking on the links under 'Status'.
+Clicking on the name of an individual ***flow*** presents a useful overview. Including a 28 day run history. If a ***flow*** has failed it is possible to get further details by clicking on the links under ***'Status'***.
 
 ![](/assets/img/send_email_power_auto_img/gif04.gif)
 
