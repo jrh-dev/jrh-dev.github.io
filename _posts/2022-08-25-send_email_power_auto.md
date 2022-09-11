@@ -7,7 +7,7 @@ categories: R Notifications
 author: <author_id>
 ---
 
-Power Automate allows us to build automated workflows and can link into many applications. This guide demonstrates using Power Automate to create an API endpoint that we can use to trigger the sending of an email from Outlook using R. The automated process, or flow in Microsoft parlance, provides a simple and secure way to send emails using R without the installation of additional packages.
+Power Automate allows us to build automated workflows and can link into many applications. This guide demonstrates using Power Automate to create an API endpoint that we can use to trigger the sending of an email from Outlook using R. The automated process, or ***flow*** in Microsoft parlance, provides a simple and secure way to send emails using R without the installation of additional packages.
 
 ## Creating a ***flow***
 
@@ -17,7 +17,7 @@ Power Automate allows us to build automated workflows and can link into many app
 
 3. We then select the ***'Instant cloud flow'*** option from the choices presented under the ***'Three ways to make a flow - Start from blank'*** section.
 
-4. The next page allows us to give our flow a name, in this case we're going to name it ***'send from me'*** which we can abbreviate to ***'sfm'***.
+4. The next page allows us to give our ***flow*** a name, in this case we're going to name it ***'send from me'*** which we can abbreviate to ***'sfm'***.
 
 5. For the ***'Choose how to trigger this flow'*** section, we will select ***'When an HTTP request is received'***, and click ***'Create'***.
 
@@ -45,7 +45,7 @@ We will be using the JSON format to build a schema so that Power Automate knows 
 }    
 ```
 
-Our newly created flow initially contains only one step, ***'When a HTTP request is received'***, we can click on it to can start configuration.
+Our newly created ***flow*** initially contains only one step, ***'When a HTTP request is received'***, we can click on it to can start configuration.
 
 Clicking on ***'Use sample payload to generate schema'***, we can paste our JSON schema into the text box and Power Automate will automatically generate the schema in the format it requires once we click '***Done***'.
 
