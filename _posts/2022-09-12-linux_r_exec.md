@@ -7,7 +7,10 @@ categories: R Advanced
 author: <author_id>
 ---
 
-![](https://img.shields.io/badge/Tested%20On-Ubuntu%2021.04-blue) ![](https://img.shields.io/badge/Language-R-blue)
+<div style="text-align: left;">
+    <img src="https://img.shields.io/badge/Tested%20On-Ubuntu%2021.04-blue"/>
+    <img src="https://img.shields.io/badge/Language-R-blue">
+</div>
 
 If your experience is anything like mine you will find yourself with plenty of repetitive tasks to complete alongside your more interesting and exciting developmental work. Often these tasks are things like pulling up to date extracts and moving outputs around. Wherever possible I like to save time by automating the performing of these tasks, writing short utility scripts and scheduling them with CRON, or running them manually if required on an ad-hoc basis.
 
