@@ -15,7 +15,7 @@ Installing R on Windows 11 is simple as simple as installing any other software.
 
 
 <div class="alert alert-info" role="alert">
-    <strong>Information:</strong> The use of the popular RStudio IDE (Integrated Development Environment) software is so ubiquitous with R, that new users may not initially appreciate the difference between the two. Neither R nor RStudio works without installing the other. RStudio is an application to make working with R more accessible and to provide additional functionality when writing code.
+    <strong>Information:</strong> The use of the popular RStudio IDE (Integrated Development Environment) software is so ubiquitous with R, that new users may not initially appreciate the difference between the two. RStudio alone does not work without installing R separately. RStudio is an application to make working with R more accessible and to provide additional functionality when writing code.
 </div>
 
 
