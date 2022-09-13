@@ -8,7 +8,7 @@ author: <author_id>
 ---
 
 <style>
-div.blue {color:#00141a; background-color:#EBFBFF; border-radius: 5px; padding: 10px; opacity:0.5;}
+div.blue {color:#000000; background-color:#EBFBFF; border-radius: 5px; padding: 10px; opacity:0.5;}
 </style>
 
 R describes itself as a free software environment for statistical computing and graphics. It is a complete programming language, particularly well suited to statistical and data analysis. R is known for having a comprehensive range of packages available offering extended functionality, and for its active community.
