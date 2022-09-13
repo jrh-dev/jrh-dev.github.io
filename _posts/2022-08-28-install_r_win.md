@@ -7,17 +7,19 @@ categories: R Basics
 author: <author_id>
 ---
 
+<style>
+div.blue { background-color:#EBFBFF; border-radius: 5px; padding: 10px; opacity:0.5;}
+</style>
+
 R describes itself as a free software environment for statistical computing and graphics. It is a complete programming language, particularly well suited to statistical and data analysis. R is known for having a comprehensive range of packages available offering extended functionality, and for its active community.
 
 ## Downloading
 
 Installing R on Windows 11 is simple as simple as installing any other software. Once installed we can start using R immediately from the command line or by interacting with R using the bundled GUI (Graphical User Interface).
 
-
-<div class="alert alert-info" role="alert">
+<div class="blue">
     <strong>Information:</strong> The use of the popular RStudio IDE (Integrated Development Environment) software is so ubiquitous with R, that new users may not initially appreciate the difference between the two. RStudio alone does not work without installing R separately. RStudio is an application to make working with R more accessible and to provide additional functionality when writing code.
 </div>
-
 
 We start by navigating to the [CRAN download page](https://cloud.r-project.org/index.html), choosing 'Download R for Windows', and then choosing 'base' from the options available on the next page.
 
@@ -25,7 +27,7 @@ The final page contains a link to download the R executable, so we click on 'Dow
 
 ![](/assets/img/install_r_win_img/r_dl_win.gif)
 
-<div class="alert alert-info" role="alert">
+<div class="blue">
     <strong>Information:</strong> CRAN (Comprehensive R Archive Network) is a network of  servers, located around the world that, store identical, up-to-date, versions of code and documentation for R.
 </div>
 
