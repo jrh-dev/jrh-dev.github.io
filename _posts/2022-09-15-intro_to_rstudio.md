@@ -133,7 +133,7 @@ Saving files can be done in a few ways, using the main menus `File > Save`, by c
 <div class = "blue" markdown="1">
 <i class="fa-solid fa-circle-info fa-lg"></i>
 
-***Creating new files***
+***Setting the working directory***
 
 The term folder may be more familiar to Windows users, but the terms directory and folder are typically used interchangeably. The concept of setting a working directory is like saying "until I say otherwise, all the files I mention are in this particular directory". 
 
