@@ -111,8 +111,9 @@ Clicking ***More*** reveals some further actions. One useful function is ***Set 
 
 
 <div class = "blue" markdown="1">
+<i class="fa-solid fa-circle-info fa-lg"></i>
 
-#### Creating new files
+***Creating new files***
 
 In addition to using the ***New Blank File*** option within the ***Files*** tab, there are a few other ways to create a new files.
 
@@ -130,8 +131,9 @@ Saving files can be done in a few ways, using the main menus `File > Save`, by c
 
 
 <div class = "blue" markdown="1">
+<i class="fa-solid fa-circle-info fa-lg"></i>
 
-#### The working directory
+***Creating new files***
 
 The term folder may be more familiar to Windows users, but the terms directory and folder are typically used interchangeably. The concept of setting a working directory is like saying "until I say otherwise, all the files I mention are in this particular directory". 
 
@@ -263,8 +265,9 @@ When working with larger datasets the viewers performance may become an issue. O
 ```
 
 <div class = "blue" markdown="1">
+<i class="fa-solid fa-circle-info fa-lg"></i>
 
-#### Objects in R
+***Objects in R***
 
 Everything that exists in R is an object. An object can have many characteristics recorded about it, and these characteristics control the way in which the object can be used and interacted with.
 
