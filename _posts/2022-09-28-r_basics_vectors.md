@@ -303,7 +303,7 @@ You might have noticed that in `Nile > 1000`, `Nile` is a vector of 100 numeric 
 
 ## Next Steps
 
-The `WWWusage` is another time-series data-set that is bundled with R, this time recording the numbers of users connected to the Internet through a server every minute.
+`WWWusage` is another time-series data-set that is bundled with R, this time recording the numbers of users connected to the Internet through a server every minute.
 
 1. What is the length of `WWWusage`?
 
