@@ -121,14 +121,6 @@ Most functions allow for more than one argument, `sum()` for example has an argu
 [1] 12
 ```
 
-Function arguments are positional, so it is not strictly necessary to write the `na.rm = TRUE` part of the code in full. As `na.rm` is the 2nd argument, passing `TRUE` in the second position (positions are separated by `,`) is sufficient.
-
-```r
-> sum(c(1, 2, NA, 4, 5), TRUE)
-
-[1] 12
-```
-
 ## Indicies in R
 
 In R indices start at 1. Its useful to know that you can define a range of numbers using the `:` operator. Instead of writing `c(1, 2, 3, 4, 5)` to generate a vector of the numbers 1 to 5, you can write `1:5`.
