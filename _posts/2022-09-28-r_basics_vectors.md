@@ -59,7 +59,7 @@ You may hear these being referred to as atomic vectors. It's also useful to note
 
 It is important to be aware that `c()` coerces elements to a common type. This is a common occurrence in R and understanding the implications can help to avoid errors. R is what is referred to as a weakly typed language, this means that sometimes a type will be coerced into another when code is executed.
 
-Thinking of the 4 common types in R type coercion is performed according to a hierarchy;
+Thinking of the 4 common types in R type, coercion is performed according to a hierarchy;
 
 `Logical >>> Integer >>> Double >>> Character`
 
@@ -121,7 +121,7 @@ Most functions allow for more than one argument, `sum()` for example has an argu
 [1] 12
 ```
 
-Function arguments are positional, so it is not strictly necessary to write the `na.rm = TRUE` part of the code in full. As `na.rm` is the 2nd argument, passing `TRUE` in the second position (positions are seperated by `,`) is sufficient.
+Function arguments are positional, so it is not strictly necessary to write the `na.rm = TRUE` part of the code in full. As `na.rm` is the 2nd argument, passing `TRUE` in the second position (positions are separated by `,`) is sufficient.
 
 ```r
 > sum(c(1, 2, NA, 4, 5), TRUE)
@@ -219,7 +219,7 @@ The `which()` function returns the indices of a vector that evaluate to `TRUE`. 
 
 You can also use `which()` to create a subset from the letters vector.
 
-```
+```r
 > letters[which(letters == "j")]
 
 [1] "j"
@@ -269,7 +269,7 @@ The mean of the most recent 10 years worth of data can be found by using the ind
 
 [1] 874.6
 
-# or obtaining the last 10 years programatically
+# or obtaining the last 10 years programmatically
 > len <- length(Nile)
 
 > mean(Nile[(len - 9):len])
