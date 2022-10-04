@@ -59,7 +59,7 @@ You may hear these being referred to as atomic vectors. It's also useful to note
 
 It is important to be aware that `c()` coerces elements to a common type. This is a common occurrence in R and understanding the implications can help to avoid errors. R is what is referred to as a weakly typed language, this means that sometimes a type will be coerced into another when code is executed.
 
-Thinking of the 4 common types in R type, coercion is performed according to a hierarchy;
+Thinking of the 4 common types in R, type coercion is performed according to a hierarchy;
 
 `Logical >>> Integer >>> Double >>> Character`
 
