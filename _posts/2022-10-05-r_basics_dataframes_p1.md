@@ -260,8 +260,4 @@ print(my_df)
     
   3. 105 <br>
     
-  4.  <br>
-    
-  5.  <br>
-    
 </details>
