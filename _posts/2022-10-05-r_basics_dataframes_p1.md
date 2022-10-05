@@ -1,6 +1,6 @@
 ---
 layout: post
-title : "R Basics - Data Frames part 1"
+title : "R Basics - Data Frames Part 1"
 toc : true
 tags: [R basics, Tutorial]
 categories: R Basics
