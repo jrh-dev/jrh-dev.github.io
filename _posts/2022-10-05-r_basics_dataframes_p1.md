@@ -222,7 +222,7 @@ Data frames are one of the most useful data structures in R and the built in fun
 
 Try creating a data frame named "my_df" with 3 columns named "col_a", "col_b", and "col_c". 
 
-"col_a" should contain the numbers first 10 letters of the alphabet as individual elements.
+"col_a" should contain the first 10 letters of the alphabet as individual elements.
 
 "col_b" should contain the numbers 1 to 10.
 
