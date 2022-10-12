@@ -21,11 +21,11 @@ div.yellow {color:#000000; background-color:#fff0a7; border-radius: 5px; padding
 div.red {color:#000000; background-color:#ffa7a7; border-radius: 5px; padding: 12px; opacity:1; margin-bottom:20px;}
 </style>
 
-In [Data Frames Part 1](https://jrh-dev.github.io/posts/r_basics_dataframes_p1/) we looked at creating `data.frame` objects, accessing their columns, and creating subsets of them using their row and column indices. We also looked at some useful functions for interacting with `data.frame`'s, including `ncol()`, `nrow()`, and `names()`.
+In [Data Frames Part 1](https://jrh-dev.github.io/posts/r_basics_dataframes_p1/) we looked at creating `data.frame` objects, accessing their columns, and creating subsets of them using their row and column indices. We also looked at some useful functions for interacting with `data.frame` objects's, including `ncol()`, `nrow()`, and `names()`.
 
 ## Working with data frames
 
-`mtcars` is one of a variety of built in data sets which come with R and are typically used in tutorials. We can view the first few rows of `mtcars` to get a feel for the data set using the `head()` function.
+`mtcars` is one of a variety of built in data sets that come with R and are typically used in tutorials. We can view the first few rows of `mtcars` to get a feel for the data set using the `head()` function.
 
 ```r
 head(mtcars)
@@ -38,7 +38,7 @@ head(mtcars)
 #' Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2
 #' Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1
 ```
-The `tail()` function works similarly to `head()`, returning the last rows of a `data.frame`. `head()` and `tail()` can also be used on individual columns, or in fact any vector, to return the first few elements.
+The `tail()` function can also be used to inspect an object and works similarly to `head()`, returning the last rows of a `data.frame`. `head()` and `tail()` can also be used on individual columns, or in fact any vector, to return the first (or last) few elements.
 
 ```r
 head(mtcars$mpg)
@@ -63,11 +63,11 @@ We know that we can access a `data.frame`'s elements using the indices of the ro
 
 ![](/assets/img/r_basics_dataframes_p2/img02.png)
 
-It is important to take extra care with the syntax initially, but as you gain experience from putting the theory into practice you will find that it quickly becomes more intuitive. 
+The position of the row and column indices along with the `,` are perhaps the most important considerations at this stage, and are the most likely to cause confusion.
 
-The position of the row and column indices along with the `,` are perhaps the most important considerations at this stage, and are the most likely to cause confusion, for example, knowing that if we don't include the comma and only pass one index (i.e. `df[1]`), R will assume that we want a column. 
+It is important to take extra care with the syntax initially, but as you gain experience from putting the theory into practice you will find that it quickly becomes more intuitive, for example, knowing that if we don't include the comma and only pass one index (i.e. `df[1]`), R will assume that we want a column.  
 
-As you become more confident with manipulating `data.frame` objects in this way you can start to advance to more powerful applications in order to create subsets of `data.frame`'s.
+As you become more confident with manipulating `data.frame` objects in this way you can start to advance towards more powerful applications to create specific subsets of `data.frame`'s.
 
 ### Subset rows using a numeric vector
 
@@ -176,7 +176,7 @@ mtcars[mtcars$hp > 200, ]
 #' ...
 ```
 
-R often provides us with lots of ways to do the same thing. Which approach you use will often come down to how the wider project is structured and choosing is something that becomes more intuitive with experience. Considerations such as readability and how obvious the functionality of a piece of code is to a third party, or indeed yourself upon returning to it are important. 
+R often provides us with lots of ways to do the same thing. Which approach you use will often come down to how the wider project is structured and choosing an approach is something that becomes more intuitive with experience. Considerations such as readability and how obvious the functionality of a piece of code is to a third party, or indeed yourself upon returning to it are important. 
 
 For newcomers it is often best to work with the option you find most intuitive, but in essence all of these approaches give you the same output.
 
@@ -188,7 +188,7 @@ mtcars[which(mtcars$hp > 200), ]
 mtcars[mtcars$hp > 200, ]
 ```
 
-### A tidy approach?
+### A tidy approach
 
 Use of the tidyverse is somewhat ubiquitous in R and the tidy style is now often taught before base R. You will notice that so far we haven't looked at any tidy functions. Whilst the tidyverse posits itself as being simpler to learn, this isn't necessarily true. Building a strong understanding of base R will afford you greater flexibility and comprehension of the language when progressing to more advanced usage.
 
@@ -234,7 +234,7 @@ dplyr::filter(mtcars, hp > 200)
 <div class = "yellow" markdown="1">
 <i class="fa-solid fa-triangle-exclamation"></i>
 
-***Base or tidy?*** A natural question to arise whilst learning R is whether to prefer base R or tidy R. As you become comfortable with the language you will likely develop a preference for approaching problems is a certain way and may prefer one framework over another. 
+***Base or tidy?*** A natural question to arise whilst learning R is whether to prefer base R or tidy R. As you become comfortable with the language you will likely develop a preference for approaching problems in a certain way and may find that you prefer one framework over another. 
 
 However, an either or approach is only likely to lead to problems down the line. Whilst learning the language it is preferable to be exposed to multiple approaches in order that you can understand code written by others and be aware of alternatives if you encounter a challenging problem.
 
@@ -246,7 +246,7 @@ We can select a subset of columns from `mtcars` in a few different ways.
 
 ### Subset columns using a numeric vector
 
-We can select columns using their indices. We don't need to include `,` within `[ ]` if we only want columns. It doesn't cause any issues if we do include `,`, but it must come ***before*** the column indices. If we want to select the first 3 columns of `mtcars` we can use a numeric vector.
+We can select columns using their indices. We don't need to include `,` within `[ ]` if we only want columns. However, it doesn't cause any issues if we do include `,`, but it must come ***before*** the column indices. If we want to select the first 3 columns of `mtcars` we can use a numeric vector.
 
 ```r
 mtcars[1:3]
@@ -264,11 +264,11 @@ identical(mtcars[1:3, ], mtcars[1:3])
 #' [1] FALSE
 ```
 
-You will have noticed in the example above that `mtcars[, 1:3]` and `mtcars[1:3]` return the same object, but `mtcars[1:3, ]` doesn't. The position of the `,` in but `mtcars[1:3, ]` causes R to extract the first 3 rows, rather than columns. 
+You will have noticed in the example above that `mtcars[, 1:3]` and `mtcars[1:3]` return the same object, but `mtcars[1:3, ]` doesn't. The position of the `,` in `mtcars[1:3, ]` causes R to extract the first 3 rows, rather than columns. 
 
 ### Subset columns using a character vector
 
-We can use the column names to access specific columns of `mtcars`. The `names()` function can be really helpful here and allows us to check the name values available.
+We can use the column names to access specific columns of `mtcars`. The `names()` function can be really helpful here and allows us to check the name values that are available.
 
 ```r
 names(mtcars)
@@ -290,7 +290,7 @@ mtcars[c("mpg", "cyl", "hp")]
 #' ...
 ```
 
-This approach is effective and straight forward to use, making it an ideal approach for creating subsets.
+This approach is effective and straight forward to use, making it an ideal approach for creating subsets of specific columns.
 
 ### Subset columns using a logical vector
 Sometimes you may want to select columns in a more dynamic way. Lets say we want a `data.frame` consisting of any column from `mtcars` with a name that is 2 characters long.
@@ -367,6 +367,34 @@ We can also select rows based on the values in a column that we don't want to ac
 
 ```r
 mtcars[mtcars$carb > 4, c("mpg", "cyl", "hp")]
+
+#'                mpg cyl  hp
+#' Ferrari Dino  19.7   6 175
+#' Maserati Bora 15.0   8 335
+```
+
+### A tidy approach
+
+Examples of a tidyverse approach to creating a subset of rows and columns simultaneously.
+
+```r
+library(dplyr)
+
+mtcars %>%
+  dplyr::filter(hp > 200) %>%
+  dplyr::select(mpg, cyl, hp)
+
+#'                      mpg cyl  hp
+#' Duster 360          14.3   8 245
+#' Cadillac Fleetwood  10.4   8 205
+#' Lincoln Continental 10.4   8 215
+#' Chrysler Imperial   14.7   8 230
+#' Camaro Z28          13.3   8 245
+#' ...
+
+mtcars %>%
+  dplyr::filter(carb > 4) %>%
+  dplyr::select(mpg, cyl, hp)
 
 #'                mpg cyl  hp
 #' Ferrari Dino  19.7   6 175
@@ -502,13 +530,24 @@ There are a few ways to check for missing values in a vector, but a simple one i
 any(is.na(c(1,2,3,NA,5)))
 [1] TRUE
 ```
-
-
 </div>
+
+### A tidy approach
+
+Example of a tidyverse approach to using a single column from a `data.frame` subset.
+
+```r
+mtcars %>%
+  dplyr::filter(carb > 2 & hp > 200) %>%
+  dplyr::pull(disp) %>%
+  mean
+
+#' [1] 390.5714
+```
 
 ## Next steps
 
-Manipulating `data.frame`'s is typically a fundamental part of any analytical or statistical workflow using R. The techniques described above are highly flexible and can be easily adapted to form part of a solution to many problems you might encounter.
+Manipulating `data.frame` objects is typically a fundamental part of any analytical or statistical workflow using R. The techniques described above are highly flexible and can be easily adapted to form part of a solution to many problems you might encounter.
 
 You will also be starting to see how we can build more complex code from simpler component parts, such as placing code to produce a subset of a `data.frame` inside a function, for example `sum(df[df$col_a == "x",]$col_b)`.
 
