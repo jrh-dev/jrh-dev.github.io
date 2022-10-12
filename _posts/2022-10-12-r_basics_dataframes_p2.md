@@ -21,11 +21,11 @@ div.yellow {color:#000000; background-color:#fff0a7; border-radius: 5px; padding
 div.red {color:#000000; background-color:#ffa7a7; border-radius: 5px; padding: 12px; opacity:1; margin-bottom:20px;}
 </style>
 
-In Data Frames Part 1 we looked at creating data frames, accessing their columns, and taking subsets of them using the indices. We also looked at some useful functions for interacting with them, such as `ncol()`, `nrow()`, and `names()`.
+In [Data Frames Part 1](https://jrh-dev.github.io/posts/r_basics_dataframes_p1/) we looked at creating `data.frame` objects, accessing their columns, and creating subsets of them using their row and column indices. We also looked at some useful functions for interacting with `data.frame`'s, including `ncol()`, `nrow()`, and `names()`.
 
-## Working with `data.frame`'s
+## Working with data frames
 
-R comes with a variety of built in data sets which are typically used in tutorials. `mtcars` is one of these data sets. We can view the first few rows of `mtcars` to get a feel for the data set using the `head()` function.
+`mtcars` is one of a variety of built in data sets which come with R and are typically used in tutorials. We can view the first few rows of `mtcars` to get a feel for the data set using the `head()` function.
 
 ```r
 head(mtcars)
@@ -38,7 +38,7 @@ head(mtcars)
 #' Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2
 #' Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1
 ```
-The `tail()` function works similarly to `head()`, returning the last rows of a `data.frame`. `head()` and `tail()` can also be used on the columns, or in fact any vector.
+The `tail()` function works similarly to `head()`, returning the last rows of a `data.frame`. `head()` and `tail()` can also be used on individual columns, or in fact any vector, to return the first few elements.
 
 ```r
 head(mtcars$mpg)
@@ -46,7 +46,7 @@ head(mtcars$mpg)
 #` [1] 21.0 21.0 22.8 21.4 18.7 18.1
 ```
 
-It's worth noting that `mtcars` doesn't actually have a column containing the car names, rather they are stored as row names. We can check and confirm this using the `row.names()` function.
+You may have noticed that `mtcars` doesn't actually have a column containing the car names, rather they are stored as row names. We can check and confirm this using the `row.names()` function.
 
 ```r
 row.names(mtcars)
@@ -57,17 +57,21 @@ row.names(mtcars)
 #' ...
 ```
 
-### Subset selected rows based on criteria
+## Subset rows based on criteria
 
-We know that we can access a data.frame's elements using the indices of the rows and columns that we want to include.
+We know that we can access a `data.frame`'s elements using the indices of the rows and columns that we want to include. You can revisit [Data Frames Part 1](https://jrh-dev.github.io/posts/r_basics_dataframes_p1/) for a refresher.
 
 ![](/assets/img/r_basics_dataframes_p2/img02.png)
 
-If we don't include the comma and only pass one index (i.e. `df[1]`) then R assumes that we want a column. See [Data Frames Part 1](https://jrh-dev.github.io/posts/r_basics_dataframes_p1/) for further details.
+It is important to take extra care with the syntax initially, but as you gain experience from putting the theory into practice you will find that it quickly becomes more intuitive. 
 
-We can work through some examples to explore more advanced ways in which to create subsets of `data.frame`'s.
+The position of the row and column indices along with the `,` are perhaps the most important considerations at this stage, and are the most likely to cause confusion, for example, knowing that if we don't include the comma and only pass one index (i.e. `df[1]`), R will assume that we want a column. 
 
-#### Example - Create a `data.frame` from `mtcars` containing all rows for cars with over 200 horsepower
+As you become more confident with manipulating `data.frame` objects in this way you can start to advance to more powerful applications in order to create subsets of `data.frame`'s.
+
+### Subset rows using a numeric vector
+
+Lets say that we want to extract all of the rows from `mtcars` for cars with over 200 horsepower.
 
 To achieve our goal we could look at `mtcars` and write down the row numbers where the value in the `hp` column is greater than 200, which would be rows 7, 15, 16, 17, 24, 29, and 31.
 
@@ -82,8 +86,7 @@ mtcars[c(7, 15, 16, 17, 24, 29, 31), ]
 #' Lincoln Continental 10.4   8  460 215 3.00 5.424 17.82  0  0    3    4
 #' Chrysler Imperial   14.7   8  440 230 3.23 5.345 17.42  0  0    3    4
 #' Camaro Z28          13.3   8  350 245 3.73 3.840 15.41  0  0    3    4
-#' Ford Pantera L      15.8   8  351 264 4.22 3.170 14.50  0  1    5    4
-#' Maserati Bora       15.0   8  301 335 3.54 3.570 14.60  0  1    5    8
+#' ...
 ```
 
 Note that we have used the `c()` function to create a vector containing the row numbers, and we have included the `,` even though we aren't specifying any columns. If we try to select the rows without including the `,`, R will assume we want columns, and since we only have 11 columns will return an error.
@@ -91,7 +94,6 @@ Note that we have used the `c()` function to create a vector containing the row 
 ```r
 mtcars[c(7, 15, 16, 17, 24, 29, 31)]
 
-#' mtcars[c(7, 15, 16, 17, 24, 29, 31)]
 #' Error in `[.data.frame`(mtcars, c(7, 15, 16, 17, 24, 29, 31)) : 
 #' undefined columns selected
 ```
@@ -108,7 +110,7 @@ print(hp_200)
 #' [1]  7 15 16 17 24 29 31
 ```
 
-`which()` has returned the indices of elements with values greater than 200 in the `mtcars` `hp` column. We have assigned the output of `which()` to `hp_200`, so we can now reuse those values elsewhere, in this case to subset our data.frame.
+`which(mtcars$hp > 200)` has returned the indices of elements with values greater than 200 in the `mtcars` `hp` column. We have assigned the output of `which()` to `hp_200`, so we can now reuse those values elsewhere, in this case to subset our data.frame.
 
 ```r
 mtcars[hp_200, ]
@@ -119,18 +121,26 @@ mtcars[hp_200, ]
 #' Lincoln Continental 10.4   8  460 215 3.00 5.424 17.82  0  0    3    4
 #' Chrysler Imperial   14.7   8  440 230 3.23 5.345 17.42  0  0    3    4
 #' Camaro Z28          13.3   8  350 245 3.73 3.840 15.41  0  0    3    4
-#' Ford Pantera L      15.8   8  351 264 4.22 3.170 14.50  0  1    5    4
-#' Maserati Bora       15.0   8  301 335 3.54 3.570 14.60  0  1    5    8
+#' ...
 ```
 
-It is possible to skip the step of assigning the output from `which()` altogether by using it within `[ ]` directly.
+It is possible to skip the step of assigning the output from `which()` altogether by using the function within `[ ]` directly.
 
 ```r
-# not run
 mtcars[which(mtcars$hp > 200),]
+
+#'                      mpg cyl disp  hp drat    wt  qsec vs am gear carb
+#' Duster 360          14.3   8  360 245 3.21 3.570 15.84  0  0    3    4
+#' Cadillac Fleetwood  10.4   8  472 205 2.93 5.250 17.98  0  0    3    4
+#' Lincoln Continental 10.4   8  460 215 3.00 5.424 17.82  0  0    3    4
+#' Chrysler Imperial   14.7   8  440 230 3.23 5.345 17.42  0  0    3    4
+#' Camaro Z28          13.3   8  350 245 3.73 3.840 15.41  0  0    3    4
+#' ...
 ```
 
-We can also achieve the same result using logical (TRUE and FALSE) vectors. If we run `mtcars$hp > 200` we get a logical vector, where `TRUE` indicates that the vector element was greater than 200.
+### Subset rows using a logical vector
+
+We can also subset `mtcars` using a logical (TRUE or FALSE) vector. If we run `mtcars$hp > 200` we get a logical vector, where `TRUE` indicates that the vector element was greater than 200.
 
 ```r
 mtcars$hp > 200
@@ -163,17 +173,14 @@ mtcars[mtcars$hp > 200, ]
 #' Lincoln Continental 10.4   8  460 215 3.00 5.424 17.82  0  0    3    4
 #' Chrysler Imperial   14.7   8  440 230 3.23 5.345 17.42  0  0    3    4
 #' Camaro Z28          13.3   8  350 245 3.73 3.840 15.41  0  0    3    4
-#' Ford Pantera L      15.8   8  351 264 4.22 3.170 14.50  0  1    5    4
-#' Maserati Bora       15.0   8  301 335 3.54 3.570 14.60  0  1    5    8
+#' ...
 ```
 
-R often provides us with lots of ways to do the same thing. Which approach you choose to use will often come down to how the wider project is structured and is something that becomes more intuitive with experience. Considerations such as readability and how obvious the functionality of a piece of code is to a third party, or indeed yourself upon returning to it are important. 
+R often provides us with lots of ways to do the same thing. Which approach you use will often come down to how the wider project is structured and choosing is something that becomes more intuitive with experience. Considerations such as readability and how obvious the functionality of a piece of code is to a third party, or indeed yourself upon returning to it are important. 
 
 For newcomers it is often best to work with the option you find most intuitive, but in essence all of these approaches give you the same output.
 
 ```r
-# not run - all return the same object
-
 mtcars[c(7, 15, 16, 17, 24, 29, 31), ]
 
 mtcars[which(mtcars$hp > 200), ]
@@ -181,9 +188,11 @@ mtcars[which(mtcars$hp > 200), ]
 mtcars[mtcars$hp > 200, ]
 ```
 
-#### A tidy approach?
+### A tidy approach?
 
-Use of the tidyverse is somewhat ubiquitous in R and the tidy style is now often taught before base R. The example below demonstrates how we could produce a subset `data.frame` of cars with over 200 hp from `mtcars` in a tidy fashion.
+Use of the tidyverse is somewhat ubiquitous in R and the tidy style is now often taught before base R. You will notice that so far we haven't looked at any tidy functions. Whilst the tidyverse posits itself as being simpler to learn, this isn't necessarily true. Building a strong understanding of base R will afford you greater flexibility and comprehension of the language when progressing to more advanced usage.
+
+With that in mind, it can be useful to see how the examples we have looked at so far might translate into the tidyverse. The example below demonstrates how we could produce a subset `data.frame` of cars with over 200 hp from `mtcars` in a tidy fashion.
 
 ```r
 library(dplyr)
@@ -197,8 +206,7 @@ mtcars %>%
 #' Lincoln Continental 10.4   8  460 215 3.00 5.424 17.82  0  0    3    4
 #' Chrysler Imperial   14.7   8  440 230 3.23 5.345 17.42  0  0    3    4
 #' Camaro Z28          13.3   8  350 245 3.73 3.840 15.41  0  0    3    4
-#' Ford Pantera L      15.8   8  351 264 4.22 3.170 14.50  0  1    5    4
-#' Maserati Bora       15.0   8  301 335 3.54 3.570 14.60  0  1    5    8
+#' ...
 ```
 
 You will notice the use of the pipe operator `%>%` and that the `hp` column is referred to simply as `hp` rather than `mtcars$hp`. The `dplyr` functions try to be more intuitive by assuming `hp` in this instance will be a column in `mtcars`.
@@ -206,9 +214,7 @@ You will notice the use of the pipe operator `%>%` and that the `hp` column is r
 <div class = "blue" markdown="1">
 <i class="fa-solid fa-circle-info fa-lg"></i>
 
-***About pipes***
-
-Pipes are commonly used in R to chain together multiple functions. There is also a native pipe operator in R `|>` (available in versions 4.1.0 and above). In its simplest usage the pipe operator takes the object to its left and passes it to its right as the first argument. 
+***A (very) brief note about pipes***: Pipes are commonly used in R to chain together multiple functions. There is also a native pipe operator in R `|>` (available in versions 4.1.0 and above). In its simplest usage the pipe operator takes the object to its left and passes it to its right as the first argument. 
 
 In the example above, the pipe operator takes `mtcars` and passes it to the first argument of `dplyr::filter()`.
 
@@ -217,29 +223,30 @@ In the example above, the pipe operator takes `mtcars` and passes it to the firs
 We can write the snippet without pipes, whilst still using `dplyr::filter()`.
 
 ```r
-# not run
+mtcars %>% dplyr::filter(hp > 200)
+
+# is equivalent to
+
 dplyr::filter(mtcars, hp > 200)
 ```
 </div>
 
 <div class = "yellow" markdown="1">
-<i class="fa-solid fa-circle-info fa-lg"></i>
+<i class="fa-solid fa-triangle-exclamation"></i>
 
-***Base or tidy?***
-
-A natural question to arise whilst learning R is whether to prefer base R or tidy R. As you become comfortable with the language you will likely develop a preference for approaching problems is a certain way and may prefer one framework over another. 
+***Base or tidy?*** A natural question to arise whilst learning R is whether to prefer base R or tidy R. As you become comfortable with the language you will likely develop a preference for approaching problems is a certain way and may prefer one framework over another. 
 
 However, an either or approach is only likely to lead to problems down the line. Whilst learning the language it is preferable to be exposed to multiple approaches in order that you can understand code written by others and be aware of alternatives if you encounter a challenging problem.
 
 </div>
 
-### Subset selected columns based on criteria
+## Subset  columns based on criteria
 
 We can select a subset of columns from `mtcars` in a few different ways.
 
-#### Example - Create a data.frame containing the first 3 columns of `mtcars`
+### Subset columns using a numeric vector
 
-We can select columns using their indices. We don't need to include `,` within `[ ]` if we only want columns. It doesn't cause any issues if we do include `,`, but it must come ***before*** the column indices.
+We can select columns using their indices. We don't need to include `,` within `[ ]` if we only want columns. It doesn't cause any issues if we do include `,`, but it must come ***before*** the column indices. If we want to select the first 3 columns of `mtcars` we can use a numeric vector.
 
 ```r
 mtcars[1:3]
@@ -257,7 +264,9 @@ identical(mtcars[1:3, ], mtcars[1:3])
 #' [1] FALSE
 ```
 
-#### Example - Create a data.frame containing specific columns of `mtcars`
+You will have noticed in the example above that `mtcars[, 1:3]` and `mtcars[1:3]` return the same object, but `mtcars[1:3, ]` doesn't. The position of the `,` in but `mtcars[1:3, ]` causes R to extract the first 3 rows, rather than columns. 
+
+### Subset columns using a character vector
 
 We can use the column names to access specific columns of `mtcars`. The `names()` function can be really helpful here and allows us to check the name values available.
 
@@ -267,7 +276,7 @@ names(mtcars)
 #'  [1] "mpg"  "cyl"  "disp" "hp"   "drat" "wt"   "qsec" "vs"   "am"   "gear" "carb"
 ```
 
-We can use the column names to extract the `mpg`, `cyl`, and `hp` columns from `mtcars`. Selecting columns in this way the return will always return a `data.frame`.
+Lets use the column names to extract the `mpg`, `cyl`, and `hp` columns from `mtcars`.
 
 ```r
 mtcars[c("mpg", "cyl", "hp")]
@@ -281,6 +290,9 @@ mtcars[c("mpg", "cyl", "hp")]
 #' ...
 ```
 
+This approach is effective and straight forward to use, making it an ideal approach for creating subsets.
+
+### Subset columns using a logical vector
 Sometimes you may want to select columns in a more dynamic way. Lets say we want a `data.frame` consisting of any column from `mtcars` with a name that is 2 characters long.
 
 We can first get the number of characters in each of the column names and store the vector as `name_len`.
@@ -301,7 +313,7 @@ print(name_len)
  [1] FALSE FALSE FALSE  TRUE FALSE TRUE FALSE  TRUE  TRUE FALSE FALSE
 ```
 
-Finally, we can now use `name_len` to select all of the columns from `mtcars` with names 2 characters long.
+Finally, we can use `name_len` to select all of the columns from `mtcars` with names 2 characters long.
 
 ```r
 mtcars[name_len]
@@ -315,7 +327,7 @@ mtcars[name_len]
 #' ...
 ```
 
-As with our examples above, we can avoid the intermediate steps by writing a concise one-liner.
+As with our examples above, we can also avoid the intermediate steps by refactoring our code into a concise one-liner.
 
 ```r
 mtcars[nchar(names(mtcars)) == 2]
@@ -329,13 +341,15 @@ mtcars[nchar(names(mtcars)) == 2]
 #' ...
 ```
 
-#### Example - Create a data.frame containing specific columns and rows of `mtcars`
+## Subset rows and columns simultaneously based on criteria
 
-We can combine what we have looked at so far to create a subset of both columns and rows from `mtcars`. To extract the `mpg`, `cyl`, and `hp` columns from `mtcars`, but only where the hp is greater than 200, we can combine the `mtcars[mtcars$hp > 200]` and `mtcars[c("mpg", "cyl", "hp")]` code snippets we used earlier.
+We can combine what we have looked at so far to create a subset of both columns and rows from `mtcars`. To extract the `mpg`, `cyl`, and `hp` columns from `mtcars`, but only keeping rows where `hp` is greater than 200, we can combine the `mtcars[mtcars$hp > 200,]` and `mtcars[c("mpg", "cyl", "hp")]` code snippets we used earlier.
 
 At this point we also need to remember the order in which we specify rows and columns inside `[ ]`.
 
 ![](/assets/img/r_basics_dataframes_p2/img02.png)
+
+Lets give it a try, providing our row subset criteria followed by our column subset criteria.
 
 ```r
 mtcars[mtcars$hp > 200, c("mpg", "cyl", "hp")]
@@ -346,11 +360,10 @@ mtcars[mtcars$hp > 200, c("mpg", "cyl", "hp")]
 #' Lincoln Continental 10.4   8 215
 #' Chrysler Imperial   14.7   8 230
 #' Camaro Z28          13.3   8 245
-#' Ford Pantera L      15.8   8 264
-#' Maserati Bora       15.0   8 335
+#' ...
 ```
 
-It's often useful to be able to select rows based on the values in a column that you don't want to retain. For example, if we want the `mpg`, `cyl`, and `hp` columns from `mtcars`, where `carb` is greater than 4, we don't actually need to include `carb` in our new `data.frame`.
+We can also select rows based on the values in a column that we don't want to actually include in our output. For example, if we want the `mpg`, `cyl`, and `hp` columns from `mtcars`, where `carb` is greater than 4, we don't actually need to include `carb` in our new `data.frame`.
 
 ```r
 mtcars[mtcars$carb > 4, c("mpg", "cyl", "hp")]
@@ -360,7 +373,7 @@ mtcars[mtcars$carb > 4, c("mpg", "cyl", "hp")]
 #' Maserati Bora 15.0   8 335
 ```
 
-### & AND | OR
+## & AND | OR
 
 The logical `&` (AND) and `|` (OR) operators are very important in any programming language, allowing us to build logic based on multiple conditions. The following examples demonstrate the returns generated by using the logical operators in different situations.
 
@@ -390,7 +403,7 @@ TRUE | FALSE | FALSE
 [1] TRUE
 ```
 
-In the examples above we returned rows from `mtcars` where the `hp` value is greater than 200 and the `carb` value is greater than 4. We can combine these to return rows where both conditions are `TRUE` using the `&` operator.
+In one of the examples above we returned rows from `mtcars` where the `hp` value was greater than 200 and the `carb` value was greater than 4. We can combine the separate criteria to return rows where both conditions are `TRUE` using the `&` operator.
 
 ```r
 mtcars[mtcars$carb > 4 & mtcars$hp > 200, ]
@@ -413,6 +426,8 @@ mtcars[mtcars$carb > 4 | mtcars$hp > 200, ]
 #' ...
 ```
 
+## Using a single column from a `data.frame` subset
+
 We might not always want to create a new `data.frame`, perhaps we simply want to know how many rows fulfil a certain criteria. We can use the `nrow()` function for this.
 
 ```r
@@ -426,8 +441,97 @@ nrow(mtcars[mtcars$carb > 4 | mtcars$hp > 200, ])
 [1] 8
 ```
 
+We can also apply this approach to more complex problems. If we want to know the mean value of `disp` where the value of `carb` is greater than 2 and `hp` is greater than 200, we could subset `mtcars` and then use `mean()` on the `disp` column.
+
+```r
+new_mtcars <- mtcars[mtcars$carb > 2 & mtcars$hp > 200, ]
+
+mean(new_mtcars$disp)
+[1] 390.5714
+```
+
+However, we don't actually need to go through the assignment step, rather we can access the column from the subset syntax directly using the `$` operator.
+
+```r
+# to return the column as a vector
+mtcars[mtcars$carb > 2 & mtcars$hp > 200, ]$disp
+[1] 360 472 460 440 350 351 301
+
+# to calculate the mean of the column
+mean(mtcars[mtcars$carb > 2 & mtcars$hp > 200, ]$disp)
+[1] 390.5714
+```
+<div class = "blue" markdown="1">
+<i class="fa-solid fa-circle-info fa-lg"></i>
+
+***Missing commas***: There are a few common 'gotchas' that tend to come up in this topic area. When using `[ ]` with `data.frame` objects the most common cause of errors is a misplaced or missing `,`.
+
+```
+// specifying rows and columns requires a comma; rows then comma then columns
+df [ which rows , which columns ]
+
+// specifying columns only; no comma required OR comma then columns
+df [ which columns ]   OR    df [ , which columns ]
+
+// specifying rows only requires a comma; rows then comma
+df [ which rows , ]
+```
+
+</div>
+
+<div class = "blue" markdown="1">
+<i class="fa-solid fa-circle-info fa-lg"></i>
+
+***NA values***: When using functions like `sum()` and `mean()` you may encounter situations where you have missing values within the vector you are applying the function to, which results in an output of `NA`.
+
+```r
+sum(c(1,2,3,NA,5))
+[1] NA
+```
+Many functions, including `sum()` and `mean()`, have an argument to allow missing values to be removed from consideration. 
+
+```r
+sum(c(1,2,3,NA,5), na.rm = TRUE)
+[1] 11
+```
+To check the arguments available for a function you can use `?` to access the functions documentation, for example `?sum`.
+
+There are a few ways to check for missing values in a vector, but a simple one is to use `any()` with `is.na()`.
+
+```r
+any(is.na(c(1,2,3,NA,5)))
+[1] TRUE
+```
 
 
+</div>
+
+## Next steps
+
+Manipulating `data.frame`'s is typically a fundamental part of any analytical or statistical workflow using R. The techniques described above are highly flexible and can be easily adapted to form part of a solution to many problems you might encounter.
+
+You will also be starting to see how we can build more complex code from simpler component parts, such as placing code to produce a subset of a `data.frame` inside a function, for example `sum(df[df$col_a == "x",]$col_b)`.
+
+Practice and experimentation is key in regards to this topic and it is highly recommended that you play around with some data to fully explore it. You can also try some of the tasks below.
+
+`airquality` is a dataset that comes with R, and is available by default.
+
+1. `airquality` contains a `Month` and `Day` column, both of which are numeric (*hint* January = 1, February = 2, etc). What was the average temperature (`Temp`) during the month of July?
+
+2. What was the average wind speed (`Wind`) during the first 10 days of the month of June?
+
+3. Calculate the sum of Ozone values from days where the Wind was greater then 10 OR the Temp was greater than 90 (*hint* `Ozone` contains some missing values).
+
+<details>
+  <summary>Answers</summary>
+  
+  1. 83.90323 <br>
+
+  2. 10.84 <br>
+
+  3. 2273 <br> 
+    
+</details>
 
 
 
