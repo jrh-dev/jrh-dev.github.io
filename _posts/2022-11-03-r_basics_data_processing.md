@@ -131,12 +131,12 @@ You might be wondering at this point how the single element returned by `sum(df$
 
 ```r
 print(df)
-#'   patients events observation percent_events   average
-#'1        56     11           1     0.19642857 0.2364017
-#'2        53     12           2     0.22641509 0.2364017
-#'3        45     11           3     0.24444444 0.2364017
-#'4        44     12           4     0.27272727 0.2364017
-#'5        46      4           5     0.08695652 0.2364017
+#'    patients events observation percent_events   average
+#' 1        56     11           1     0.19642857 0.2364017
+#' 2        53     12           2     0.22641509 0.2364017
+#' 3        45     11           3     0.24444444 0.2364017
+#' 4        44     12           4     0.27272727 0.2364017
+#' 5        46      4           5     0.08695652 0.2364017
 ```
 
 We can run the code snippets side by side to compare the results.
@@ -166,12 +166,12 @@ df$upper_limit <- df$average + 3 * df$variation
 df$lower_limit <- df$average - 3 * df$variation
 
 print(df)
-#'    patients events observation percent_events   average  variation #' upper_limit lower_limit
-#' 1        56     11           1     0.19642857 0.2364017 0.05677586   0.#' 4067293  0.06607408
-#' 2        53     12           2     0.22641509 0.2364017 0.05836061   0.#' 4114835  0.06131984
-#' 3        45     11           3     0.24444444 0.2364017 0.06333613   0.#' 4264101  0.04639329
-#' 4        44     12           4     0.27272727 0.2364017 0.06405181   0.#' 4285571  0.04424624
-#' 5        46      4           5     0.08695652 0.2364017 0.06264391   0.#' 4243334  0.04846995
+#'    patients events observation percent_events   average  variation upper_limit lower_limit
+#' 1        56     11           1     0.19642857 0.2364017 0.05677586   0.4067293  0.06607408
+#' 2        53     12           2     0.22641509 0.2364017 0.05836061   0.4114835  0.06131984
+#' 3        45     11           3     0.24444444 0.2364017 0.06333613   0.4264101  0.04639329
+#' 4        44     12           4     0.27272727 0.2364017 0.06405181   0.4285571  0.04424624
+#' 5        46      4           5     0.08695652 0.2364017 0.06264391   0.4243334  0.04846995
 ```
 
 We now have all the columns we need to create our p-chart, but the formatting isn't quite right for presentation. Our figures can be converted to a percentage and rounded to make them easier to interpret.
@@ -282,10 +282,10 @@ The approach above relies mainly upon base R, using the functions included with 
 We can compare the code with a similar approach using the `tidyverse`.
 
 ```r
-# original code
 patients <- c(56, 53, 45, 44, 46, 50, 48, 48, 42, 46)
 events <- c(11, 12, 11, 12, 4, 12, 15, 13, 9, 14)
 
+# original code
 df <- data.frame(patients = patients, events = events)
 
 df$observation <- as.numeric(row.names(df))
@@ -314,9 +314,6 @@ df <- as.data.frame(
 
 # tidyverse code
 library(magrittr)
-
-patients <- c(56, 53, 45, 44, 46, 50, 48, 48, 42, 46)
-events <- c(11, 12, 11, 12, 4, 12, 15, 13, 9, 14)
 
 df <- tidyr::tibble(patients = patients, events = events) %>%
   dplyr::mutate(
@@ -368,9 +365,9 @@ You should aim to have 5 columns;
 * upper_limit
 * lower_limit
 
-You can use `tidyr::pivot_wider` from the `tidyr` package to transform the data to a long format. The columns to transform will be "attendances", "average", "upper_limit", and "lower_limit". You made need to install `tidyr` first, using `install.packages(tidyr)`.
+You can use `tidyr::pivot_wider` from the `tidyr` package to transform the data to a long format. The columns to transform will be "attendances", "average", "upper_limit", and "lower_limit". You made need to install `tidyr` first, using `install.packages("tidyr")`.
 
-Once happy with your data, try creating the c-chart with the code below. You made need to install `ggplot2` first, using `install.packages(ggplot2)`.
+Once happy with your data, try creating the c-chart with the code below. You made need to install `ggplot2` first, using `install.packages("ggplot2")`.
 
 ```r
 library(ggplot2)
