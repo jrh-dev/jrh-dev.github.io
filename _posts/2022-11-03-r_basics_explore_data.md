@@ -21,9 +21,7 @@ div.yellow {color:#000000; background-color:#fff0a7; border-radius: 5px; padding
 div.red {color:#000000; background-color:#ffa7a7; border-radius: 5px; padding: 12px; opacity:1; margin-bottom:20px;}
 </style>
 
-R is often used interactively and as users grow in confidence they will often begin to find it simpler and more convenient to explore new data in R rather than opening the data in another application. 
-
-Exploring data before moving on to perform analysis or process it further allows for making informed decisions on how to structure a project and helps to identify the types of techniques which may work well with the data you have.
+R is often used interactively and as users grow in confidence they will often begin to find it simpler and more convenient to explore new data with R directly rather than opening the data in another application. A good IDE such as RStudio can make using R in this way easier. Exploring data before proceeding to perform analysis or further processing allows for making informed decisions regarding how to structure a project and helps to identify the types of techniques which may work well with the data you have.
 
 ## Getting an overview
 
@@ -69,13 +67,13 @@ is.factor(iris$Species)
 <i class="fa-solid fa-circle-info fa-lg"></i>
 ***A note on factors:*** R was primarily designed with statistical applications in mind and the existence of the factor class is a direct result of this. R factors are intended for use with categorical variables, eye colour for example. Whilst factors can appear to be strings they also have a numerical representation, which is why `typeof(iris$Species)` returns `integer`.
 
-Factors can be useful when you want to apply an order to character vector. For example, I could ask some people to rate this explanation of factors as "good", "bad", or "average" and record the responses as a character vector.
+Factors can be useful when you want to apply an order to categorical vector. For example, I could ask some people to rate this explanation of factors as "good", "bad", or "average" and record the responses as a character vector.
 
 ```r
 rating <- c("good", "bad", "average", "bad", "average")
 ```
 
-There is no inherent order to the vector from R's perspective, so if we apply the `sort()` function it will do so alphabetically.
+There is no inherent order to the vector from R's perspective, so if we apply the `sort()` function it will sort the elements alphabetically.
 
 ```r
 sort(rating)
