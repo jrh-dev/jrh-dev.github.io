@@ -21,10 +21,10 @@ div.yellow {color:#000000; background-color:#fff0a7; border-radius: 5px; padding
 div.red {color:#000000; background-color:#ffa7a7; border-radius: 5px; padding: 12px; opacity:1; margin-bottom:20px;}
 </style>
 
-Data frames are a fundamental part of R and the functionality they provide plays an integral role in many analysis and data science based workflows. Data frames are rectangular, 2 dimensional table structures, resembling rows and columns making them flexible and intuitive to work with.
+Data frames are a fundamental part of R and the functionality they provide plays an integral role in many analysis and data science based workflows. Data frames are rectangular, 2 dimensional table structures, resembling rows and columns which makes them flexible and intuitive to work with.
 
-## Creating a data frame
- Many functions commonly used to read tabular data into R will by default return a data frame. We can also use the `data.frame()` function to create a data frame with any number of columns. Imagine that you have the names, ages, and postcodes of 5 people. A data frame with 5 rows and 3 columns would be an ideal way to store this information.
+## Creating a data.frame
+ Many functions commonly used to read tabular data into R will by default return a `data.frame`. We can also use the ``data.frame`()` function to create a `data.frame` with any number of columns. Imagine that you have the names, ages, and postcodes of 5 people. A `data.frame` with 5 rows and 3 columns would be an ideal way to store this information.
 
 ```r
 data.frame(
@@ -41,7 +41,7 @@ data.frame(
 #' 5    Walt   21   ij123a
 ```
 
-The only constraint when creating a data frame is that the columns must be of the same length, otherwise an error is returned.
+The only constraint when creating a `data.frame` is that the columns must be of the same length, otherwise an error is returned.
 
 ```r
 data.frame(
@@ -54,19 +54,20 @@ data.frame(
 #'   arguments imply differing number of rows: 2, 5
 ``` 
   
-Each column of a data frame is actually a vector, so we can also construct a data frame from vectors, as long as they are of equal length.
+Each column of a `data.frame` is actually a vector, so we can also construct a `data.frame` from vectors, as long as they are of equal length.
 
 ```r
 name_vector <- c("Alan", "Harry", "Frances", "Polly", "Walt")
 age_vector <- c(48, 34, 78, 45, 21)
 postcode_vector <- c("ab123a", "cd123a", "ef123a", "gh123a", "ij123a")
 
-df <- data.frame(
+df <- `data.frame`(
   name = name_vector,
   age = age_vector,
   postcode = postcode_vector
 )
 
+print(df)
 #'      name  age postcode
 #' 1    Alan   48   ab123a
 #' 2   Harry   34   cd123a
@@ -75,8 +76,8 @@ df <- data.frame(
 #' 5    Walt   21   ij123a
 ```
 
-## Data frame columns
-As data frame columns are vectors we can access them and use them inside functions that accept vectors. There are a few different ways to access a data frame column, but the 3 most common are;
+## data.frame columns
+As `data.frame` columns are vectors we can access them and use them inside functions that accept vectors. There are a few different ways to access a `data.frame` column, but the 3 most common are;
 
 1. Using the `$` operator.
 2. Using the index.
@@ -106,7 +107,7 @@ df["age"]
 #' 5  21
 ```
 
-You will notice that options 2 & 3 returned the column in a different format. Using `$` stripped the column of it's data.frame attributes, whereas the other methods retained them. You can check this by using `typeof()` and `attributes()` on `df$age` and `df["age"]`.
+You will notice that options 2 & 3 returned the column in a different format. Using `$` stripped the column of it's `data.frame` attributes, whereas the other methods retained them. You can check this by using `typeof()` and `attributes()` on `df$age` and `df["age"]`.
 
 ```r
 typeof(df$age)
@@ -132,11 +133,11 @@ attributes(df["age"])
 <div class = "blue" markdown="1">
 <i class="fa-solid fa-circle-info fa-lg"></i>
 
-The output of `typeof(df["age"])` may have surprised you slightly. Beneath the surface, data frames are actually list objects with each column forming an element of the list.
+The output of `typeof(df["age"])` may have surprised you slightly. Beneath the surface, `data.frame`'s are actually list objects with each column forming an element of the list.
 
 </div>
 
-For now, we will focus on using the `$` operator to access columns. The other options can be useful at times, though as a general rule try to avoid option 2 (`df[2]`). Specifying the column names explicitly makes your code simpler to comprehend and improves reproducibility.
+For now, we will focus on using the `$` operator to access columns. The other options can be useful at times, though as a general rule try to avoid option 2 (`df[2]`). Specifying column names explicitly makes your code simpler to comprehend,improves reproducibility, and helps to reduce errors if your data changes.
 
 Accessing a column allows us to use it as we would any other vector. We can get the sum and mean of the age column with the appropriate functions.
 
@@ -161,7 +162,7 @@ df$age[1:3]
 
 #' [1] 48 34 78
 
-# get the last 2 elements of df$age programmatically
+# get the last 3 elements of df$age programmatically
 len <- length(df$age)
 
 df$age[(len-2):len]
@@ -169,20 +170,20 @@ df$age[(len-2):len]
 #' [1] 78 45 21
 ```
 
-## Data frame subsets
-We can also create subsets of data frames using indices. With data frames, two indices are provided, the first for the rows and the second for the columns. Blank indices are also acceptable, as long as they are separated with `,`.
+## data.frame subsets
+We can also create subsets of `data.frame`'s using indices. With `data.frame`'s, two indices are provided, the first for the rows and the second for the columns. Blank indices are also acceptable, as long as they are separated with `,`.
 
-Each individual element in a data frame has 2 indices.
+Each individual element in a `data.frame` has 2 indices.
 
 ![](/assets/img/r_basics_dataframes_p1/img02.png)
 
-The below examples show how the index system can be used to access various elements in our data frame.
+The below examples show how the index system can be used to access various elements in our `data.frame`.
 
 ![](/assets/img/r_basics_dataframes_p1/img01.png)
 
-## Functions for data frames
+## Functions for data.frame's
 
-When working with vectors we can check their length using the `length()` function. Given that all columns of a data frame are vectors of equal length we could use `length()` on any column, however, it is more convenient to use the `nrow()` function.
+When working with vectors we can check their length using the `length()` function. Given that all columns of a `data.frame` are vectors of equal length we could use `length()` on any column, however, it is more convenient to use the `nrow()` function to identify the number of rows.
 
 ```r
 nrow(df)
@@ -190,7 +191,7 @@ nrow(df)
 #' [1] 5
 ```
 
-Some other useful functions for interacting with data frames include `ncol()`, used to get the number of columns, and `names()`, which provides the names of the data frames columns (if they are named).
+Some other useful functions for interacting with `data.frame`'s include `ncol()`, used to get the number of columns, and `names()`, which provides the names of the `data.frame`'s columns.
 
 ```r
 ncol(df)
@@ -218,9 +219,11 @@ names(df) <- c("first_name", "cur_age", "pcode")
 
 ## Next steps
 
-Data frames are one of the most useful data structures in R and the built in functionality is one of the reasons that R is an excellent choice for statistics, analysis, and data science. 
+`data.frame`'s are one of the most useful data structures in R and the fact that this functionality is built into the language is one of the reasons that R is an excellent choice for statistics, analysis, and data science. 
 
-Try creating a data frame named "my_df" with 3 columns named "col_a", "col_b", and "col_c". 
+To put some of the key points above into practice, try the following tasks.
+
+Try creating a `data.frame` named "my_df" with 3 columns named "col_a", "col_b", and "col_c". 
 
 "col_a" should contain the first 10 letters of the alphabet as individual elements.
 
@@ -228,7 +231,7 @@ Try creating a data frame named "my_df" with 3 columns named "col_a", "col_b", a
 
 "col_c" should contain the numbers 11 to 20, but in reverse.
 
-Your resulting data frame should look like this;
+Your resulting `data.frame` should look like this;
 
 ```r
 print(my_df)

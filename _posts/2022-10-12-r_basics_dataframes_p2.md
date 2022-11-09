@@ -25,11 +25,10 @@ In [Data Frames Part 1](https://jrh-dev.github.io/posts/r_basics_dataframes_p1/)
 
 ## Working with data frames
 
-`mtcars` is one of a variety of built in data sets that come with R and are typically used in tutorials. We can view the first few rows of `mtcars` to get a feel for the data set using the `head()` function.
+`mtcars` is one of a variety of data sets that are included with R and are typically used in tutorials. We can view the first few rows of `mtcars` to get a feel for the data set using the `head()` function.
 
 ```r
 head(mtcars)
-
 #'                    mpg cyl disp  hp drat    wt  qsec vs am gear carb
 #' Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
 #' Mazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
@@ -42,7 +41,6 @@ The `tail()` function can also be used to inspect an object and works similarly 
 
 ```r
 head(mtcars$mpg)
-
 #` [1] 21.0 21.0 22.8 21.4 18.7 18.1
 ```
 
@@ -50,7 +48,6 @@ You may have noticed that `mtcars` doesn't actually have a column containing the
 
 ```r
 row.names(mtcars)
-
 #' [1] "Mazda RX4"           "Mazda RX4 Wag"      
 #' [3] "Datsun 710"          "Hornet 4 Drive"     
 #' [5] "Hornet Sportabout"   "Valiant" 
@@ -79,7 +76,6 @@ Using the index system we are able to create a subset of `mtcars` containing tho
 
 ```r
 mtcars[c(7, 15, 16, 17, 24, 29, 31), ]
-
 #'                      mpg cyl disp  hp drat    wt  qsec vs am gear carb
 #' Duster 360          14.3   8  360 245 3.21 3.570 15.84  0  0    3    4
 #' Cadillac Fleetwood  10.4   8  472 205 2.93 5.250 17.98  0  0    3    4
@@ -93,7 +89,6 @@ Note that we have used the `c()` function to create a vector containing the row 
 
 ```r
 mtcars[c(7, 15, 16, 17, 24, 29, 31)]
-
 #' Error in `[.data.frame`(mtcars, c(7, 15, 16, 17, 24, 29, 31)) : 
 #' undefined columns selected
 ```
@@ -106,7 +101,6 @@ One way to approach the problem in a programmatic way is to use the `which()` fu
 hp_200 <- which(mtcars$hp > 200)
 
 print(hp_200)
-
 #' [1]  7 15 16 17 24 29 31
 ```
 
@@ -114,7 +108,6 @@ print(hp_200)
 
 ```r
 mtcars[hp_200, ]
-
 #'                      mpg cyl disp  hp drat    wt  qsec vs am gear carb
 #' Duster 360          14.3   8  360 245 3.21 3.570 15.84  0  0    3    4
 #' Cadillac Fleetwood  10.4   8  472 205 2.93 5.250 17.98  0  0    3    4
@@ -128,7 +121,6 @@ It is possible to skip the step of assigning the output from `which()` altogethe
 
 ```r
 mtcars[which(mtcars$hp > 200),]
-
 #'                      mpg cyl disp  hp drat    wt  qsec vs am gear carb
 #' Duster 360          14.3   8  360 245 3.21 3.570 15.84  0  0    3    4
 #' Cadillac Fleetwood  10.4   8  472 205 2.93 5.250 17.98  0  0    3    4
@@ -140,7 +132,7 @@ mtcars[which(mtcars$hp > 200),]
 
 ### Subset rows using a logical vector
 
-We can also subset `mtcars` using a logical (TRUE or FALSE) vector. If we run `mtcars$hp > 200` we get a logical vector, where `TRUE` indicates that the vector element was greater than 200.
+We can also subset `mtcars` using a logical (TRUE or FALSE) vector. If we run `mtcars$hp > 200` we get a logical vector in return, where `TRUE` indicates that the vector element was greater than 200.
 
 ```r
 mtcars$hp > 200
@@ -162,11 +154,10 @@ my_vector[logical_vector]
 #' [1] "Alan" "Frances" "Walt"
 ```
 
-We can use this approach with `mtcars` to create the subset `data.frame` of cars with over 200 hp.
+The 1st, 2nd, and 3rd elements of `logical_vector` are `TRUE`, so the subset operation keeps the 1st, 2nd, and 3rd elements of `my_vector`. We can use this approach with `mtcars` to create the subset `data.frame` of cars with over 200 hp.
 
 ```r
 mtcars[mtcars$hp > 200, ]
-
 #'                      mpg cyl disp  hp drat    wt  qsec vs am gear carb
 #' Duster 360          14.3   8  360 245 3.21 3.570 15.84  0  0    3    4
 #' Cadillac Fleetwood  10.4   8  472 205 2.93 5.250 17.98  0  0    3    4
@@ -176,23 +167,29 @@ mtcars[mtcars$hp > 200, ]
 #' ...
 ```
 
-R often provides us with lots of ways to do the same thing. Which approach you use will often come down to how the wider project is structured and choosing an approach is something that becomes more intuitive with experience. Considerations such as readability and how obvious the functionality of a piece of code is to a third party, or indeed yourself upon returning to it are important. 
+R often provides us with lots of ways to do the same thing. Which approach you use will often come down to how the wider project is structured and choosing an approach is something that becomes more intuitive with experience. Considerations such as readability and how obvious the functionality of a piece of code is to a third party, or indeed yourself upon returning to it, are important. 
 
 For newcomers it is often best to work with the option you find most intuitive, but in essence all of these approaches give you the same output.
 
 ```r
-mtcars[c(7, 15, 16, 17, 24, 29, 31), ]
+method_a <- mtcars[c(7, 15, 16, 17, 24, 29, 31), ]
 
-mtcars[which(mtcars$hp > 200), ]
+method_b <- mtcars[which(mtcars$hp > 200), ]
 
-mtcars[mtcars$hp > 200, ]
+method_c <- mtcars[mtcars$hp > 200, ]
+
+identical(method_a, method_b)
+#' [1] TRUE
+
+identical(method_b, method_c)
+#' [1] TRUE
 ```
 
 ### A tidy approach
 
-Use of the tidyverse is somewhat ubiquitous in R and the tidy style is now often taught before base R. You will notice that so far we haven't looked at any tidy functions. Whilst the tidyverse posits itself as being simpler to learn, this isn't necessarily true. Building a strong understanding of base R will afford you greater flexibility and comprehension of the language when progressing to more advanced usage.
+Use of the `tidyverse` is somewhat ubiquitous in R and the tidy style is now often taught before base R. You will notice that so far we haven't looked at any tidy functions. Whilst the `tidyverse` posits itself as being simpler to learn, this isn't necessarily true. Building a strong understanding of base R will afford you greater flexibility and comprehension of the language when progressing to more advanced usage.
 
-With that in mind, it can be useful to see how the examples we have looked at so far might translate into the tidyverse. The example below demonstrates how we could produce a subset `data.frame` of cars with over 200 hp from `mtcars` in a tidy fashion.
+With that in mind, it can be useful to see how the examples we have looked at so far might translate into the `tidyverse`. The example below demonstrates how we could produce a subset `data.frame` of cars with over 200 hp from `mtcars` in a tidy fashion.
 
 ```r
 library(dplyr)
@@ -272,7 +269,6 @@ We can use the column names to access specific columns of `mtcars`. The `names()
 
 ```r
 names(mtcars)
-
 #'  [1] "mpg"  "cyl"  "disp" "hp"   "drat" "wt"   "qsec" "vs"   "am"   "gear" "carb"
 ```
 
@@ -280,7 +276,6 @@ Lets use the column names to extract the `mpg`, `cyl`, and `hp` columns from `mt
 
 ```r
 mtcars[c("mpg", "cyl", "hp")]
-
 #'                      mpg cyl  hp
 #' Mazda RX4           21.0   6 110
 #' Mazda RX4 Wag       21.0   6 110
@@ -317,7 +312,6 @@ Finally, we can use `name_len` to select all of the columns from `mtcars` with n
 
 ```r
 mtcars[name_len]
-
 #'                      hp    wt vs am
 #' Mazda RX4           110 2.620  0  1
 #' Mazda RX4 Wag       110 2.875  0  1
@@ -353,7 +347,6 @@ Lets give it a try, providing our row subset criteria followed by our column sub
 
 ```r
 mtcars[mtcars$hp > 200, c("mpg", "cyl", "hp")]
-
 #'                      mpg cyl  hp
 #' Duster 360          14.3   8 245
 #' Cadillac Fleetwood  10.4   8 205
@@ -367,7 +360,6 @@ We can also select rows based on the values in a column that we don't want to ac
 
 ```r
 mtcars[mtcars$carb > 4, c("mpg", "cyl", "hp")]
-
 #'                mpg cyl  hp
 #' Ferrari Dino  19.7   6 175
 #' Maserati Bora 15.0   8 335
@@ -375,7 +367,7 @@ mtcars[mtcars$carb > 4, c("mpg", "cyl", "hp")]
 
 ### A tidy approach
 
-Examples of a tidyverse approach to creating a subset of rows and columns simultaneously.
+Examples of a `tidyverse` approach to creating a subset of rows and columns simultaneously.
 
 ```r
 library(dplyr)
@@ -383,7 +375,6 @@ library(dplyr)
 mtcars %>%
   dplyr::filter(hp > 200) %>%
   dplyr::select(mpg, cyl, hp)
-
 #'                      mpg cyl  hp
 #' Duster 360          14.3   8 245
 #' Cadillac Fleetwood  10.4   8 205
@@ -395,7 +386,6 @@ mtcars %>%
 mtcars %>%
   dplyr::filter(carb > 4) %>%
   dplyr::select(mpg, cyl, hp)
-
 #'                mpg cyl  hp
 #' Ferrari Dino  19.7   6 175
 #' Maserati Bora 15.0   8 335
@@ -407,35 +397,37 @@ The logical `&` (AND) and `|` (OR) operators are very important in any programmi
 
 ```r
 TRUE & TRUE
-[1] TRUE
+#' [1] TRUE
 
 TRUE & FALSE
-[1] FALSE
+#' [1] FALSE
 
 FALSE & FALSE
-[1] FALSE
+#' [1] FALSE
 
 TRUE & TRUE & TRUE
-[1] TRUE
+#' [1] TRUE
 
 TRUE & TRUE & FALSE
-[1] FALSE
+#' [1] FALSE
 
 TRUE | FALSE
-[1] TRUE
+#' [1] TRUE
 
-> TRUE | TRUE
-[1] TRUE
+TRUE | TRUE
+#' [1] TRUE
+
+FALSE | FALSE
+#' [1] FALSE
 
 TRUE | FALSE | FALSE
-[1] TRUE
+#' [1] TRUE
 ```
 
 In one of the examples above we returned rows from `mtcars` where the `hp` value was greater than 200 and the `carb` value was greater than 4. We can combine the separate criteria to return rows where both conditions are `TRUE` using the `&` operator.
 
 ```r
 mtcars[mtcars$carb > 4 & mtcars$hp > 200, ]
-
 #'               mpg cyl disp  hp drat   wt qsec vs am gear carb
 #' Maserati Bora  15   8  301 335 3.54 3.57 14.6  0  1    5    8
 ```
@@ -444,7 +436,6 @@ We can also return the rows of `mtcars` where either of the conditions are `TRUE
 
 ```r
 mtcars[mtcars$carb > 4 | mtcars$hp > 200, ]
-
 #'                      mpg cyl disp  hp drat    wt  qsec vs am gear carb
 #' Duster 360          14.3   8  360 245 3.21 3.570 15.84  0  0    3    4
 #' Cadillac Fleetwood  10.4   8  472 205 2.93 5.250 17.98  0  0    3    4
@@ -460,13 +451,13 @@ We might not always want to create a new `data.frame`, perhaps we simply want to
 
 ```r
 nrow(mtcars[mtcars$carb > 4,])
-[1] 2
+#' [1] 2
 
 nrow(mtcars[mtcars$carb > 4 & mtcars$hp > 200, ])
-[1] 1
+#' [1] 1
 
 nrow(mtcars[mtcars$carb > 4 | mtcars$hp > 200, ])
-[1] 8
+#' [1] 8
 ```
 
 We can also apply this approach to more complex problems. If we want to know the mean value of `disp` where the value of `carb` is greater than 2 and `hp` is greater than 200, we could subset `mtcars` and then use `mean()` on the `disp` column.
@@ -478,7 +469,7 @@ mean(new_mtcars$disp)
 [1] 390.5714
 ```
 
-However, we don't actually need to go through the assignment step, rather we can access the column from the subset syntax directly using the `$` operator.
+However, we don't actually need to go through the assignment step, rather we can access the column directly by placing the `$` operator at the end of our subset syntax.
 
 ```r
 # to return the column as a vector
@@ -534,14 +525,13 @@ any(is.na(c(1,2,3,NA,5)))
 
 ### A tidy approach
 
-Example of a tidyverse approach to using a single column from a `data.frame` subset.
+Example of a `tidyverse` approach to using a single column from a `data.frame` subset.
 
 ```r
 mtcars %>%
   dplyr::filter(carb > 2 & hp > 200) %>%
   dplyr::pull(disp) %>%
   mean
-
 #' [1] 390.5714
 ```
 
