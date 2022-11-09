@@ -66,7 +66,9 @@ patients <- c(56, 53, 45, 44, 46, 50, 48, 48, 42, 46)
 events <- c(11, 12, 11, 12, 4, 12, 15, 13, 9, 14)
 
 df <- data.frame(patients = patients, events = events)
-#' patients events
+
+print(df)
+#'    patients events
 #' 1        56     11
 #' 2        53     12
 #' 3        45     11
@@ -79,7 +81,7 @@ df <- data.frame(patients = patients, events = events)
 #' 10       46     14
 ```
 
-We're interested in identifying any unusual variation in our data. One way we can approach this is to use a statistical process control methodology. A p-chart would be a suitable way to present the data being appropriate to the type of data we have and likely familiar to our target audience of health care professionals.
+We're interested in identifying any unusual variation in our data. One way we can approach this is to use a statistical process control methodology. A p-chart would be a suitable way to present the data being both appropriate to the type of data we have and likely familiar to our target audience of health care professionals.
 
 To create the chart we need to calculate:
 
@@ -99,7 +101,7 @@ To start, lets add an identifier to our observations. As the `data.frame` alread
 df$observation <- as.numeric(row.names(df))
 ```
 
-Nesting functions like this allows us to perform multiple operations without having to assign the returns at each step. In this example, `as.numeric()` evaluates the return of `row.names()`. There is no limit to the depth that functions can be nested to, but typically code should be written to be readable, so deeply nested code should be used sparingly.
+Nesting functions like this allows us to perform multiple operations without having to assign the returns at each step. In this example, `as.numeric()` evaluates the return of `row.names()`. There is no limit to the depth to which functions can be nested, but typically code should be written to be readable, so deeply nested code should be used sparingly.
 
 We can create columns for the proportion and average proportion of adverse events named `percent_events` and `average`. To get the proportion of adverse events per day we need to divide the number of events by the number of patients for each of the 10 observations.
 
@@ -252,6 +254,7 @@ identical(
 
 <div class = "blue" markdown="1">
 <i class="fa-solid fa-circle-info fa-lg"></i>
+
 ***Tibbles?***
 
 > A tibble, or tbl_df, is a modern reimagining of the data.frame, keeping what time has proven to be effective, and throwing out what is not. Tibbles are data.frames that are lazy and surly: they do less (i.e. they don’t change variable names or types, and don’t do partial matching) and complain more (e.g. when a variable does not exist). This forces you to confront problems earlier, typically leading to cleaner, more expressive code. Tibbles also have an enhanced print() method which makes them easier to use with large datasets containing complex objects. <br><br>
@@ -261,7 +264,7 @@ identical(
 
 ### Plotting the p-chart
 
-Having wrangled our data into the correct format we can now create the p-chart using the `ggplot2` package.
+Having wrangled our data into the correct format we can now create the p-chart using the `ggplot2` package. Don't worry about the `ggplot2` syntax at this point, as it's a full topic in its own right.
 
 ```r
 library(ggplot2)
@@ -269,6 +272,8 @@ library(ggplot2)
 p <- ggplot(df, aes(observation, value, color = measure)) + 
         geom_point() +
         geom_line()
+
+p
 ```
 
 ![](/assets/img/r_basics_data_processing/img01.png)
@@ -277,7 +282,7 @@ A quick look suggests that we haven't seen any unexpected variation in our recor
 
 ### A tidy approach
 
-The approach above relies mainly upon base R, using the functions included with an R installation by default, and used only one function from a add-on package to process the data.
+The approach above relies mainly upon base R, using the functions included with an R installation by default, and used only one function from an add-on package to process the data.
 
 We can compare the code with a similar approach using the `tidyverse`.
 
@@ -329,13 +334,15 @@ df <- tidyr::tibble(patients = patients, events = events) %>%
   tidyr::pivot_longer(cols = 4:7, names_to = "measure")
 ```
 
-The `tidyverse` approach is certainly tidy, we only need to use the assignment operator 3 times as opposed to 12 in the original, we can also avoid referencing the `data.frame` directly (`df$`) on multiple occasions which assists in keeping the code 'clean'.
+The `tidyverse` approach is certainly tidy, we only need to use the assignment operator once, as opposed to 10 times in the original. We can also avoid referencing the `data.frame` directly (`df$`) on multiple occasions which assists in keeping the code 'clean'.
 
-We do need to rely on 3 external packages (`magrittr`, `tidyr`, and `dplyr`) in the `tidyverse` approach as opposed to 1 (`tidyr`) in the original, and we need to learn 7 new functions from the `tidyverse` packages and use 3 more functions in total when using the `tidyverse`.
+We do need to rely on 3 external packages (`magrittr`, `tidyr`, and `dplyr`) in the `tidyverse` approach as opposed to 1 (`tidyr`) in the original, and we need to learn 7 new functions from the `tidyverse` packages in addition to using 3 more functions in total when using the `tidyverse`.
 
 This guide attempts to promote learning the base R approach as this allows for building a firm understanding of how the language works itself. As it is aimed to provide an introduction for persons new to R it also attempts to avoid creating an onus to learn multiple packages and functions at an early stage.
 
 ## Next steps
+
+This guide should have demonstrated some of the most common and useful actions performed whilst processing data and performing a basic analysis. Try the task below to put the demonstrated approaches into practice.
 
 A c-chart can be used when we have count data representing *n* items in a large, constant, but unknown area of opportunity. The following vector is the number of A&E attendances recorded at a hospital on 20 consecutive Mondays.
 
@@ -343,7 +350,7 @@ A c-chart can be used when we have count data representing *n* items in a large,
 c(82,63,86,72,82,88,95,68,81,77,92,69,83,86,86,86,68,87,74,62)
 ```
 
-To create a c-chart, you will need to calculate;
+To create a c-chart, you will need;
 
 * the number of attendances
 * the average number of attendances
@@ -371,6 +378,7 @@ Once happy with your data, try creating the c-chart with the code below. You mad
 
 ```r
 library(ggplot2)
+
 ggplot(df, aes(observation, value, color = measure)) + 
   geom_point() +
   geom_line()
@@ -381,6 +389,7 @@ ggplot(df, aes(observation, value, color = measure)) +
 <details>
   <summary>Answers</summary>
     <div markdown="1">
+    
 Your processed `data.frame` should look like this;
 
   ```r
