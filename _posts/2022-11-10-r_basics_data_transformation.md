@@ -21,11 +21,10 @@ div.yellow {color:#000000; background-color:#fff0a7; border-radius: 5px; padding
 div.red {color:#000000; background-color:#ffa7a7; border-radius: 5px; padding: 12px; opacity:1; margin-bottom:20px;}
 </style>
 
-When working with data we often find a need to transform it in various ways. This might be for reasons of presentation, to make data compatible with a functions that requires the input to be in a specific format, or to make it easier to work with. R provides plenty of options for data transformation and the rich package system means that there is typically a ready made solution for most of the problems that you might encounter.
+When working with data we often find a need to transform it in various ways. This might be for reasons of presentation, to make data compatible with a function that requires the input to be in a specific format, or to make it easier to work with. R provides plenty of options for data transformation and the rich package system means that there is typically a ready made solution for most of the problems that you might encounter.
 
 # Wide and long format transformations
 
-## Wide to Long transformation
 Consider the following dataset;
 
 ```r
@@ -43,11 +42,12 @@ print(dat)
 #' 3     George    IJ56KL       blond       blue
 ```
 
-The data has one row per individual recording their name, post code, hair_colour, and eye colour. Each observation is held in a column and the layout could be described as a ***wide*** format. 
+The data has one row per individual and records their name, post code, hair colour, and eye colour. Each observation is held in a column and the layout could be described as being a ***wide*** format. 
 
-The same data could also be stored in a ***long*** format where the post code, hair_colour, and eye colour are all stored in a single column of values, with another column used to identify what the value signifies.
+The same data could also be stored in a ***long*** format where the post code, hair colour, and eye colour are all stored in a single column of values, with another column used to identify what the value signifies.
 
 **Wide format**
+
 | first_name | post_code | hair_colour | eye_colour |
 |------------|-----------|-------------|------------|
 | Olivia |    AB12CD |  brown |      green |
@@ -55,6 +55,7 @@ The same data could also be stored in a ***long*** format where the post code, h
 | George |    IJ56KL |  blond |       blue | 
 
 **Long format**
+
 | first_name |   measure  |   value |
 |------------|------------|---------|
 | Olivia |  post_code |  AB12CD |
@@ -67,6 +68,8 @@ The same data could also be stored in a ***long*** format where the post code, h
 | Amelia | eye_colour |    blue |
 | George | eye_colour |    blue |
 
+## Wide to Long transformation
+
 Whilst there are a number of functions available to assist in the wide to long transformation, `pivot_longer` from the `tidyr` package offers one of the simpler API's. `tidyr` is a widely used package and the `pivot_longer` function is performant with small to mid sized data.
 
 You can install `tidyr` from CRAN if you don't already have it installed.
@@ -75,7 +78,7 @@ You can install `tidyr` from CRAN if you don't already have it installed.
 install.packages("tidyr")
 ```
 
-Specifying the bare minimum arguments to transform our data with `pivot_longer` we get the following output.
+To use `pivot_longer` to transform our data we need to specify at least the `data` and `cols` arguments. `data` allows us to specify the object that we want to transform, and `cols` specifies the columns to pivot into the longer format.
 
 ```r
 tidyr::pivot_longer(data = dat, cols = c(post_code, hair_colour, eye_colour))
@@ -93,7 +96,7 @@ tidyr::pivot_longer(data = dat, cols = c(post_code, hair_colour, eye_colour))
 #' 9 George     eye_colour  blue 
 ```
 
-The `cols` argument allows us to identify the columns we want to pivot into a longer format. You can also use negation in the `cols` argument; in our example we want to pivot all cols except `first_name`, so we can also write the function like this;
+We can also use negation in the `cols` argument; in our example we actually want to pivot all columns except `first_name`, so we can also write the function like this;
 
 ```r
 tidyr::pivot_longer(data = dat, cols = !first_name)
@@ -113,13 +116,13 @@ tidyr::pivot_longer(data = dat, cols = !first_name)
 
 You will have noticed that the return of `pivot_longer` is a `tibble`. This generally won't be a problem, but we can keep our data in a `data.frame` by using `as.data.frame()` to wrap our call to `pivot_longer()`, for example `as.data.frame(tidyr::pivot_longer(data, cols))`.
 
-Typically, we might want to specify the names of the new `name` and `value` columns. This can be achieved with the `names_to` and `values_to` arguments.
+Typically, we might want to specify the names of the new `name` and `value` columns rather than using the default values. This can be achieved with the `names_to` and `values_to` arguments.
 
 ```r
 as.data.frame(
     tidyr::pivot_longer(
         data = dat,
-        cols = c("post_code", "hair_colour", "eye_colour"),
+        cols = !first_name,
         names_to = "measure", values_to = "value"
         )
     )
@@ -184,11 +187,13 @@ print(dat)
 #' 12     George         age     56
 ```
 
+Note that we wrote `values_transform = as.character` and not `values_transform = as.character()`. The reasons for this are to do with how the `pivot_longer` function is written internally, but for now it is sufficient to have this pointed out.
+
 `pivot_longer` offers a range of arguments allowing the user to exert varying levels of control over the transformation that takes place. You can view the documentation by running `?pivot_longer`.
 
 ## Long to Wide transformation
 
-`pivot_wider` from the `tidyr` package, like `pivot_longer`, offers one of the simpler API's, and is used for transforming data from a long to wide format. Having used `pivot_longer`, it should feel somewhat familiar.
+`pivot_wider` from the `tidyr` package is used for transforming data from a long to wide format. Having used `pivot_longer`, it should feel somewhat familiar.
 
 We can use `pivot_wider` to return our `data.frame`, `dat` back to a wide format. `dat` currently looks like this;
 
@@ -207,7 +212,7 @@ We can use `pivot_wider` to return our `data.frame`, `dat` back to a wide format
 |     George |  eye_colour |   blue |
 |     George |         age |     56 |
 
-The minimum arguments we need to provide to transform our data with `pivot_wider` are `names_from` (the column values will be converted to the column names) and `values_from` (the values that will populate the new columns). We also need to pass our `data.frame` as the `data` argument.
+The minimum arguments that we need to provide to transform our data with `pivot_wider` are `names_from` (the column values will be converted to the column names) and `values_from` (the values that will populate the new columns). We also need to pass our `data.frame` as the `data` argument.
 
 ```r
 as.data.frame(
@@ -226,13 +231,13 @@ as.data.frame(
 
 # Joins
 
-Joining two datasets together is a powerful technique, typically used to combine rows from two or more tables, based on a related column between them.
+Joining two datasets together is a powerful technique, typically used to combine rows from two or more tables, based on a related column between them. 
 
-In our example we have 2 tables; `employees` and `skills`. Both tables contain details of a unique identifier (`uid`), which is used to identify individual employees.
+Let's use an example of 2 tables; `employees` and `skills`. Both tables contain details of a unique identifier (`uid`), which is used to identify individual employees.
 
 `employees` also contains details of an employees job role (`role`) and length of service in years (`service`).
 
-`skills` contains 2 columns, `python` and `r`, used to record whether an employee knows the languages. Managers don't do anything practical (obviously) so nobody bothered to record their programming skills, hence they don't appear in the `skills` data.
+`skills` contains 2 columns, `python` and `r`, used to record whether an employee knows those languages. Managers don't do anything practical (obviously) so nobody bothered to record their programming skills, hence they don't appear in the `skills` data.
 
 ```r
 employees <- data.frame(
@@ -248,13 +253,13 @@ skills <- data.frame(
 )
 ```
 
-We can use the `merge` function to perform a wide range of different joins. Despite the type of join required, much of the syntax remains the same. The `x` and `y` arguments are used to specify the two `data.frame`'s to be joined. `by` is used to specify the columns which the merge will be performed on.
+We can use the `merge` function to perform a wide range of different joins. Whatever the type of join required, much of the syntax remains the same. The `x` and `y` arguments are used to specify the two `data.frame`'s to be joined and `by` is used to specify the columns which the merge will be performed on.
 
 ### Inner join
 
 ![](/assets/img/r_basics_data_transformation/img01.png)
 
-Inner joins are used to join data but keep only the rows where the merge column values exists in both `x` and `y`.
+Inner joins are used to join data but keep only the rows where the merge column value exists in both `x` and `y`.
 
 ```r
 merge(x = employees, y = skills, by = c("uid"))
@@ -322,10 +327,10 @@ This time the return does not include employee '005' as the row existed only in 
 
 ### Summary
 
-The `merge()` function provides a simple and intuitive API. In the examples above the arguments `x`, `y`, and `by` arguments remain the same across the different types of join.
+The `merge()` function provides a simple and intuitive API. In the examples above the `x`, `y`, and `by` arguments remain the same across the different types of join. The table below demonstrates the additional arguments required to achieve each type of join.
 
 | inner join | outer join | left join | right join |
-|------------|------------|-----------|------------|
+|:----------:|:----------:|:---------:|:----------:|
 | ![](/assets/img/r_basics_data_transformation/img01.png) | ![](/assets/img/r_basics_data_transformation/img02.png) | ![](/assets/img/r_basics_data_transformation/img03.png) | ![](/assets/img/r_basics_data_transformation/img04.png)|
 | all = FALSE | all = TRUE | all.x = TRUE | all.y = TRUE |
 
@@ -392,19 +397,19 @@ transfers <- structure(list(player_uid = c(1L, 1L, 1L, 1L, 1L, 1L, 2L, 2L,
 2L, 2L, 2L, 2L, 3L, 3L, 3L, 3L, 3L, 3L, 4L, 4L, 4L, 4L, 4L, 4L, 
 5L, 5L, 5L, 5L, 5L, 5L, 6L, 6L, 6L, 6L, 6L, 6L, 7L, 7L, 7L, 7L, 
 7L, 7L, 8L, 8L, 8L, 8L, 8L, 8L, 9L, 9L, 9L, 9L, 9L, 9L, 10L, 
-10L, 10L, 10L, 10L, 10L), measure = c("Player", "From(Club)", 
-"To(Club)", "Position", "Fee(euro)", "Fee(pound)", "Player", 
-"From(Club)", "To(Club)", "Position", "Fee(euro)", "Fee(pound)", 
-"Player", "From(Club)", "To(Club)", "Position", "Fee(euro)", 
-"Fee(pound)", "Player", "From(Club)", "To(Club)", "Position", 
-"Fee(euro)", "Fee(pound)", "Player", "From(Club)", "To(Club)", 
-"Position", "Fee(euro)", "Fee(pound)", "Player", "From(Club)", 
-"To(Club)", "Position", "Fee(euro)", "Fee(pound)", "Player", 
-"From(Club)", "To(Club)", "Position", "Fee(euro)", "Fee(pound)", 
-"Player", "From(Club)", "To(Club)", "Position", "Fee(euro)", 
-"Fee(pound)", "Player", "From(Club)", "To(Club)", "Position", 
-"Fee(euro)", "Fee(pound)", "Player", "From(Club)", "To(Club)", 
-"Position", "Fee(euro)", "Fee(pound)"), value = c("Neymar", 
+10L, 10L, 10L, 10L, 10L), measure = c("Player", "FromClub", 
+"ToClub", "Position", "FeeEuro", "FeePound", "Player", 
+"FromClub", "ToClub", "Position", "FeeEuro", "FeePound", 
+"Player", "FromClub", "ToClub", "Position", "FeeEuro", 
+"FeePound", "Player", "FromClub", "ToClub", "Position", 
+"FeeEuro", "FeePound", "Player", "FromClub", "ToClub", 
+"Position", "FeeEuro", "FeePound", "Player", "FromClub", 
+"ToClub", "Position", "FeeEuro", "FeePound", "Player", 
+"FromClub", "ToClub", "Position", "FeeEuro", "FeePound", 
+"Player", "FromClub", "ToClub", "Position", "FeeEuro", 
+"FeePound", "Player", "FromClub", "ToClub", "Position", 
+"FeeEuro", "FeePound", "Player", "FromClub", "ToClub", 
+"Position", "FeeEuro", "FeePound"), value = c("Neymar", 
 "Barcelona", "Paris Saint-Germain", "Forward", "222", "£198", 
 "Kylian Mbappé", "Monaco", "Paris Saint-Germain", "Forward", 
 "180", "£163", "Philippe Coutinho", "Liverpool", "Barcelona", 
@@ -458,11 +463,11 @@ The `transfers` dataset is in a long format, consisting of 3 columns, `player_ui
 
 * player_uid
 * Player
-* From(Club)
-* To(Club)
+* FromClub
+* ToClub
 * Position
-* Fee(euro)
-* Fee(pound)
+* FeeEuro
+* FeePound
 
 Join the `transfers` and `cl_goals` datasets using the `Player` column to create a new dataset named `tg` containing only the players that are present in both datasets.
 
@@ -474,7 +479,7 @@ Using the `tg` dataset you have created;
 
 3. Which player scored the most goals per Champions League appearence?
 
-4. Considering the fee paid for each player in euro's calculate the spend per Champions League goals and assign the result to a column named `spend_per_goal`. Which player had the lowest spend per Champions League goal? 
+4. Considering the fee paid for each player in euro's, calculate the spend per Champions League goal and assign the result to a column named `spend_per_goal`. Which player had the lowest spend per Champions League goal? 
 
 (***hint: some columns may not be numeric, `as.numeric()` can be used to change type***)
 
