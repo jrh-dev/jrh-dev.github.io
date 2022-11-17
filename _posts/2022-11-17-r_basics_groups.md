@@ -372,7 +372,7 @@ df <- structure(list(Date = c(20210201L, 20210201L, 20210201L, 20210201L,
 ```
 </details>
 
-The data is from the 1st 7 days of February 2021 presenting daily counts of positive COVID-19 cases, broken down by age group and sex. The data is available from [opendata.nhs.scot](opendata.nhs.scot).
+The data is from the 1st 7 days of February 2021 presenting daily counts of positive COVID-19 cases, broken down by age group and sex. The data is available from the [PHS Scotland open data platform](opendata.nhs.scot).
 
 1. Group the data by sex and calculate the mean and median number of first infections.
 
@@ -453,3 +453,5 @@ The data is from the 1st 7 days of February 2021 presenting daily counts of posi
 #' 19 Male   75 to 84             147           0
 #' 20 Male   85plus                59           0
 ```
+
+</details>
