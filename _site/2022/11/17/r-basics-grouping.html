@@ -3,7 +3,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><title>R Basics - Grouping - messyR</title>
 
-<meta name="description" content="Data often contains information on a multitude of groups. Producing summary or aggregated statistics for these groups is a common task.An example datasetTher...">
+<meta name="description" content="Data often contains information pertaining to a multitude of groups. Producing summary or aggregated statistics for these groups is a common task. Being able...">
 <link rel="canonical" href="http://0.0.0.0:4000/2022/11/17/r-basics-grouping.html"><link rel="alternate" type="application/rss+xml" title="messyR" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ --><link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png"><link rel="manifest" href="/assets/site.webmanifest"><link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#fc4d50"><link rel="shortcut icon" href="/assets/favicon.ico">
 
 <meta name="msapplication-TileColor" content="#ffc40d"><meta name="msapplication-config" content="/assets/browserconfig.xml">
@@ -506,13 +506,11 @@ c12 0 22 -4 22 -10 0 -16 -54 -12 -76 6 -18 15 -18 15 6 10 14 -3 35 -6 48 -6z"/>
     <meta itemprop="keywords" content="R basics,Tutorial"><div class="js-article-content"><div class="layout--article"><!-- start custom article top snippet -->
 
 <!-- end custom article top snippet -->
-<div class="article__content" itemprop="articleBody"><p>Data often contains information on a multitude of groups. Producing summary or aggregated statistics for these groups is a common task.</p>
+<div class="article__content" itemprop="articleBody"><p>Data often contains information pertaining to a multitude of groups. Producing summary or aggregated statistics for these groups is a common task. Being able to efficiently perform grouping operations is a powerful tool.</p>
 
-<h2 id="an-example-dataset">An example dataset</h2>
+<p>There are many ways to produce summary statistics and aggregations using R, however, the one of most intuitive ways to achieve this is to use the <code class="language-plaintext highlighter-rouge">tidyverse</code> package <code class="language-plaintext highlighter-rouge">dplyr</code>. The <code class="language-plaintext highlighter-rouge">dplyr</code> package offers functions for aggregating and summarising data which are simple to use and that avoid some of the pitfalls found in alternative approaches.</p>
 
-<p>There are many ways to produce summary statistics and aggregations using R, however, the most intuitive way to achieve this is likely to use the <code class="language-plaintext highlighter-rouge">tidyverse</code> package <code class="language-plaintext highlighter-rouge">dplyr</code>. The <code class="language-plaintext highlighter-rouge">dplyr</code> package offers functions for aggregating and summarising data which are simple to use and that avoid some of the pitfalls found in alternative approaches.</p>
-
-<p>We can use the built in <code class="language-plaintext highlighter-rouge">iris</code> dataset. For a quick reminder of the contents of <code class="language-plaintext highlighter-rouge">iris</code>, lets try using the <code class="language-plaintext highlighter-rouge">head()</code> function.</p>
+<p>We can use the built in <code class="language-plaintext highlighter-rouge">iris</code> dataset to explore grouping in R. For a quick reminder of the contents of <code class="language-plaintext highlighter-rouge">iris</code>, lets use the <code class="language-plaintext highlighter-rouge">head()</code> function.</p>
 
 <figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">head</span><span class="p">(</span><span class="n">iris</span><span class="p">)</span><span class="w">
 </span><span class="cd">#'   Sepal.Length Sepal.Width Petal.Length Petal.Width Species</span><span class="w">
@@ -535,7 +533,7 @@ c12 0 22 -4 22 -10 0 -16 -54 -12 -76 6 -18 15 -18 15 6 10 14 -3 35 -6 48 -6z"/>
 
 <h3 id="group_by---single-grouping-column">group_by() - single grouping column</h3>
 
-<p>The <code class="language-plaintext highlighter-rouge">group_by()</code> function accepts a number of arguments, you can check these out by running <code class="language-plaintext highlighter-rouge">?group_by</code>. In its most basic usage though, we only need to specify our data (<code class="language-plaintext highlighter-rouge">df</code>) and the column or columns that we want the data to be grouped by.</p>
+<p>The <code class="language-plaintext highlighter-rouge">group_by()</code> function accepts various arguments, you can check these out by running <code class="language-plaintext highlighter-rouge">?group_by</code>. In its most basic usage though, we only need to specify our data (<code class="language-plaintext highlighter-rouge">df</code>) and the column or columns that we want the data to be grouped by.</p>
 
 <p>Let’s start by grouping <code class="language-plaintext highlighter-rouge">df</code> using the <code class="language-plaintext highlighter-rouge">Species</code> column.</p>
 
@@ -559,7 +557,7 @@ c12 0 22 -4 22 -10 0 -16 -54 -12 -76 6 -18 15 -18 15 6 10 14 -3 35 -6 48 -6z"/>
 </span><span class="cd">#' # … with 140 more rows</span><span class="w">
 </span><span class="cd">#' # ℹ Use `print(n = ...)` to see more rows</span></code></pre></figure>
 
-<p>Note that whilst using <code class="language-plaintext highlighter-rouge">group_by()</code> has converted our data into a tibble, no changes have been made to the data itself. The output from <code class="language-plaintext highlighter-rouge">print()</code> does show that we have 3 groups based on <code class="language-plaintext highlighter-rouge">Species</code>; <code class="language-plaintext highlighter-rouge"># Groups:   Species [3]</code>.</p>
+<p>Note that whilst using <code class="language-plaintext highlighter-rouge">group_by()</code> has converted our data into a tibble (a <code class="language-plaintext highlighter-rouge">tidyverse</code> implementation of the <code class="language-plaintext highlighter-rouge">data.frame</code>), no changes have been made to the data itself. The output of <code class="language-plaintext highlighter-rouge">print(df)</code> does show that we have 3 groups based on <code class="language-plaintext highlighter-rouge">Species</code>; <code class="language-plaintext highlighter-rouge"># Groups:   Species [3]</code>.</p>
 
 <p>To see the effects of <code class="language-plaintext highlighter-rouge">group_by()</code> we can check the attributes of our data.</p>
 
@@ -589,9 +587,9 @@ c12 0 22 -4 22 -10 0 -16 -54 -12 -76 6 -18 15 -18 15 6 10 14 -3 35 -6 48 -6z"/>
 </span><span class="cd">#' 2 versicolor        [50]</span><span class="w">
 </span><span class="cd">#' 3 virginica         [50]</span></code></pre></figure>
 
-<p>You can see that the <code class="language-plaintext highlighter-rouge">$groups</code> attribute has been added recording our groupings and an additional element has been added to the <code class="language-plaintext highlighter-rouge">$class</code> attribute, <code class="language-plaintext highlighter-rouge">grouped_df</code>.</p>
+<p>You can see that the <code class="language-plaintext highlighter-rouge">$groups</code> attribute has been added to record our groupings and an additional element has been added to the <code class="language-plaintext highlighter-rouge">$class</code> attribute, <code class="language-plaintext highlighter-rouge">grouped_df</code>.</p>
 
-<p class="warning"><strong><em>CAUTION:</em></strong> Whilst our data remains grouped we need to take care when using functions that behave differently when passed a <code class="language-plaintext highlighter-rouge">grouped_df</code>. Typically this will be functions from <code class="language-plaintext highlighter-rouge">tidyverse</code> packages, though there is nothing to prevent authors of other packages utilising the <code class="language-plaintext highlighter-rouge">grouped_df</code> attributes. If we don’t want our output to be effected by the groupings then the grouping will need to be removed explicitly.</p>
+<p class="warning"><strong><em>CAUTION:</em></strong> Whilst our data remains grouped we need to take care when using functions that behave differently when passed a <code class="language-plaintext highlighter-rouge">grouped_df</code>. Typically this will be functions from <code class="language-plaintext highlighter-rouge">tidyverse</code> packages, though there is nothing to prevent authors of other packages utilising the <code class="language-plaintext highlighter-rouge">grouped_df</code> class. If we don’t want our output to be effected by the groupings then the grouping will need to be removed explicitly using <code class="language-plaintext highlighter-rouge">ungroup()</code>.</p>
 
 <h2 id="summarise">summarise()</h2>
 
@@ -635,11 +633,11 @@ c12 0 22 -4 22 -10 0 -16 -54 -12 -76 6 -18 15 -18 15 6 10 14 -3 35 -6 48 -6z"/>
 
 <h3 id="ungroup">ungroup()</h3>
 
-<p>Once we have finished working with the groupings we created we need to remove them. Not removing the groupings can cause issues further down the line if you forget they are present. To remove the current groupings we need to use the <code class="language-plaintext highlighter-rouge">dplyr</code> function <code class="language-plaintext highlighter-rouge">ungroup()</code>.</p>
+<p>Once we have finished working with the groupings that we created we need to remove them. Not removing the groupings can cause issues further down the line if you forget that they are present. To remove the current groupings we need to use the <code class="language-plaintext highlighter-rouge">dplyr</code> function <code class="language-plaintext highlighter-rouge">ungroup()</code>.</p>
 
 <figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">dplyr</span><span class="o">::</span><span class="n">ungroup</span><span class="p">(</span><span class="n">df</span><span class="p">)</span></code></pre></figure>
 
-<p>Like when using <code class="language-plaintext highlighter-rouge">group_by()</code>, <code class="language-plaintext highlighter-rouge">ungroup()</code> doesn’t appear to change anything obvious in our data. However, if we review the attributes again, we see that the <code class="language-plaintext highlighter-rouge">$groups</code> attribute has now been removed and <code class="language-plaintext highlighter-rouge">grouped_df</code> is no longer an element of the <code class="language-plaintext highlighter-rouge">$class</code> attribute.</p>
+<p>Using <code class="language-plaintext highlighter-rouge">ungroup()</code> doesn’t appear to change anything in our data, similarly to <code class="language-plaintext highlighter-rouge">group_by()</code>. However, if we review the attributes of <code class="language-plaintext highlighter-rouge">df</code> again, we see that the <code class="language-plaintext highlighter-rouge">$groups</code> attribute has now been removed and <code class="language-plaintext highlighter-rouge">grouped_df</code> is no longer an element of the <code class="language-plaintext highlighter-rouge">$class</code> attribute.</p>
 
 <figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="nf">attributes</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="w">
 </span><span class="cd">#' $class</span><span class="w">
@@ -661,7 +659,7 @@ c12 0 22 -4 22 -10 0 -16 -54 -12 -76 6 -18 15 -18 15 6 10 14 -3 35 -6 48 -6z"/>
 
 <h3 id="group_by---multiple-grouping-column">group_by() - multiple grouping column</h3>
 
-<p>Grouping can also be applied based on multiple columns. Lets add a new column to <code class="language-plaintext highlighter-rouge">df</code> to use for grouping. <code class="language-plaintext highlighter-rouge">Big.Petal</code> will add a logical value base don whether <code class="language-plaintext highlighter-rouge">Petal.Length</code> and <code class="language-plaintext highlighter-rouge">Petal.Width</code> are above average.</p>
+<p>Grouping can also be applied across multiple columns. Lets add a new column to <code class="language-plaintext highlighter-rouge">df</code> which we use for grouping. The new column, <code class="language-plaintext highlighter-rouge">Big.Petal</code>, will add a logical value based on whether <code class="language-plaintext highlighter-rouge">Petal.Length</code> and <code class="language-plaintext highlighter-rouge">Petal.Width</code> are above average.</p>
 
 <figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">df</span><span class="o">$</span><span class="n">Big.Petal</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">df</span><span class="o">$</span><span class="n">Petal.Length</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">mean</span><span class="p">(</span><span class="n">df</span><span class="o">$</span><span class="n">Petal.Length</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">df</span><span class="o">$</span><span class="n">Petal.Width</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">mean</span><span class="p">(</span><span class="n">df</span><span class="o">$</span><span class="n">Petal.Width</span><span class="p">)</span><span class="w">
 
@@ -686,7 +684,7 @@ c12 0 22 -4 22 -10 0 -16 -54 -12 -76 6 -18 15 -18 15 6 10 14 -3 35 -6 48 -6z"/>
 
 <figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">dplyr</span><span class="o">::</span><span class="n">group_by</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="w"> </span><span class="n">Species</span><span class="p">,</span><span class="w"> </span><span class="n">Big.Petal</span><span class="p">)</span></code></pre></figure>
 
-<p>This grouping allows us to mean <code class="language-plaintext highlighter-rouge">Sepal.Length</code> value by both <code class="language-plaintext highlighter-rouge">Species</code> and <code class="language-plaintext highlighter-rouge">Big.Petal</code>.</p>
+<p>This grouping allows us to calculate a mean <code class="language-plaintext highlighter-rouge">Sepal.Length</code> value by both <code class="language-plaintext highlighter-rouge">Species</code> and <code class="language-plaintext highlighter-rouge">Big.Petal</code>.</p>
 
 <figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">dplyr</span><span class="o">::</span><span class="n">summarise</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="w"> </span><span class="n">Mean.Sepal.Length</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mean</span><span class="p">(</span><span class="n">Sepal.Length</span><span class="p">))</span><span class="w">
 </span><span class="cd">#' # A tibble: 4 × 3</span><span class="w">
@@ -699,9 +697,8 @@ c12 0 22 -4 22 -10 0 -16 -54 -12 -76 6 -18 15 -18 15 6 10 14 -3 35 -6 48 -6z"/>
 </span><span class="cd">#' 4 virginica  TRUE                   6.59</span></code></pre></figure>
 
 <h3 id="group_by---keep-all-columns">group_by - keep all columns</h3>
-<p>Summarise works well, but it reduces the number of rows down to one row per distinct combination of the grouping variables, and drops columns that aren’t grouping variables.</p>
 
-<p>If we want to add the mean <code class="language-plaintext highlighter-rouge">Sepal.Length</code> value by <code class="language-plaintext highlighter-rouge">Species</code> and <code class="language-plaintext highlighter-rouge">Big.Petal</code> to our data ‘as is’, we need to use another <code class="language-plaintext highlighter-rouge">dplyr</code> function; <code class="language-plaintext highlighter-rouge">mutate()</code>. <code class="language-plaintext highlighter-rouge">mutate()</code> is used to add new columns.</p>
+<p><code class="language-plaintext highlighter-rouge">summarise()</code> works well, but it reduces the number of rows down to one row per distinct combination of the grouping variables, and drops columns that aren’t grouping variables. This may not always be our desired behaviour. If we want to add the mean <code class="language-plaintext highlighter-rouge">Sepal.Length</code> value by <code class="language-plaintext highlighter-rouge">Species</code> and <code class="language-plaintext highlighter-rouge">Big.Petal</code> to our data ‘as is’, we need to use another <code class="language-plaintext highlighter-rouge">dplyr</code> function; <code class="language-plaintext highlighter-rouge">mutate()</code>. <code class="language-plaintext highlighter-rouge">mutate()</code> is used to add new columns.</p>
 
 <figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">dplyr</span><span class="o">::</span><span class="n">mutate</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="w"> </span><span class="n">Mean.Sepal.Length</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mean</span><span class="p">(</span><span class="n">Sepal.Length</span><span class="p">))</span><span class="w">
 
@@ -732,7 +729,7 @@ c12 0 22 -4 22 -10 0 -16 -54 -12 -76 6 -18 15 -18 15 6 10 14 -3 35 -6 48 -6z"/>
 <p>Create a <code class="language-plaintext highlighter-rouge">data.frame</code> named <code class="language-plaintext highlighter-rouge">df</code> using the below code.</p>
 
 <details>
-  <summary>Reveal code</summary>
+  <summary>Reveal data generation code</summary>
 
 
 <figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">structure</span><span class="p">(</span><span class="nf">list</span><span class="p">(</span><span class="n">Date</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">20210201L</span><span class="p">,</span><span class="w"> </span><span class="m">20210201L</span><span class="p">,</span><span class="w"> </span><span class="m">20210201L</span><span class="p">,</span><span class="w"> </span><span class="m">20210201L</span><span class="p">,</span><span class="w"> 
@@ -824,9 +821,10 @@ c12 0 22 -4 22 -10 0 -16 -54 -12 -76 6 -18 15 -18 15 6 10 14 -3 35 -6 48 -6z"/>
 </span><span class="m">1L</span><span class="p">,</span><span class="w"> </span><span class="m">0L</span><span class="p">,</span><span class="w"> </span><span class="m">0L</span><span class="p">,</span><span class="w"> </span><span class="m">1L</span><span class="p">,</span><span class="w"> </span><span class="m">0L</span><span class="p">,</span><span class="w"> </span><span class="m">1L</span><span class="p">,</span><span class="w"> </span><span class="m">0L</span><span class="p">,</span><span class="w"> </span><span class="m">0L</span><span class="p">,</span><span class="w"> </span><span class="m">1L</span><span class="p">,</span><span class="w"> </span><span class="m">0L</span><span class="p">,</span><span class="w"> </span><span class="m">0L</span><span class="p">,</span><span class="w"> </span><span class="m">0L</span><span class="p">,</span><span class="w"> </span><span class="m">0L</span><span class="p">,</span><span class="w"> </span><span class="m">0L</span><span class="p">,</span><span class="w"> </span><span class="m">0L</span><span class="p">,</span><span class="w"> </span><span class="m">0L</span><span class="p">,</span><span class="w"> 
 </span><span class="m">0L</span><span class="p">,</span><span class="w"> </span><span class="m">0L</span><span class="p">,</span><span class="w"> </span><span class="m">0L</span><span class="p">)),</span><span class="w"> </span><span class="n">class</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"data.frame"</span><span class="p">,</span><span class="w"> </span><span class="n">row.names</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="kc">NA</span><span class="p">,</span><span class="w"> </span><span class="m">-140L</span><span class="p">))</span></code></pre></figure>
 
+
 </details>
 
-<p>The data is from the 1st 7 days of February 2021 presenting daily counts of positive COVID-19 cases, broken down by age group and sex. The data is available from the <a href="opendata.nhs.scot">PHS Scotland open data platform</a>.</p>
+<p>The data contains details of the daily counts of positive COVID-19 cases for the 1st 7 days of February 2021, broken down by age group and sex. The data is available from the <a href="opendata.nhs.scot">PHS Scotland open data platform</a>.</p>
 
 <ol>
   <li>
@@ -843,74 +841,80 @@ c12 0 22 -4 22 -10 0 -16 -54 -12 -76 6 -18 15 -18 15 6 10 14 -3 35 -6 48 -6z"/>
 <details>
   <summary>Answers</summary>
 
-  You should aim for outputs like these;
+  Your outputs should resemble the examples below; <br />
 
   1.
 
+  
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="w">  </span><span class="cd">#'   # A tibble: 2 × 3</span><span class="w">
+  </span><span class="cd">#'   Sex    mean_first_inf median_first_inf</span><span class="w">
+  </span><span class="cd">#'   &lt;chr&gt;           &lt;dbl&gt;            &lt;dbl&gt;</span><span class="w">
+  </span><span class="cd">#' 1 Female           94.4               40</span><span class="w">
+  </span><span class="cd">#' 2 Male             84.7               35</span><span class="w">
 
-<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="cd">#'   # A tibble: 2 × 3</span><span class="w">
-</span><span class="cd">#'   Sex    mean_first_inf median_first_inf</span><span class="w">
-</span><span class="cd">#'   &lt;chr&gt;           &lt;dbl&gt;            &lt;dbl&gt;</span><span class="w">
-</span><span class="cd">#' 1 Female           94.4               40</span><span class="w">
-</span><span class="cd">#' 2 Male             84.7               35</span></code></pre></figure>
-
-
-2.
-
-
-<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="cd">#' # A tibble: 20 × 6</span><span class="w">
-</span><span class="cd">#' # Groups:   Sex [2]</span><span class="w">
-</span><span class="cd">#'    Sex    AgeGroup mean_first_inf median_first_inf mean_reinf median_reinf</span><span class="w">
-</span><span class="cd">#'    &lt;chr&gt;  &lt;chr&gt;             &lt;dbl&gt;            &lt;int&gt;      &lt;dbl&gt;        &lt;int&gt;</span><span class="w">
-</span><span class="cd">#'  1 Female 0 to 14           32.4                31      0.143            0</span><span class="w">
-</span><span class="cd">#'  2 Female 0 to 59          372.                362      3                2</span><span class="w">
-</span><span class="cd">#'  3 Female 15 to 19          26.3                28      0.143            0</span><span class="w">
-</span><span class="cd">#'  4 Female 20 to 24          41.6                44      0.429            0</span><span class="w">
-</span><span class="cd">#'  5 Female 25 to 44         159.                153      1.14             1</span><span class="w">
-</span><span class="cd">#'  6 Female 45 to 64         141.                146      1.14             1</span><span class="w">
-</span><span class="cd">#'  7 Female 60+              100.                 93      0.571            0</span><span class="w">
-</span><span class="cd">#'  8 Female 65 to 74          30.9                28      0.286            0</span><span class="w">
-</span><span class="cd">#'  9 Female 75 to 84          20.6                20      0                0</span><span class="w">
-</span><span class="cd">#' 10 Female 85plus            20                  17      0.286            0</span><span class="w">
-</span><span class="cd">#' 11 Male   0 to 14           32.9                33      0.286            0</span><span class="w">
-</span><span class="cd">#' 12 Male   0 to 59          341.                356      1                1</span><span class="w">
-</span><span class="cd">#' 13 Male   15 to 19          19.7                19      0                0</span><span class="w">
-</span><span class="cd">#' 14 Male   20 to 24          34.7                32      0                0</span><span class="w">
-</span><span class="cd">#' 15 Male   25 to 44         146.                154      0.429            0</span><span class="w">
-</span><span class="cd">#' 16 Male   45 to 64         134.                143      0.286            0</span><span class="w">
-</span><span class="cd">#' 17 Male   60+               82                  87      0.143            0</span><span class="w">
-</span><span class="cd">#' 18 Male   65 to 74          27.4                30      0.143            0</span><span class="w">
-</span><span class="cd">#' 19 Male   75 to 84          21                  20      0                0</span><span class="w">
-</span><span class="cd">#' 20 Male   85plus             8.43                9      0                0</span></code></pre></figure>
+  </span></code></pre></figure>
 
 
-3.
+  2.
+
+  
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="w">  </span><span class="cd">#' # A tibble: 20 × 6</span><span class="w">
+  </span><span class="cd">#' # Groups:   Sex [2]</span><span class="w">
+  </span><span class="cd">#'    Sex    AgeGroup mean_first_inf median_first_inf mean_reinf median_reinf</span><span class="w">
+  </span><span class="cd">#'    &lt;chr&gt;  &lt;chr&gt;             &lt;dbl&gt;            &lt;int&gt;      &lt;dbl&gt;        &lt;int&gt;</span><span class="w">
+  </span><span class="cd">#'  1 Female 0 to 14           32.4                31      0.143            0</span><span class="w">
+  </span><span class="cd">#'  2 Female 0 to 59          372.                362      3                2</span><span class="w">
+  </span><span class="cd">#'  3 Female 15 to 19          26.3                28      0.143            0</span><span class="w">
+  </span><span class="cd">#'  4 Female 20 to 24          41.6                44      0.429            0</span><span class="w">
+  </span><span class="cd">#'  5 Female 25 to 44         159.                153      1.14             1</span><span class="w">
+  </span><span class="cd">#'  6 Female 45 to 64         141.                146      1.14             1</span><span class="w">
+  </span><span class="cd">#'  7 Female 60+              100.                 93      0.571            0</span><span class="w">
+  </span><span class="cd">#'  8 Female 65 to 74          30.9                28      0.286            0</span><span class="w">
+  </span><span class="cd">#'  9 Female 75 to 84          20.6                20      0                0</span><span class="w">
+  </span><span class="cd">#' 10 Female 85plus            20                  17      0.286            0</span><span class="w">
+  </span><span class="cd">#' 11 Male   0 to 14           32.9                33      0.286            0</span><span class="w">
+  </span><span class="cd">#' 12 Male   0 to 59          341.                356      1                1</span><span class="w">
+  </span><span class="cd">#' 13 Male   15 to 19          19.7                19      0                0</span><span class="w">
+  </span><span class="cd">#' 14 Male   20 to 24          34.7                32      0                0</span><span class="w">
+  </span><span class="cd">#' 15 Male   25 to 44         146.                154      0.429            0</span><span class="w">
+  </span><span class="cd">#' 16 Male   45 to 64         134.                143      0.286            0</span><span class="w">
+  </span><span class="cd">#' 17 Male   60+               82                  87      0.143            0</span><span class="w">
+  </span><span class="cd">#' 18 Male   65 to 74          27.4                30      0.143            0</span><span class="w">
+  </span><span class="cd">#' 19 Male   75 to 84          21                  20      0                0</span><span class="w">
+  </span><span class="cd">#' 20 Male   85plus             8.43                9      0                0</span><span class="w">
+
+  </span></code></pre></figure>
 
 
-<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="cd">#' # A tibble: 20 × 4</span><span class="w">
-</span><span class="cd">#' # Groups:   Sex [2]</span><span class="w">
-</span><span class="cd">#'    Sex    AgeGroup total_first_inf total_reinf</span><span class="w">
-</span><span class="cd">#'    &lt;chr&gt;  &lt;chr&gt;              &lt;int&gt;       &lt;int&gt;</span><span class="w">
-</span><span class="cd">#'  1 Female 0 to 14              227           1</span><span class="w">
-</span><span class="cd">#'  2 Female 0 to 59             2603          21</span><span class="w">
-</span><span class="cd">#'  3 Female 15 to 19             184           1</span><span class="w">
-</span><span class="cd">#'  4 Female 20 to 24             291           3</span><span class="w">
-</span><span class="cd">#'  5 Female 25 to 44            1116           8</span><span class="w">
-</span><span class="cd">#'  6 Female 45 to 64             986           8</span><span class="w">
-</span><span class="cd">#'  7 Female 60+                  701           4</span><span class="w">
-</span><span class="cd">#'  8 Female 65 to 74             216           2</span><span class="w">
-</span><span class="cd">#'  9 Female 75 to 84             144           0</span><span class="w">
-</span><span class="cd">#' 10 Female 85plus               140           2</span><span class="w">
-</span><span class="cd">#' 11 Male   0 to 14              230           2</span><span class="w">
-</span><span class="cd">#' 12 Male   0 to 59             2389           7</span><span class="w">
-</span><span class="cd">#' 13 Male   15 to 19             138           0</span><span class="w">
-</span><span class="cd">#' 14 Male   20 to 24             243           0</span><span class="w">
-</span><span class="cd">#' 15 Male   25 to 44            1019           3</span><span class="w">
-</span><span class="cd">#' 16 Male   45 to 64             935           2</span><span class="w">
-</span><span class="cd">#' 17 Male   60+                  574           1</span><span class="w">
-</span><span class="cd">#' 18 Male   65 to 74             192           1</span><span class="w">
-</span><span class="cd">#' 19 Male   75 to 84             147           0</span><span class="w">
-</span><span class="cd">#' 20 Male   85plus                59           0</span></code></pre></figure>
+  3.
+
+  
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="w">  </span><span class="cd">#' # A tibble: 20 × 4</span><span class="w">
+  </span><span class="cd">#' # Groups:   Sex [2]</span><span class="w">
+  </span><span class="cd">#'    Sex    AgeGroup total_first_inf total_reinf</span><span class="w">
+  </span><span class="cd">#'    &lt;chr&gt;  &lt;chr&gt;              &lt;int&gt;       &lt;int&gt;</span><span class="w">
+  </span><span class="cd">#'  1 Female 0 to 14              227           1</span><span class="w">
+  </span><span class="cd">#'  2 Female 0 to 59             2603          21</span><span class="w">
+  </span><span class="cd">#'  3 Female 15 to 19             184           1</span><span class="w">
+  </span><span class="cd">#'  4 Female 20 to 24             291           3</span><span class="w">
+  </span><span class="cd">#'  5 Female 25 to 44            1116           8</span><span class="w">
+  </span><span class="cd">#'  6 Female 45 to 64             986           8</span><span class="w">
+  </span><span class="cd">#'  7 Female 60+                  701           4</span><span class="w">
+  </span><span class="cd">#'  8 Female 65 to 74             216           2</span><span class="w">
+  </span><span class="cd">#'  9 Female 75 to 84             144           0</span><span class="w">
+  </span><span class="cd">#' 10 Female 85plus               140           2</span><span class="w">
+  </span><span class="cd">#' 11 Male   0 to 14              230           2</span><span class="w">
+  </span><span class="cd">#' 12 Male   0 to 59             2389           7</span><span class="w">
+  </span><span class="cd">#' 13 Male   15 to 19             138           0</span><span class="w">
+  </span><span class="cd">#' 14 Male   20 to 24             243           0</span><span class="w">
+  </span><span class="cd">#' 15 Male   25 to 44            1019           3</span><span class="w">
+  </span><span class="cd">#' 16 Male   45 to 64             935           2</span><span class="w">
+  </span><span class="cd">#' 17 Male   60+                  574           1</span><span class="w">
+  </span><span class="cd">#' 18 Male   65 to 74             192           1</span><span class="w">
+  </span><span class="cd">#' 19 Male   75 to 84             147           0</span><span class="w">
+  </span><span class="cd">#' 20 Male   85plus                59           0</span><span class="w">
+
+  </span></code></pre></figure>
 
 
 </details>

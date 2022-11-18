@@ -7,15 +7,14 @@ author: <author_id>
 show_edit_on_github: false
 ---
 
-Data often contains information on a multitude of groups. Producing summary or aggregated statistics for these groups is a common task.
+Data often contains information pertaining to a multitude of groups. Producing summary or aggregated statistics for these groups is a common task. Being able to efficiently perform grouping operations is a powerful tool.
 
-## An example dataset
+There are many ways to produce summary statistics and aggregations using R, however, the one of most intuitive ways to achieve this is to use the `tidyverse` package `dplyr`. The `dplyr` package offers functions for aggregating and summarising data which are simple to use and that avoid some of the pitfalls found in alternative approaches.
 
-There are many ways to produce summary statistics and aggregations using R, however, the most intuitive way to achieve this is likely to use the `tidyverse` package `dplyr`. The `dplyr` package offers functions for aggregating and summarising data which are simple to use and that avoid some of the pitfalls found in alternative approaches.
-
-We can use the built in `iris` dataset. For a quick reminder of the contents of `iris`, lets try using the `head()` function.
+We can use the built in `iris` dataset to explore grouping in R. For a quick reminder of the contents of `iris`, lets use the `head()` function.
 
 {% highlight r %}
+
 head(iris)
 #'   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
 #' 1          5.1         3.5          1.4         0.2  setosa
@@ -24,12 +23,15 @@ head(iris)
 #' 4          4.6         3.1          1.5         0.2  setosa
 #' 5          5.0         3.6          1.4         0.2  setosa
 #' 6          5.4         3.9          1.7         0.4  setosa
+
 {% endhighlight %}
 
 We can create a copy of `iris` to work with named `df`.
 
 {% highlight r %}
+
 df <- iris
+
 {% endhighlight %}
 
 ## Grouping data
@@ -40,11 +42,12 @@ Using the `dplyr` package to generate groups to allow for the production of summ
 
 ### group_by() - single grouping column
 
-The `group_by()` function accepts a number of arguments, you can check these out by running `?group_by`. In its most basic usage though, we only need to specify our data (`df`) and the column or columns that we want the data to be grouped by. 
+The `group_by()` function accepts various arguments, you can check these out by running `?group_by`. In its most basic usage though, we only need to specify our data (`df`) and the column or columns that we want the data to be grouped by. 
 
 Let's start by grouping `df` using the `Species` column.
 
 {% highlight r %}
+
 df <- dplyr::group_by(df, Species)
 
 print(df)
@@ -64,13 +67,15 @@ print(df)
 #' 10          4.9         3.1          1.5         0.1 setosa 
 #' # … with 140 more rows
 #' # ℹ Use `print(n = ...)` to see more rows
+
 {% endhighlight %}
 
-Note that whilst using `group_by()` has converted our data into a tibble, no changes have been made to the data itself. The output from `print()` does show that we have 3 groups based on `Species`; `# Groups:   Species [3]`.
+Note that whilst using `group_by()` has converted our data into a tibble (a `tidyverse` implementation of the `data.frame`), no changes have been made to the data itself. The output of `print(df)` does show that we have 3 groups based on `Species`; `# Groups:   Species [3]`.
 
 To see the effects of `group_by()` we can check the attributes of our data.
 
 {% highlight r %}
+
 attributes(df)
 #' $class
 #' [1] "grouped_df" "tbl_df"     "tbl"        "data.frame"
@@ -96,11 +101,12 @@ attributes(df)
 #' 1 setosa            [50]
 #' 2 versicolor        [50]
 #' 3 virginica         [50]
+
 {% endhighlight %}
 
-You can see that the `$groups` attribute has been added recording our groupings and an additional element has been added to the `$class` attribute, `grouped_df`. 
+You can see that the `$groups` attribute has been added to record our groupings and an additional element has been added to the `$class` attribute, `grouped_df`. 
 
-***CAUTION:*** Whilst our data remains grouped we need to take care when using functions that behave differently when passed a `grouped_df`. Typically this will be functions from `tidyverse` packages, though there is nothing to prevent authors of other packages utilising the `grouped_df` attributes. If we don't want our output to be effected by the groupings then the grouping will need to be removed explicitly.
+***CAUTION:*** Whilst our data remains grouped we need to take care when using functions that behave differently when passed a `grouped_df`. Typically this will be functions from `tidyverse` packages, though there is nothing to prevent authors of other packages utilising the `grouped_df` class. If we don't want our output to be effected by the groupings then the grouping will need to be removed explicitly using `ungroup()`.
 {:.warning}
 
 ## summarise()
@@ -110,6 +116,7 @@ You can see that the `$groups` attribute has been added recording our groupings 
 We can use `summarise()` to work out the mean petal length (`Petal.Length`) for each `Species`.
 
 {% highlight r %}
+
 dplyr::summarise(df, Mean.Petal.Length = mean(Petal.Length))
 #' # A tibble: 3 × 2
 #'   Species    Mean.Petal.Length
@@ -117,11 +124,13 @@ dplyr::summarise(df, Mean.Petal.Length = mean(Petal.Length))
 #' 1 setosa                  1.46
 #' 2 versicolor              4.26
 #' 3 virginica               5.55
+
 {% endhighlight %}
 
 We are not limited to adding one summary statistic at a time, if we want the mean and median values for `Petal.Length`, we can add both in the same function call.
 
 {% highlight r %}
+
 dplyr::summarise(
     df,
     Mean.Petal.Length = mean(Petal.Length),
@@ -133,6 +142,7 @@ dplyr::summarise(
 #' 1 setosa                  1.46                1.5 
 #' 2 versicolor              4.26                4.35
 #' 3 virginica               5.55                5.55
+
 {% endhighlight %}
 
 ### n()
@@ -140,6 +150,7 @@ dplyr::summarise(
 It is often useful to have a count of the number of observations within a group. The `dplyr` function `n()` allows us to do this.
 
 {% highlight r %}
+
 dplyr::summarise(df, observations = dplyr::n())
 #' # A tibble: 3 × 2
 #'   Species    observations
@@ -147,19 +158,23 @@ dplyr::summarise(df, observations = dplyr::n())
 #' 1 setosa               50
 #' 2 versicolor           50
 #' 3 virginica            50
+
 {% endhighlight %}
 
 ### ungroup()
 
-Once we have finished working with the groupings we created we need to remove them. Not removing the groupings can cause issues further down the line if you forget they are present. To remove the current groupings we need to use the `dplyr` function `ungroup()`.
+Once we have finished working with the groupings that we created we need to remove them. Not removing the groupings can cause issues further down the line if you forget that they are present. To remove the current groupings we need to use the `dplyr` function `ungroup()`.
 
 {% highlight r %}
+
 df <- dplyr::ungroup(df)
+
 {% endhighlight %}
 
-Like when using `group_by()`, `ungroup()` doesn't appear to change anything obvious in our data. However, if we review the attributes again, we see that the `$groups` attribute has now been removed and `grouped_df` is no longer an element of the `$class` attribute.
+Using `ungroup()` doesn't appear to change anything in our data, similarly to `group_by()`. However, if we review the attributes of `df` again, we see that the `$groups` attribute has now been removed and `grouped_df` is no longer an element of the `$class` attribute.
 
 {% highlight r %}
+
 attributes(df)
 #' $class
 #' [1] "tbl_df"     "tbl"        "data.frame"
@@ -177,13 +192,15 @@ attributes(df)
 #' 
 #' $names
 #' [1] "Sepal.Length" "Sepal.Width"  "Petal.Length" "Petal.Width"  "Species"
+
 {% endhighlight %}
 
 ### group_by() - multiple grouping column
 
-Grouping can also be applied based on multiple columns. Lets add a new column to `df` to use for grouping. `Big.Petal` will add a logical value base don whether `Petal.Length` and `Petal.Width` are above average.
+Grouping can also be applied across multiple columns. Lets add a new column to `df` which we use for grouping. The new column, `Big.Petal`, will add a logical value based on whether `Petal.Length` and `Petal.Width` are above average.
 
 {% highlight r %}
+
 df$Big.Petal <- df$Petal.Length > mean(df$Petal.Length) & df$Petal.Width > mean(df$Petal.Width)
 
 print(df)
@@ -202,17 +219,21 @@ print(df)
 #' 10          4.9         3.1          1.5         0.1 setosa  FALSE    
 #' # … with 140 more rows
 #' # ℹ Use `print(n = ...)` to see more rows
+
 {% endhighlight %}
 
 We can now group our data by `Species` and `Big.Petal`.
 
 {% highlight r %}
+
 df <- dplyr::group_by(df, Species, Big.Petal)
+
 {% endhighlight %}
 
-This grouping allows us to mean `Sepal.Length` value by both `Species` and `Big.Petal`.
+This grouping allows us to calculate a mean `Sepal.Length` value by both `Species` and `Big.Petal`.
 
 {% highlight r %}
+
 dplyr::summarise(df, Mean.Sepal.Length = mean(Sepal.Length))
 #' # A tibble: 4 × 3
 #' # Groups:   Species [3]
@@ -222,14 +243,15 @@ dplyr::summarise(df, Mean.Sepal.Length = mean(Sepal.Length))
 #' 2 versicolor FALSE                  5.43
 #' 3 versicolor TRUE                   6.08
 #' 4 virginica  TRUE                   6.59
+
 {% endhighlight %}
 
 ### group_by - keep all columns
-Summarise works well, but it reduces the number of rows down to one row per distinct combination of the grouping variables, and drops columns that aren't grouping variables.
 
-If we want to add the mean `Sepal.Length` value by `Species` and `Big.Petal` to our data 'as is', we need to use another `dplyr` function; `mutate()`. `mutate()` is used to add new columns.
+`summarise()` works well, but it reduces the number of rows down to one row per distinct combination of the grouping variables, and drops columns that aren't grouping variables. This may not always be our desired behaviour. If we want to add the mean `Sepal.Length` value by `Species` and `Big.Petal` to our data 'as is', we need to use another `dplyr` function; `mutate()`. `mutate()` is used to add new columns.
 
 {% highlight r %}
+
 df <- dplyr::mutate(df, Mean.Sepal.Length = mean(Sepal.Length))
 
 print(df)
@@ -249,6 +271,7 @@ print(df)
 #' 10          4.9         3.1          1.5         0.1 setosa  FALSE          5.01
 #' # … with 140 more rows, and abbreviated variable name ¹​Mean.Sepal.Length
 #' # ℹ Use `print(n = ...)` to see more rows
+
 {% endhighlight %}
 
 ## Next steps
@@ -260,9 +283,10 @@ Try some of the tasks below to put the theory into practice.
 Create a `data.frame` named `df` using the below code.
 
 <details>
-  <summary>Reveal code</summary>
+  <summary>Reveal data generation code</summary>
 
 {% highlight r %}
+
 df <- structure(list(Date = c(20210201L, 20210201L, 20210201L, 20210201L, 
 20210201L, 20210201L, 20210201L, 20210201L, 20210201L, 20210201L, 
 20210201L, 20210201L, 20210201L, 20210201L, 20210201L, 20210201L, 
@@ -351,10 +375,12 @@ df <- structure(list(Date = c(20210201L, 20210201L, 20210201L, 20210201L,
 0L, 0L, 0L, 0L, 0L, 1L, 2L, 0L, 0L, 1L, 0L, 0L, 0L, 0L, 0L, 0L, 
 1L, 0L, 0L, 1L, 0L, 1L, 0L, 0L, 1L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 
 0L, 0L, 0L)), class = "data.frame", row.names = c(NA, -140L))
+
 {% endhighlight %}
+
 </details>
 
-The data is from the 1st 7 days of February 2021 presenting daily counts of positive COVID-19 cases, broken down by age group and sex. The data is available from the [PHS Scotland open data platform](opendata.nhs.scot).
+The data contains details of the daily counts of positive COVID-19 cases for the 1st 7 days of February 2021, broken down by age group and sex. The data is available from the [PHS Scotland open data platform](opendata.nhs.scot).
 
 1. Group the data by sex and calculate the mean and median number of first infections.
 
@@ -366,74 +392,80 @@ The data is from the 1st 7 days of February 2021 presenting daily counts of posi
 <details>
   <summary>Answers</summary>
 
-  You should aim for outputs like these;
+  Your outputs should resemble the examples below; <br>
 
   1.
 
-{% highlight r %}
-#'   # A tibble: 2 × 3
-#'   Sex    mean_first_inf median_first_inf
-#'   <chr>           <dbl>            <dbl>
-#' 1 Female           94.4               40
-#' 2 Male             84.7               35
-{% endhighlight %}
+  {% highlight r %}
 
-2.
+  #'   # A tibble: 2 × 3
+  #'   Sex    mean_first_inf median_first_inf
+  #'   <chr>           <dbl>            <dbl>
+  #' 1 Female           94.4               40
+  #' 2 Male             84.7               35
 
-{% highlight r %}
-#' # A tibble: 20 × 6
-#' # Groups:   Sex [2]
-#'    Sex    AgeGroup mean_first_inf median_first_inf mean_reinf median_reinf
-#'    <chr>  <chr>             <dbl>            <int>      <dbl>        <int>
-#'  1 Female 0 to 14           32.4                31      0.143            0
-#'  2 Female 0 to 59          372.                362      3                2
-#'  3 Female 15 to 19          26.3                28      0.143            0
-#'  4 Female 20 to 24          41.6                44      0.429            0
-#'  5 Female 25 to 44         159.                153      1.14             1
-#'  6 Female 45 to 64         141.                146      1.14             1
-#'  7 Female 60+              100.                 93      0.571            0
-#'  8 Female 65 to 74          30.9                28      0.286            0
-#'  9 Female 75 to 84          20.6                20      0                0
-#' 10 Female 85plus            20                  17      0.286            0
-#' 11 Male   0 to 14           32.9                33      0.286            0
-#' 12 Male   0 to 59          341.                356      1                1
-#' 13 Male   15 to 19          19.7                19      0                0
-#' 14 Male   20 to 24          34.7                32      0                0
-#' 15 Male   25 to 44         146.                154      0.429            0
-#' 16 Male   45 to 64         134.                143      0.286            0
-#' 17 Male   60+               82                  87      0.143            0
-#' 18 Male   65 to 74          27.4                30      0.143            0
-#' 19 Male   75 to 84          21                  20      0                0
-#' 20 Male   85plus             8.43                9      0                0
-{% endhighlight %}
+  {% endhighlight %}
 
-3.
+  2.
 
-{% highlight r %}
-#' # A tibble: 20 × 4
-#' # Groups:   Sex [2]
-#'    Sex    AgeGroup total_first_inf total_reinf
-#'    <chr>  <chr>              <int>       <int>
-#'  1 Female 0 to 14              227           1
-#'  2 Female 0 to 59             2603          21
-#'  3 Female 15 to 19             184           1
-#'  4 Female 20 to 24             291           3
-#'  5 Female 25 to 44            1116           8
-#'  6 Female 45 to 64             986           8
-#'  7 Female 60+                  701           4
-#'  8 Female 65 to 74             216           2
-#'  9 Female 75 to 84             144           0
-#' 10 Female 85plus               140           2
-#' 11 Male   0 to 14              230           2
-#' 12 Male   0 to 59             2389           7
-#' 13 Male   15 to 19             138           0
-#' 14 Male   20 to 24             243           0
-#' 15 Male   25 to 44            1019           3
-#' 16 Male   45 to 64             935           2
-#' 17 Male   60+                  574           1
-#' 18 Male   65 to 74             192           1
-#' 19 Male   75 to 84             147           0
-#' 20 Male   85plus                59           0
-{% endhighlight %}
+  {% highlight r %}
+
+  #' # A tibble: 20 × 6
+  #' # Groups:   Sex [2]
+  #'    Sex    AgeGroup mean_first_inf median_first_inf mean_reinf median_reinf
+  #'    <chr>  <chr>             <dbl>            <int>      <dbl>        <int>
+  #'  1 Female 0 to 14           32.4                31      0.143            0
+  #'  2 Female 0 to 59          372.                362      3                2
+  #'  3 Female 15 to 19          26.3                28      0.143            0
+  #'  4 Female 20 to 24          41.6                44      0.429            0
+  #'  5 Female 25 to 44         159.                153      1.14             1
+  #'  6 Female 45 to 64         141.                146      1.14             1
+  #'  7 Female 60+              100.                 93      0.571            0
+  #'  8 Female 65 to 74          30.9                28      0.286            0
+  #'  9 Female 75 to 84          20.6                20      0                0
+  #' 10 Female 85plus            20                  17      0.286            0
+  #' 11 Male   0 to 14           32.9                33      0.286            0
+  #' 12 Male   0 to 59          341.                356      1                1
+  #' 13 Male   15 to 19          19.7                19      0                0
+  #' 14 Male   20 to 24          34.7                32      0                0
+  #' 15 Male   25 to 44         146.                154      0.429            0
+  #' 16 Male   45 to 64         134.                143      0.286            0
+  #' 17 Male   60+               82                  87      0.143            0
+  #' 18 Male   65 to 74          27.4                30      0.143            0
+  #' 19 Male   75 to 84          21                  20      0                0
+  #' 20 Male   85plus             8.43                9      0                0
+
+  {% endhighlight %}
+
+  3.
+
+  {% highlight r %}
+
+  #' # A tibble: 20 × 4
+  #' # Groups:   Sex [2]
+  #'    Sex    AgeGroup total_first_inf total_reinf
+  #'    <chr>  <chr>              <int>       <int>
+  #'  1 Female 0 to 14              227           1
+  #'  2 Female 0 to 59             2603          21
+  #'  3 Female 15 to 19             184           1
+  #'  4 Female 20 to 24             291           3
+  #'  5 Female 25 to 44            1116           8
+  #'  6 Female 45 to 64             986           8
+  #'  7 Female 60+                  701           4
+  #'  8 Female 65 to 74             216           2
+  #'  9 Female 75 to 84             144           0
+  #' 10 Female 85plus               140           2
+  #' 11 Male   0 to 14              230           2
+  #' 12 Male   0 to 59             2389           7
+  #' 13 Male   15 to 19             138           0
+  #' 14 Male   20 to 24             243           0
+  #' 15 Male   25 to 44            1019           3
+  #' 16 Male   45 to 64             935           2
+  #' 17 Male   60+                  574           1
+  #' 18 Male   65 to 74             192           1
+  #' 19 Male   75 to 84             147           0
+  #' 20 Male   85plus                59           0
+
+  {% endhighlight %}
 
 </details>
