@@ -109,7 +109,7 @@ You can see that the `$groups` attribute has been added to record our groupings 
 ***CAUTION:*** Whilst our data remains grouped we need to take care when using functions that behave differently when passed a `grouped_df`. Typically this will be functions from `tidyverse` packages, though there is nothing to prevent authors of other packages utilising the `grouped_df` class. If we don't want our output to be effected by the groupings then the grouping will need to be removed explicitly using `ungroup()`.
 {:.warning}
 
-## summarise()
+### summarise()
 
 `summarise()`, from the `dplyr` package, creates a new data frame which will contain a row for each combination of grouping variables that exists in the data, or if there are no grouping variables, a single row summarising all of the observations in the input. The resulting data frame contains a column for each grouping variable and additional columns for each of the summary statistics that have been specified. 
 
