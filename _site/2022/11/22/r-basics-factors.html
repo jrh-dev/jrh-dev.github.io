@@ -1,11 +1,10 @@
 <!DOCTYPE html><html lang="en">
   <head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><title>Home - messyR</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><title>R Basics - Factors - messyR</title>
 
-<meta name="description" content="...atypical how to's
-">
-<link rel="canonical" href="http://0.0.0.0:4000/"><link rel="alternate" type="application/rss+xml" title="messyR" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ --><link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png"><link rel="manifest" href="/assets/site.webmanifest"><link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#fc4d50"><link rel="shortcut icon" href="/assets/favicon.ico">
+<meta name="description" content="In statistics we often talk about categorical variables. These are variables with a typically limited and potentially fixed number of possible values. An obs...">
+<link rel="canonical" href="http://0.0.0.0:4000/2022/11/22/r-basics-factors.html"><link rel="alternate" type="application/rss+xml" title="messyR" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ --><link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png"><link rel="manifest" href="/assets/site.webmanifest"><link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#fc4d50"><link rel="shortcut icon" href="/assets/favicon.ico">
 
 <meta name="msapplication-TileColor" content="#ffc40d"><meta name="msapplication-config" content="/assets/browserconfig.xml">
 
@@ -255,7 +254,7 @@
 </head>
   <body>
     <div class="root" data-is-touch="false">
-      <div class="layout--page js-page-root"><div class="page__main js-page-main page__viewport cell cell--auto">
+      <div class="layout--page js-page-root"><div class="page__main js-page-main page__viewport has-aside cell cell--auto">
 
       <div class="page__main-inner"><div class="page__header d-print-none"><header class="header"><div class="main">
       <div class="header__title">
@@ -490,20 +489,13 @@ c12 0 22 -4 22 -10 0 -16 -54 -12 -76 6 -18 15 -18 15 6 10 14 -3 35 -6 48 -6z"/>
   </header>
 </div><div class="page__content"><div class ="main"><div class="grid grid--reverse">
 
-              <div class="col-aside d-print-none js-col-aside"></div>
+              <div class="col-aside d-print-none js-col-aside"><aside class="page__aside js-page-aside"><div class="toc-aside js-toc-root"></div>
+</aside></div>
 
               <div class="col-main cell cell--auto"><!-- start custom main top snippet -->
 
 <!-- end custom main top snippet -->
-<article itemscope itemtype="http://schema.org/WebPage"><header style="display:none;"><h1>Home</h1></header><meta itemprop="headline" content="Home"><meta itemprop="author" content="J Hardy"/><div class="js-article-content"><div class="layout--articles"><div class="article-list items items--divided"><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/2022/11/22/r-basics-factors.html"><h2 itemprop="headline" class="item__header">R Basics - Factors</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">In statistics we often talk about categorical variables. These are variables with a typically limited and potentially fixed number of possible values. An observation of a categorical variable is based on a qualitative property.
-
-Some common examples of categorical variables are:
-
-
-  Eye colour (“blue”, “brown”, “green”, etc).
-  Rating a service ...</div><p><a href="/2022/11/22/r-basics-factors.html">Read more</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
+<article itemscope itemtype="http://schema.org/Article"><div class="article__header"><header><h1>R Basics - Factors</h1></header></div><meta itemprop="headline" content="R Basics - Factors"><div class="article__info clearfix"><ul class="left-col menu"><li>
               <a class="button button--secondary button--pill button--sm"
                 href="/archive.html?tag=R+basics">R basics</a>
             </li><li>
@@ -511,129 +503,208 @@ Some common examples of categorical variables are:
                 href="/archive.html?tag=Tutorial">Tutorial</a>
             </li></ul><ul class="right-col menu"><li><i class="fas fa-user"></i> <span>J Hardy</span></li><li><i class="far fa-calendar-alt"></i> <span>Nov 22, 2022</span>
             </li></ul></div><meta itemprop="author" content="J Hardy"/><meta itemprop="datePublished" content="2022-11-22T00:00:00+00:00">
-    <meta itemprop="keywords" content="R basics,Tutorial"></div>
-      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/2022/11/17/r-basics-grouping.html"><h2 itemprop="headline" class="item__header">R Basics - Grouping</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">Data often contains information pertaining to a multitude of groups. Producing summary or aggregated statistics for these groups is a common task. Being able to efficiently perform grouping operations is a powerful tool.
+    <meta itemprop="keywords" content="R basics,Tutorial"><div class="js-article-content"><div class="layout--article"><!-- start custom article top snippet -->
 
-There are many ways to produce summary statistics and aggregations using R, however, the one of most intuitive ways to achiev...</div><p><a href="/2022/11/17/r-basics-grouping.html">Read more</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive.html?tag=R+basics">R basics</a>
-            </li><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive.html?tag=Tutorial">Tutorial</a>
-            </li></ul><ul class="right-col menu"><li><i class="fas fa-user"></i> <span>J Hardy</span></li><li><i class="far fa-calendar-alt"></i> <span>Nov 17, 2022</span>
-            </li></ul></div><meta itemprop="author" content="J Hardy"/><meta itemprop="datePublished" content="2022-11-17T00:00:00+00:00">
-    <meta itemprop="keywords" content="R basics,Tutorial"></div>
-      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/2022/11/10/r-basics-data-transformation.html"><h2 itemprop="headline" class="item__header">R Basics - Data Transformation</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">When working with data we often find a need to transform it in various ways. This might be for reasons of presentation, to make data compatible with a function that requires the input to be in a specific format, or to make it easier to work with. R provides plenty of options for data transformation and the rich package system means that there is...</div><p><a href="/2022/11/10/r-basics-data-transformation.html">Read more</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive.html?tag=R+basics">R basics</a>
-            </li><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive.html?tag=Tutorial">Tutorial</a>
-            </li></ul><ul class="right-col menu"><li><i class="fas fa-user"></i> <span>J Hardy</span></li><li><i class="far fa-calendar-alt"></i> <span>Nov 10, 2022</span>
-            </li></ul></div><meta itemprop="author" content="J Hardy"/><meta itemprop="datePublished" content="2022-11-10T00:00:00+00:00">
-    <meta itemprop="keywords" content="R basics,Tutorial"></div>
-      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/r/basics/2022/11/03/r-basics-explore-data.html"><h2 itemprop="headline" class="item__header">R Basics - Exploring A Dataset</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">R is often used interactively and as users grow in confidence they will often begin to find it simpler and more convenient to explore new data with R directly rather than opening the data in another application. A good IDE such as RStudio can make using R in this way easier. Exploring data before proceeding to perform analysis or further process...</div><p><a href="/r/basics/2022/11/03/r-basics-explore-data.html">Read more</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive.html?tag=R+basics">R basics</a>
-            </li><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive.html?tag=Tutorial">Tutorial</a>
-            </li></ul><ul class="right-col menu"><li><i class="fas fa-user"></i> <span>J Hardy</span></li><li><i class="far fa-calendar-alt"></i> <span>Nov 03, 2022</span>
-            </li></ul></div><meta itemprop="author" content="J Hardy"/><meta itemprop="datePublished" content="2022-11-03T00:00:00+00:00">
-    <meta itemprop="keywords" content="R basics,Tutorial"></div>
-      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/2022/11/03/r-basics-data-processing.html"><h2 itemprop="headline" class="item__header">R Basics - Data Processing</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">A typical workflow using R will likely involve a number of sequential steps from importing the data into the R environment right through to outputting a completed analysis.
+<!-- end custom article top snippet -->
+<div class="article__content" itemprop="articleBody"><p>In statistics we often talk about categorical variables. These are variables with a typically limited and potentially fixed number of possible values. An observation of a categorical variable is based on a qualitative property.</p>
 
-An R workflow
+<p>Some common examples of categorical variables are:</p>
 
-The steps involved are not always clearly distinguishable from one another and the format the data starts off in, whether it has been pre-processed, and the r...</div><p><a href="/2022/11/03/r-basics-data-processing.html">Read more</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive.html?tag=R+basics">R basics</a>
-            </li><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive.html?tag=Tutorial">Tutorial</a>
-            </li></ul><ul class="right-col menu"><li><i class="fas fa-user"></i> <span>J Hardy</span></li><li><i class="far fa-calendar-alt"></i> <span>Nov 03, 2022</span>
-            </li></ul></div><meta itemprop="author" content="J Hardy"/><meta itemprop="datePublished" content="2022-11-03T00:00:00+00:00">
-    <meta itemprop="keywords" content="R basics,Tutorial"></div>
-      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/2022/10/12/r-basics-dataframes-part-2.html"><h2 itemprop="headline" class="item__header">R Basics - Data Frames Part 2</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">In Data Frames Part 1 we looked at creating data.frame objects, accessing their columns, and creating subsets of them using their row and column indices. We also looked at some useful functions for interacting with data.frame objects’s, including ncol(), nrow(), and names().
+<ul>
+  <li>Eye colour (“blue”, “brown”, “green”, etc).</li>
+  <li>Rating a service (“good”, “ok”, “bad”).</li>
+  <li>Blood group (“A”, “AB”, “O”, etc).</li>
+  <li>A numeric value, but where options are limited, for example the result of a dice being rolled (1 to 6).</li>
+</ul>
 
-Working with data frames
+<p>R was primarily designed with statistical applications in mind and the existence of the factor class is a direct result of this. R factors are intended for use with categorical variables.</p>
 
-mtcars is one of a variety of data sets that...</div><p><a href="/2022/10/12/r-basics-dataframes-part-2.html">Read more</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive.html?tag=R+basics">R basics</a>
-            </li><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive.html?tag=Tutorial">Tutorial</a>
-            </li></ul><ul class="right-col menu"><li><i class="fas fa-user"></i> <span>J Hardy</span></li><li><i class="far fa-calendar-alt"></i> <span>Oct 12, 2022</span>
-            </li></ul></div><meta itemprop="author" content="J Hardy"/><meta itemprop="datePublished" content="2022-10-12T00:00:00+01:00">
-    <meta itemprop="keywords" content="R basics,Tutorial"></div>
-      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/2022/10/05/r-basics-dataframes-part-1.html"><h2 itemprop="headline" class="item__header">R Basics - Data Frames Part 1</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">Data frames are a fundamental part of R and the functionality they provide plays an integral role in many analysis and data science based workflows. Data frames are rectangular, 2 dimensional table structures, resembling rows and columns which makes them flexible and intuitive to work with.
+<h2 id="using-factors-in-r">Using factors in R</h2>
 
-Creating a data.frame
-Many functions commonly used to ...</div><p><a href="/2022/10/05/r-basics-dataframes-part-1.html">Read more</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive.html?tag=R+basics">R basics</a>
-            </li><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive.html?tag=Tutorial">Tutorial</a>
-            </li></ul><ul class="right-col menu"><li><i class="fas fa-user"></i> <span>J Hardy</span></li><li><i class="far fa-calendar-alt"></i> <span>Oct 05, 2022</span>
-            </li></ul></div><meta itemprop="author" content="J Hardy"/><meta itemprop="datePublished" content="2022-10-05T00:00:00+01:00">
-    <meta itemprop="keywords" content="R basics,Tutorial"></div>
-      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/2022/09/28/r-basics-vectors.html"><h2 itemprop="headline" class="item__header">R Basics - Vectors</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">In R, a vector is a series of elements with the same type. There are 4 important types to be aware of, that you will commonly encounter;
+<h3 id="creating-factors">Creating factors</h3>
 
+<p>The primary function we will need to work with factors in R is <strong><code class="language-plaintext highlighter-rouge">factor()</code></strong>.</p>
 
-  Character
-  Logical
-  Double
-  Integer
+<p>Let’s say we asked 5 customers to rate their experience of a service and stored their answers in a character vector named <code class="language-plaintext highlighter-rouge">satisfaction</code>. The customers could choose one of 5 values to rate their experience;</p>
 
+<ul>
+  <li>very good</li>
+  <li>good</li>
+  <li>ok</li>
+  <li>bad</li>
+  <li>very bad</li>
+</ul>
 
-Atomic vectors
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">satisfaction</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s2">"good"</span><span class="p">,</span><span class="w"> </span><span class="s2">"bad"</span><span class="p">,</span><span class="w"> </span><span class="s2">"very_good"</span><span class="p">,</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">)</span></code></pre></figure>
 
-You may hear these being referred to as atomic vectors. It’s also useful to note that the term ‘numeric’ is often used interchangeably for both doubl...</div><p><a href="/2022/09/28/r-basics-vectors.html">Read more</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive.html?tag=R+basics">R basics</a>
-            </li><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive.html?tag=Tutorial">Tutorial</a>
-            </li></ul><ul class="right-col menu"><li><i class="fas fa-user"></i> <span>J Hardy</span></li><li><i class="far fa-calendar-alt"></i> <span>Sep 28, 2022</span>
-            </li></ul></div><meta itemprop="author" content="J Hardy"/><meta itemprop="datePublished" content="2022-09-28T00:00:00+01:00">
-    <meta itemprop="keywords" content="R basics,Tutorial"></div>
-      </article></div>
-</div><div class="layout--home"><div class="pagination"><p>16 post articles, 2 pages.</p>
-    <div class="pagination__menu">
-      <ul class="menu menu--nowrap"><li><div class="button button--secondary button--circle disabled">
-            <i class="fas fa-angle-left"></i>
-          </div></li><li>
-              <div class="button button--primary button--circle focus"><span>1</span></div>
-            </li><li>
-                <a class="button button--secondary button--circle" href="/page2"><span>2</span></a>
-              </li><li><a class="button button--secondary button--circle" href="/page2">
-            <i class="fas fa-angle-right"></i>
-          </a></li></ul>
-    </div>
-  </div></div>
-<script>/*(function () {
+<p>We can convert <code class="language-plaintext highlighter-rouge">satisfaction</code> to a factor with the <code class="language-plaintext highlighter-rouge">factor()</code> function. To test whether a vector is a factor we use <code class="language-plaintext highlighter-rouge">is.factor()</code>.</p>
 
-})();*/
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">satisfaction</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">factor</span><span class="p">(</span><span class="n">satisfaction</span><span class="p">)</span><span class="w">
+
+</span><span class="n">is.factor</span><span class="p">(</span><span class="n">satisfaction</span><span class="p">)</span><span class="w">
+</span><span class="cd">#' [1] TRUE</span></code></pre></figure>
+
+<p>Of course, we don’t need to create the character vector first and then convert to a factor, we can also create it directly.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">satisfaction</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">factor</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="s2">"good"</span><span class="p">,</span><span class="w"> </span><span class="s2">"bad"</span><span class="p">,</span><span class="w"> </span><span class="s2">"very_good"</span><span class="p">,</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">))</span></code></pre></figure>
+
+<p class="info">
+<strong><i>Information:</i></strong> If we use <code>typeof()</code> to check the type of our vector, we can see that it is an integer (surprise!).
+<br /><br />
+<code>
+typeof(satisfaction)
+#' [1] "integer"
+</code>
+<br /><br />
+Whilst factors may appear to be strings based upon the elements that they contain, they also have a numerical representation, which is why `typeof(satisfaction)` returns `integer`. This is important as it can also lead to errors occurring if you haven't realised that factors are being used. This was a common cause of frustration for R users which was addressed by the R Core team and as of R version 4.0.0 many functions which used to set strings as factors by default ceased to do so, including the `data.frame()` function.
+<br /><br />
+Those using a version of R prior to the 4.0.0 release should take care to pass the `stringsAsFactors = FALSE` argument inside relevant functions if factors are not desired. Alternatively, the behaviour can be turned off globally during a session by running `options(stringsAsFactors = FALSE)`.
+</p>
+
+<h3 id="levels">Levels</h3>
+
+<p>If we use the <code class="language-plaintext highlighter-rouge">print()</code> function, both the elements of our vector and the levels that have been automatically detected are printed to the console. We can also use the <code class="language-plaintext highlighter-rouge">levels()</code> function to return the levels specifically. Levels are the unique elements that the factor contains, or might contain.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">print</span><span class="p">(</span><span class="n">satisfaction</span><span class="p">)</span><span class="w">
+</span><span class="cd">#' [1] good      bad       very_good ok        ok    </span><span class="w">
+</span><span class="cd">#'</span><span class="w">
+</span><span class="cd">#' Levels: bad good ok very_good</span><span class="w">
+
+</span><span class="n">levels</span><span class="p">(</span><span class="n">satisfaction</span><span class="p">)</span><span class="w">
+
+</span><span class="cd">#' [1] "bad"       "good"      "ok"        "very_good"</span></code></pre></figure>
+
+<p>For simpler categorical variables the levels which have been detected by default may be sufficient. However, as we haven’t specified an order for our factor, if we try to sort it the result won’t be very meaningful.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">sort</span><span class="p">(</span><span class="n">satisfaction</span><span class="p">)</span><span class="w">
+</span><span class="cd">#' [1] bad       good      ok        ok        very_good</span><span class="w">
+</span><span class="cd">#' Levels: bad good ok very_good</span></code></pre></figure>
+
+<p>R is not able to identify an order for our variable automatically, so <code class="language-plaintext highlighter-rouge">sort()</code> has simply returned the elements of satisfaction on alphabetical order and functions like <code class="language-plaintext highlighter-rouge">min()</code> and <code class="language-plaintext highlighter-rouge">max()</code> will return errors if we try them.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="nf">min</span><span class="p">(</span><span class="n">satisfaction</span><span class="p">)</span><span class="w">
+</span><span class="cd">#' Error in Summary.factor(c(2L, 1L, 4L, 3L, 3L), na.rm = FALSE) : </span><span class="w">
+</span><span class="cd">#'   ‘min’ not meaningful for factors</span><span class="w">
+
+</span><span class="nf">max</span><span class="p">(</span><span class="n">satisfaction</span><span class="p">)</span><span class="w">
+</span><span class="cd">#' Error in Summary.factor(c(2L, 1L, 4L, 3L, 3L), na.rm = FALSE) : </span><span class="w">
+</span><span class="cd">#'   ‘max’ not meaningful for factors</span></code></pre></figure>
+
+<p>This behaviour is likely preferable when dealing with a categorical variable with no implied order, for example hair colour, but for our customer satisfaction ratings we want our ratings to be ordered from worse to best. Lets specify an order of;</p>
+
+<p><code class="language-plaintext highlighter-rouge">very_bad &lt; bad &lt; ok &lt; good &lt; very_good</code></p>
+
+<p>We can use the <code class="language-plaintext highlighter-rouge">factor()</code> function and specify our preferred order by passing a vector to the <code class="language-plaintext highlighter-rouge">levels</code> argument and setting the <code class="language-plaintext highlighter-rouge">ordered</code> argument to <code class="language-plaintext highlighter-rouge">TRUE</code>. You will notice that we are able to specify <code class="language-plaintext highlighter-rouge">levels</code> that don’t actually exist in our data, ‘very_bad’ for example. None of our 5 respondents actually rated the service as being ‘very bad’, but it was a valid option and therefore can be included as a level.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">satisfaction</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">factor</span><span class="p">(</span><span class="n">satisfaction</span><span class="p">,</span><span class="w"> </span><span class="n">levels</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s2">"very_bad"</span><span class="p">,</span><span class="w"> </span><span class="s2">"bad"</span><span class="p">,</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w"> </span><span class="s2">"good"</span><span class="p">,</span><span class="w"> </span><span class="s2">"very_good"</span><span class="p">),</span><span class="w"> </span><span class="n">ordered</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span><span class="w">
+
+</span><span class="n">print</span><span class="p">(</span><span class="n">satisfaction</span><span class="p">)</span><span class="w">
+</span><span class="cd">#' [1] good      bad       very_good ok        ok       </span><span class="w">
+</span><span class="cd">#' Levels: very_bad &lt; bad &lt; ok &lt; good &lt; very_good</span></code></pre></figure>
+
+<p>We can now sort <code class="language-plaintext highlighter-rouge">satisfaction</code>.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">sort</span><span class="p">(</span><span class="n">satisfaction</span><span class="p">)</span><span class="w">
+</span><span class="cd">#' [1] bad       ok        ok        good      very_good</span><span class="w">
+</span><span class="cd">#' Levels: very_bad &lt; bad &lt; ok &lt; good &lt; very_good</span></code></pre></figure>
+
+<p>We can also use functions like <code class="language-plaintext highlighter-rouge">min()</code> and <code class="language-plaintext highlighter-rouge">max()</code> with our vector too.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="nf">min</span><span class="p">(</span><span class="n">satisfaction</span><span class="p">)</span><span class="w">
+</span><span class="cd">#' [1] bad</span><span class="w">
+</span><span class="cd">#' Levels: very_bad &lt; bad &lt; ok &lt; good &lt; very_good</span><span class="w">
+
+</span><span class="nf">max</span><span class="p">(</span><span class="n">satisfaction</span><span class="p">)</span><span class="w">
+</span><span class="cd">#' [1] very_good</span><span class="w">
+</span><span class="cd">#' Levels: very_bad &lt; bad &lt; ok &lt; good &lt; very_good</span></code></pre></figure>
+
+<h3 id="reverse-a-factor">Reverse a factor</h3>
+
+<p>The <code class="language-plaintext highlighter-rouge">forcats</code> package contains the function <code class="language-plaintext highlighter-rouge">fct_rev()</code> which deserves an honourable mention here, it allows us to quickly reverse the order of our factor.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">forcats</span><span class="o">::</span><span class="n">fct_rev</span><span class="p">(</span><span class="n">satisfaction</span><span class="p">)</span><span class="w">
+</span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="n">good</span><span class="w">      </span><span class="n">bad</span><span class="w">       </span><span class="n">very_good</span><span class="w"> </span><span class="n">ok</span><span class="w">        </span><span class="n">ok</span><span class="w">       
+</span><span class="n">Levels</span><span class="o">:</span><span class="w"> </span><span class="n">very_good</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">good</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">ok</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">bad</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">very_bad</span></code></pre></figure>
+
+<p><code class="language-plaintext highlighter-rouge">fct_reverse</code> can be particularly useful when using factors to order the axes of plots.</p>
+
+<h2 id="conversions">Conversions</h2>
+
+<p>Converting our factor, <code class="language-plaintext highlighter-rouge">satisfaction</code>, to a character vector is straight forward using the <code class="language-plaintext highlighter-rouge">as.character()</code> function. Note that converting a factor removes the levels.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="nf">as.character</span><span class="p">(</span><span class="n">satisfaction</span><span class="p">)</span><span class="w">
+</span><span class="cd">#' [1] "good"      "bad"       "very_good" "ok"        "ok"  </span></code></pre></figure>
+
+<p>Sometimes you may have a factor where the elements represent something numeric by nature, but that could still be considered a categorical variable, for example rolls of a dice. Let’s create a factor with 5 observations of dice rolls.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">rolls</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">factor</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">6</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">3</span><span class="p">,</span><span class="m">4</span><span class="p">),</span><span class="w"> </span><span class="n">levels</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">3</span><span class="p">,</span><span class="m">4</span><span class="p">,</span><span class="m">5</span><span class="p">,</span><span class="m">6</span><span class="p">))</span><span class="w">
+
+</span><span class="n">print</span><span class="p">(</span><span class="n">rolls</span><span class="p">)</span><span class="w">
+</span><span class="cd">#' [1] 1 6 2 3 4</span><span class="w">
+</span><span class="cd">#' Levels: 1 2 3 4 5 6</span></code></pre></figure>
+
+<p>We can convert <code class="language-plaintext highlighter-rouge">rolls</code> to a numeric vector.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="nf">as.numeric</span><span class="p">(</span><span class="n">rolls</span><span class="p">)</span><span class="w">
+</span><span class="cd">#' [1] 1 6 2 3 4</span></code></pre></figure>
+
+<p>However, care must be taken when using <code class="language-plaintext highlighter-rouge">as.numeric()</code> with a factor. In the example above, the result appears correct, but this is only because our levels matched up to our vector elements. Let’s try the same thing, but without specifying the levels explicitly.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">rolls</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">factor</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">6</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">3</span><span class="p">,</span><span class="m">4</span><span class="p">))</span><span class="w">
+
+</span><span class="n">print</span><span class="p">(</span><span class="n">rolls</span><span class="p">)</span><span class="w">
+</span><span class="cd">#' [1] 1 6 2 3 4</span><span class="w">
+</span><span class="cd">#' Levels: 1 2 3 4 6</span><span class="w">
+
+</span><span class="nf">as.numeric</span><span class="p">(</span><span class="n">rolls</span><span class="p">)</span><span class="w">
+</span><span class="cd">#' [1] 1 5 2 3 4</span></code></pre></figure>
+
+<p>Rather than returning the elements of <code class="language-plaintext highlighter-rouge">rolls</code>, converted to numeric type, we have instead received the index position of each element’s level. This is a simple issue to resolve, one can simply convert to a character then numeric <code class="language-plaintext highlighter-rouge">as.numeric(as.character(rolls))</code>, but represents another reason why caution should be taken when working with factors.</p>
+
+<h2 id="next-steps">Next steps</h2>
+
+<p>Factors are a unique and useful structure which are highly effective when working with categorical variables. However, there are some more complicated aspects to their usage. Try converting some simple vectors to factors and ordering them, before transforming to another type.</p>
+
+</div><section class="article__sharing d-print-none"></section><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2022-11-22T00:00:00+00:00"><!-- start custom article footer snippet -->
+
+<!-- end custom article footer snippet -->
+<div class="article__subscribe"><div class="subscribe"><i class="fas fa-rss"></i> <a type="application/rss+xml" href="/feed.xml">Subscribe</a></div>
+</div><div class="article__license"><div class="license">
+    <p>This work is licensed under a <a itemprop="license" rel="license" href="https://creativecommons.org/licenses/by-nc/4.0/">Attribution-NonCommercial 4.0 International</a> license.
+      <a rel="license" href="https://creativecommons.org/licenses/by-nc/4.0/">
+        <img alt="Attribution-NonCommercial 4.0 International" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" />
+      </a>
+    </p>
+  </div></div></footer>
+<div class="article__section-navigator clearfix"><div class="previous"><span>PREVIOUS</span><a href="/2022/11/17/r-basics-grouping.html">R Basics - Grouping</a></div></div></div>
+
+</div>
+
+<script>(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    $(function() {
+      var $this ,$scroll;
+      var $articleContent = $('.js-article-content');
+      var hasSidebar = $('.js-page-root').hasClass('layout--page--sidebar');
+      var scroll = hasSidebar ? '.js-page-main' : 'html, body';
+      $scroll = $(scroll);
+
+      $articleContent.find('.highlight').each(function() {
+        $this = $(this);
+        $this.attr('data-lang', $this.find('code').attr('data-lang'));
+      });
+      $articleContent.find('h1[id], h2[id], h3[id], h4[id], h5[id], h6[id]').each(function() {
+        $this = $(this);
+        $this.append($('<a class="anchor d-print-none" aria-hidden="true"></a>').html('<i class="fas fa-anchor"></i>'));
+      });
+      $articleContent.on('click', '.anchor', function() {
+        $scroll.scrollToAnchor('#' + $(this).parent().attr('id'), 400);
+      });
+    });
+  });
+})();
 </script>
-
-
-
 </div><section class="page__comments d-print-none"></section></article><!-- start custom main bottom snippet -->
 
 <!-- end custom main bottom snippet -->
@@ -1181,6 +1252,68 @@ window.Lazyload.js([SOURCES.jquery, PAHTS.search_js], function() {
 /*(function () {
 
 })();*/
+</script><script>
+  /* toc must before affix, since affix need to konw toc' height. */(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  var TOC_SELECTOR = window.TEXT_VARIABLES.site.toc.selectors;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    var $window = $(window);
+    var $articleContent = $('.js-article-content');
+    var $tocRoot = $('.js-toc-root'), $col2 = $('.js-col-aside');
+    var toc;
+    var tocDisabled = false;
+    var hasSidebar = $('.js-page-root').hasClass('layout--page--sidebar');
+    var hasToc = $articleContent.find(TOC_SELECTOR).length > 0;
+
+    function disabled() {
+      return $col2.css('display') === 'none' || !hasToc;
+    }
+
+    tocDisabled = disabled();
+
+    toc = $tocRoot.toc({
+      selectors: TOC_SELECTOR,
+      container: $articleContent,
+      scrollTarget: hasSidebar ? '.js-page-main' : null,
+      scroller: hasSidebar ? '.js-page-main' : null,
+      disabled: tocDisabled
+    });
+
+    $window.on('resize', window.throttle(function() {
+      tocDisabled = disabled();
+      toc && toc.setOptions({
+        disabled: tocDisabled
+      });
+    }, 100));
+
+  });
+})();
+(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    var $window = $(window), $pageFooter = $('.js-page-footer');
+    var $pageAside = $('.js-page-aside');
+    var affix;
+    var tocDisabled = false;
+    var hasSidebar = $('.js-page-root').hasClass('layout--page--sidebar');
+
+    affix = $pageAside.affix({
+      offsetBottom: $pageFooter.outerHeight(),
+      scrollTarget: hasSidebar ? '.js-page-main' : null,
+      scroller: hasSidebar ? '.js-page-main' : null,
+      scroll: hasSidebar ? $('.js-page-main').children() : null,
+      disabled: tocDisabled
+    });
+
+    $window.on('resize', window.throttle(function() {
+      affix && affix.setOptions({
+        disabled: tocDisabled
+      });
+    }, 100));
+
+    window.pageAsideAffix = affix;
+  });
+})();
 </script>
     </div>
     <script>(function () {
