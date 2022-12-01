@@ -161,7 +161,7 @@ for (x in c("a", "b", "c"))
 In the example with the enclosed body R has executed all of the code contained within the curly braces for each operation, thus our letters have been printed twice. In the example without an enclosed body, R has only included the next line following the header in the loop iterations, our second print statement has therefore only ran once, after the loop has completed. The extra "c" that was printed came from the final value assigned to `x`.
 
 <p>
-<strong><i>Information:</i></strong>It is important to note that unlike function calls, loops do not execute within an enclosed environment. This means that any temporary assignments made in the body will exist in your workspace once the loop completes. We can see this by running <code>print(x)</code> in isolation.
+<strong><i>Information:</i></strong> It is important to note that unlike function calls, loops do not execute within an enclosed environment. This means that any temporary assignments made in the body will exist in your workspace once the loop completes. We can see this by running <code>print(x)</code> in isolation.
 <br><br>
 <code>
 
