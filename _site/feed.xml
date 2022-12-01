@@ -1,5 +1,552 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.3.1">Jekyll</generator><link href="http://0.0.0.0:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://0.0.0.0:4000/" rel="alternate" type="text/html" hreflang="en" /><updated>2022-11-23T08:10:07+00:00</updated><id>http://0.0.0.0:4000/feed.xml</id><title type="html">messyR</title><subtitle>...atypical how to&apos;s
-</subtitle><author><name>J Hardy</name><email>jrh-dev@protonmail.com</email></author><entry><title type="html">R Basics - Factors</title><link href="http://0.0.0.0:4000/2022/11/22/r-basics-factors.html" rel="alternate" type="text/html" title="R Basics - Factors" /><published>2022-11-22T00:00:00+00:00</published><updated>2022-11-22T00:00:00+00:00</updated><id>http://0.0.0.0:4000/2022/11/22/r-basics-factors</id><content type="html" xml:base="http://0.0.0.0:4000/2022/11/22/r-basics-factors.html"><![CDATA[<p>In statistics we often talk about categorical variables. These are variables with a typically limited and potentially fixed number of possible values. An observation of a categorical variable is based on a qualitative property.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.3.1">Jekyll</generator><link href="http://0.0.0.0:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://0.0.0.0:4000/" rel="alternate" type="text/html" hreflang="en" /><updated>2022-12-01T08:18:33+00:00</updated><id>http://0.0.0.0:4000/feed.xml</id><title type="html">messyR</title><subtitle>...atypical how to&apos;s
+</subtitle><author><name>J Hardy</name><email>jrh-dev@protonmail.com</email></author><entry><title type="html">R Basics - Loops</title><link href="http://0.0.0.0:4000/2022/11/22/r-basics-loops.html" rel="alternate" type="text/html" title="R Basics - Loops" /><published>2022-11-22T00:00:00+00:00</published><updated>2022-11-22T00:00:00+00:00</updated><id>http://0.0.0.0:4000/2022/11/22/r-basics-loops</id><content type="html" xml:base="http://0.0.0.0:4000/2022/11/22/r-basics-loops.html"><![CDATA[<p>Loops are a fundamental element of computer programming. They facilitate iteration by running a piece of code repeatedly and provide a flexible approach to solving many problems that you may encounter.</p>
+
+<p>Loops have gained something of a bad reputation amongst the R community, largely owing to the fact that poor implementation of loops in R can result in code that is slow and inefficient. However, with proper use loops can be a powerful and effective tool for the R programmer.</p>
+
+<h2 id="for-loops">for loops</h2>
+
+<p>Lets start with a simple example, a loop to print “a”, “b” and “c” to the console.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s2">"a"</span><span class="p">,</span><span class="w"> </span><span class="s2">"b"</span><span class="p">,</span><span class="w"> </span><span class="s2">"c"</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w">
+    
+    </span><span class="n">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w">
+
+</span><span class="p">}</span><span class="w">
+
+</span><span class="cd">#' [1] "a"</span><span class="w">
+</span><span class="cd">#' [1] "b"</span><span class="w">
+</span><span class="cd">#' [1] "c"</span></code></pre></figure>
+
+<p>To understand what’s happening with our loop we can break it down into the component parts.</p>
+
+<h3 id="the-header">The header</h3>
+
+<p><code class="language-plaintext highlighter-rouge">for (x in c("a", "b", "c"))</code></p>
+
+<p>The header of our for loop is used to define our loop variable, what is going to change during each iteration. During each iteration <code class="language-plaintext highlighter-rouge">x</code> will take on a different value from <code class="language-plaintext highlighter-rouge">c("a", "b", "c")</code>. In effect, executing the for loop assigns a temporary value to <code class="language-plaintext highlighter-rouge">x</code> for each iteration.</p>
+
+<p><strong>1st iteration</strong>
+<code class="language-plaintext highlighter-rouge">x = "a"</code></p>
+
+<p><strong>2nd iteration</strong>
+<code class="language-plaintext highlighter-rouge">x = "b"</code></p>
+
+<p><strong>3rd iteration</strong>
+<code class="language-plaintext highlighter-rouge">x = "c"</code></p>
+
+<h3 id="the-body">The body</h3>
+
+<p><code class="language-plaintext highlighter-rouge">print(x)</code></p>
+
+<p>The body of our for loop is used to define the action or actions to be performed during each iteration. The body will always use the current value of <code class="language-plaintext highlighter-rouge">x</code>, which changes with each iteration. Therefore, our for loop actually produces 3 different outputs.</p>
+
+<p><strong>1st iteration</strong>
+<code class="language-plaintext highlighter-rouge">[1] "a"</code></p>
+
+<p><strong>2nd iteration</strong>
+<code class="language-plaintext highlighter-rouge">[1] "b"</code></p>
+
+<p><strong>3rd iteration</strong>
+<code class="language-plaintext highlighter-rouge">[1] "c"</code></p>
+
+<h3 id="constructing-the-header">Constructing the header</h3>
+
+<p>The syntax used in the header of a for loop is a little different from typical R syntax in terms of the way in which it is structured and this can cause confusion. The simplest way to think about writing the loop is to consider the left hand side (LHS) and right hand side (RHS) of <code class="language-plaintext highlighter-rouge">in</code>. The value that you place on the LHS of <code class="language-plaintext highlighter-rouge">in</code> will change with each iteration to the next element of the vector passed to the RHS of <code class="language-plaintext highlighter-rouge">in</code>.</p>
+
+<p>There are no rules as to what the LHS value should be named. All the below examples would produce the same result.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s2">"a"</span><span class="p">,</span><span class="w"> </span><span class="s2">"b"</span><span class="p">,</span><span class="w"> </span><span class="s2">"c"</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w">
+    
+    </span><span class="n">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w">
+
+</span><span class="p">}</span><span class="w">
+</span><span class="cd">#' [1] "a"</span><span class="w">
+</span><span class="cd">#' [1] "b"</span><span class="w">
+</span><span class="cd">#' [1] "c"</span><span class="w">
+
+</span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">letter</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s2">"a"</span><span class="p">,</span><span class="w"> </span><span class="s2">"b"</span><span class="p">,</span><span class="w"> </span><span class="s2">"c"</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w">
+    
+    </span><span class="n">print</span><span class="p">(</span><span class="n">letter</span><span class="p">)</span><span class="w">
+
+</span><span class="p">}</span><span class="w">
+</span><span class="cd">#' [1] "a"</span><span class="w">
+</span><span class="cd">#' [1] "b"</span><span class="w">
+</span><span class="cd">#' [1] "c"</span><span class="w">
+
+</span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">xyzw</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s2">"a"</span><span class="p">,</span><span class="w"> </span><span class="s2">"b"</span><span class="p">,</span><span class="w"> </span><span class="s2">"c"</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w">
+    
+    </span><span class="n">print</span><span class="p">(</span><span class="n">xyzw</span><span class="p">)</span><span class="w">
+
+</span><span class="p">}</span><span class="w">
+</span><span class="cd">#' [1] "a"</span><span class="w">
+</span><span class="cd">#' [1] "b"</span><span class="w">
+</span><span class="cd">#' [1] "c"</span></code></pre></figure>
+
+<p>The RHS can realistically be any R object that can be iterated over. The following code examples produce the same output.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s2">"a"</span><span class="p">,</span><span class="w"> </span><span class="s2">"b"</span><span class="p">,</span><span class="w"> </span><span class="s2">"c"</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w">
+    
+    </span><span class="n">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w">
+
+</span><span class="p">}</span><span class="w">
+</span><span class="cd">#' [1] "a"</span><span class="w">
+</span><span class="cd">#' [1] "b"</span><span class="w">
+</span><span class="cd">#' [1] "c"</span><span class="w">
+
+</span><span class="n">a_vector</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s2">"a"</span><span class="p">,</span><span class="w"> </span><span class="s2">"b"</span><span class="p">,</span><span class="w"> </span><span class="s2">"c"</span><span class="p">)</span><span class="w">
+
+</span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">a_vector</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+    
+    </span><span class="n">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w">
+
+</span><span class="p">}</span><span class="w">
+</span><span class="cd">#' [1] "a"</span><span class="w">
+</span><span class="cd">#' [1] "b"</span><span class="w">
+</span><span class="cd">#' [1] "c"</span></code></pre></figure>
+
+<h2 id="constructing-the-body">Constructing the body</h2>
+
+<p>The body will contain more traditional R code, but should (almost always) be wrapped in curly braces (<code class="language-plaintext highlighter-rouge">{ }</code>). If we try to write a simple loop without enclosing the body with <code class="language-plaintext highlighter-rouge">{ }</code>, things may not work as intended. Let’s look at a loop with 2 print statements written with and without the curly braces.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="o">//</span><span class="w"> </span><span class="n">with</span><span class="w"> </span><span class="n">enclosed</span><span class="w"> </span><span class="n">body</span><span class="w">
+</span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s2">"a"</span><span class="p">,</span><span class="w"> </span><span class="s2">"b"</span><span class="p">,</span><span class="w"> </span><span class="s2">"c"</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w">
+    
+    </span><span class="n">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w">
+    </span><span class="n">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w">
+
+</span><span class="p">}</span><span class="w">
+</span><span class="cd">#' [1] "a"</span><span class="w">
+</span><span class="cd">#' [1] "a"</span><span class="w">
+</span><span class="cd">#' [1] "b"</span><span class="w">
+</span><span class="cd">#' [1] "b"</span><span class="w">
+</span><span class="cd">#' [1] "c"</span><span class="w">
+</span><span class="cd">#' [1] "c"</span><span class="w">
+
+</span><span class="o">//</span><span class="w"> </span><span class="n">without</span><span class="w"> </span><span class="n">enclosed</span><span class="w"> </span><span class="n">body</span><span class="w">
+</span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s2">"a"</span><span class="p">,</span><span class="w"> </span><span class="s2">"b"</span><span class="p">,</span><span class="w"> </span><span class="s2">"c"</span><span class="p">))</span><span class="w"> 
+    
+    </span><span class="n">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w">
+    </span><span class="n">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w">
+
+</span><span class="cd">#' [1] "a"</span><span class="w">
+</span><span class="cd">#' [1] "b"</span><span class="w">
+</span><span class="cd">#' [1] "c"</span><span class="w">
+</span><span class="cd">#' [1] "c"</span></code></pre></figure>
+
+<p>In the example with the enclosed body R has executed all of the code contained within the curly braces for each operation, thus our letters have been printed twice. In the example without an enclosed body, R has only included the next line following the header in the loop iterations, our second print statement has therefore only ran once, after the loop has completed. The extra “c” that was printed came from the final value assigned to <code class="language-plaintext highlighter-rouge">x</code>.</p>
+
+<p class="info">
+<strong><i>Information:</i></strong>It is important to note that unlike function calls, loops do not execute within an enclosed environment. This means that any temporary assignments made in the body will exist in your workspace once the loop completes. We can see this by running <code>print(x)</code> in isolation.
+<br /><br />
+<code>
+
+print(x)
+#' [1] "c"
+
+</code>
+<br /><br />
+<code>x</code> now exists in our global environment and its value is as per the last element of the vector we iterated over in our loop (<code>c("a", "b", "c")</code>). 
+</p>
+
+<h2 id="storing-an-output">Storing an output</h2>
+
+<p>Often we will want to use a loop to apply the same manipulation to multiple elements of a vector. Let’s start with an example of a loop that adds 1 to another number and prints the result to the console.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">numbers</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="m">5</span><span class="w">
+
+</span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">numbers</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+    
+    </span><span class="n">print</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">1</span><span class="p">)</span><span class="w">
+
+</span><span class="p">}</span><span class="w">
+</span><span class="cd">#' [1] 2</span><span class="w">
+</span><span class="cd">#' [1] 3</span><span class="w">
+</span><span class="cd">#' [1] 4</span><span class="w">
+</span><span class="cd">#' [1] 5</span><span class="w">
+</span><span class="cd">#' [1] 6</span></code></pre></figure>
+
+<p>If we want to store the outputs as a vector rather than print them to the console, however, we can’t create a new object within the loop itself to capture all of the iterations. If we do, the output might not be what you initially expect.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">numbers</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="m">5</span><span class="w">
+
+</span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">numbers</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+    
+    </span><span class="n">output</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">1</span><span class="p">)</span><span class="w">
+
+</span><span class="p">}</span><span class="w">
+
+</span><span class="n">print</span><span class="p">(</span><span class="n">output</span><span class="p">)</span><span class="w">
+</span><span class="cd">#' [1] 6</span></code></pre></figure>
+
+<p>In the above example each iteration overwrites the previous value of <code class="language-plaintext highlighter-rouge">output</code>, so we only capture the value from the final loop iteration. We actually need to create the <code class="language-plaintext highlighter-rouge">output</code> vector before we execute the loop. Let’s create an empty vector of the correct type named <code class="language-plaintext highlighter-rouge">output</code> with the <code class="language-plaintext highlighter-rouge">vector()</code> function. We can then use <code class="language-plaintext highlighter-rouge">c()</code> inside the body to append the output of each iteration to <code class="language-plaintext highlighter-rouge">output</code>.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">numbers</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="m">5</span><span class="w">
+
+</span><span class="n">output</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">vector</span><span class="p">(</span><span class="n">mode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"numeric"</span><span class="p">)</span><span class="w">
+
+</span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">numbers</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+    
+    </span><span class="n">output</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="n">output</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">1</span><span class="p">))</span><span class="w">
+
+</span><span class="p">}</span><span class="w">
+
+</span><span class="n">print</span><span class="p">(</span><span class="n">output</span><span class="p">)</span><span class="w">
+</span><span class="cd">#' [1] 2 3 4 5 6</span></code></pre></figure>
+
+<p>It worked! We managed to store all of our outputs in the <code class="language-plaintext highlighter-rouge">output</code> vector. However, just because we can do something doesn’t mean that we should. Its important to understand that this method can be used and it is typically the solution most people will come up with first, but in practice <strong>NEVER DO THIS</strong>.</p>
+
+<p>Instead lets look at pre-allocation.</p>
+
+<h2 id="pre-allocation">Pre-allocation</h2>
+
+<p>Whilst the example above achieves our desired outcome it is inefficient and should be avoided. When used with toy data to provide a simple example the approach won’t produce any noticeable performance issues, however, if we scaled this to a larger number of iterations or increased the complexity we would have slow and memory hungry code. This issue is a key driver of negativity within the R community around the use of loops.</p>
+
+<p>To understand why this approach doesn’t work well, we need to look at R’s copy on modify behaviours. Every R object exists in memory (the computers RAM specifically), the object has an address so that R knows where to find it, and it has an amount of space allocated to it. The space an object is given is always precisely the amount it requires in its current form.</p>
+
+<p>When we add more elements to a vector using <code class="language-plaintext highlighter-rouge">c()</code> the new object requires more space than has been assigned to the original one; <code class="language-plaintext highlighter-rouge">c(1,2,3,4)</code> won’t fit in the same space as <code class="language-plaintext highlighter-rouge">c(1,2,3,4,5)</code>. R therefore has to move the object to a new space each time that the vector increases in length and moving is time consuming as it involves making a copy of the original object. There is also a compounding effect in that the bigger the object, the more time it takes to move, so each iteration takes longer.</p>
+
+<p>Thankfully, there is a simple solution to the problem in the form of pre-allocation.</p>
+
+<p>Pre-allocation allows us to create an object to store our output up front, ensuring that it has enough memory assigned to it from the beginning, and then populating it. Whilst it may sound quite technical the implementation is rather simple.</p>
+
+<p>Firstly, we need to identify the size that we require <code class="language-plaintext highlighter-rouge">output</code> to be. We know that our loop will produce one value during each iteration, and the number of iterations will be equal to the length of <code class="language-plaintext highlighter-rouge">numbers</code>. Let’s start by capturing the length of <code class="language-plaintext highlighter-rouge">numbers</code>.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">numbers</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="m">5</span><span class="w">
+
+</span><span class="n">len_numbers</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">length</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span><span class="w">
+
+</span><span class="n">print</span><span class="p">(</span><span class="n">len_numbers</span><span class="p">)</span><span class="w">
+</span><span class="cd">#' [1] 5</span></code></pre></figure>
+
+<p>We can now create our vector, <code class="language-plaintext highlighter-rouge">output</code>, ensuring that it is sufficient in size to capture all of out loop outputs. We need to ensure that our vector is of the correct type using the <code class="language-plaintext highlighter-rouge">mode</code> argument of the <code class="language-plaintext highlighter-rouge">vector()</code> function. In this case we are working with numeric values so we specify <code class="language-plaintext highlighter-rouge">mode = "numeric"</code>. We can pass the <code class="language-plaintext highlighter-rouge">len_numbers</code> object that we created earlier to the <code class="language-plaintext highlighter-rouge">length</code> argument.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">output</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">vector</span><span class="p">(</span><span class="n">mode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"numeric"</span><span class="p">,</span><span class="w"> </span><span class="n">length</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">len_numbers</span><span class="p">)</span><span class="w">
+
+</span><span class="n">print</span><span class="p">(</span><span class="n">output</span><span class="p">)</span><span class="w">
+</span><span class="cd">#' [1] 0 0 0 0 0</span></code></pre></figure>
+
+<p>We now need to rewrite our loop head a little to make use of pre-allocation. Our original <code class="language-plaintext highlighter-rouge">for (n in numbers)</code> allows us to work on the elements of <code class="language-plaintext highlighter-rouge">numbers</code> directly, however, we are now going to want to access the elements of numbers with the index system which will allow us to assign the output of each iteration to our <code class="language-plaintext highlighter-rouge">output</code> vector. We can use the <code class="language-plaintext highlighter-rouge">seq_len()</code> function for this.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="nf">seq_len</span><span class="p">(</span><span class="n">len_numbers</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w">
+    
+    </span><span class="n">output</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">numbers</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">1</span><span class="w">
+
+</span><span class="p">}</span><span class="w">
+
+</span><span class="n">print</span><span class="p">(</span><span class="n">output</span><span class="p">)</span><span class="w">
+</span><span class="cd">#' [1] 2 3 4 5 6</span></code></pre></figure>
+
+<p><code class="language-plaintext highlighter-rouge">seq_len(len_numbers)</code> returns a vector of the numbers 1 to <code class="language-plaintext highlighter-rouge">len_numbers</code> (5).</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="nf">seq_len</span><span class="p">(</span><span class="n">len_numbers</span><span class="p">)</span><span class="w">
+</span><span class="err">'</span><span class="c1"># [1] 1 2 3 4 5</span></code></pre></figure>
+
+<p>So <code class="language-plaintext highlighter-rouge">n</code>s value during the 1st iteration of the loop will be 1, then 2 during the second iteration and so on. We use the value of <code class="language-plaintext highlighter-rouge">n</code> along with R’s indexing system to access the individual elements of <code class="language-plaintext highlighter-rouge">numbers</code> during each iteration and assign the output to the corresponding element of <code class="language-plaintext highlighter-rouge">output</code>.</p>
+
+<p>For example;</p>
+
+<p>In our 1st iteration;</p>
+
+<ol>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">n</code> equals 1</p>
+  </li>
+  <li>
+    <p>element 1 of <code class="language-plaintext highlighter-rouge">numbers</code> (<code class="language-plaintext highlighter-rouge">numbers[1]</code>) has 1 added to it (1 + 1 = 2)</p>
+  </li>
+  <li>
+    <p>the value is assigned to element 1 of <code class="language-plaintext highlighter-rouge">output</code> (<code class="language-plaintext highlighter-rouge">output[1]</code>)</p>
+  </li>
+</ol>
+
+<p>In our 2nd iteration;</p>
+
+<ol>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">n</code> equals 2</p>
+  </li>
+  <li>
+    <p>element 2 of <code class="language-plaintext highlighter-rouge">numbers</code> (<code class="language-plaintext highlighter-rouge">numbers[2]</code>) has 2 added to it (2 + 1 = 3)</p>
+  </li>
+  <li>
+    <p>the value is assigned to element 2 of <code class="language-plaintext highlighter-rouge">output</code> (output[2])</p>
+  </li>
+</ol>
+
+<h3 id="benchmarking-pre-allocation">Benchmarking pre-allocation</h3>
+
+<p>To demonstrate the difference between growing a vector and utilising pre-allocation we can use a benchmarking tool. I recommend the <code class="language-plaintext highlighter-rouge">microbenchmark</code> package.</p>
+
+<p>Lets compare 2 approaches to adding 1 to a vector of length 10,000, one using pre-allocation, and one which grows the output with every iteration.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">microbenchmark</span><span class="o">::</span><span class="n">microbenchmark</span><span class="p">(</span><span class="w">
+
+    </span><span class="n">no_pre_alloc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="n">output</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">vector</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="s2">"numeric"</span><span class="p">)</span><span class="w">
+        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="m">10000</span><span class="p">)</span><span class="w"> </span><span class="n">output</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="n">output</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">1</span><span class="p">)</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+
+    </span><span class="n">pre_alloc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="n">output</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">vector</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="s2">"numeric"</span><span class="p">,</span><span class="w"> </span><span class="n">length</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1000</span><span class="p">)</span><span class="w">
+        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="m">10000</span><span class="p">)</span><span class="w"> </span><span class="n">output</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">1</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    
+    </span><span class="n">times</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">10</span><span class="w">
+</span><span class="p">)</span><span class="w">
+
+</span><span class="n">Unit</span><span class="o">:</span><span class="w"> </span><span class="n">milliseconds</span><span class="w">
+         </span><span class="n">expr</span><span class="w">         </span><span class="n">mean</span><span class="w">
+ </span><span class="n">no_pre_alloc</span><span class="w">   </span><span class="m">137.423091</span><span class="w">
+    </span><span class="n">pre_alloc</span><span class="w">     </span><span class="m">3.563711</span></code></pre></figure>
+
+<p>The pre-allocation method is 38 times quicker for this example, and that ratio increases further the larger the data involved.</p>
+
+<h2 id="while-loops">while loops</h2>
+
+<p>Where a for loop typically performs an iteration for each element of a predetermined input, a while loop keeps executing until a condition is met.</p>
+
+<p>Let’s write a loop that prints numbers, starting at 1, increases the number by 1 in each iteration, and stops at 10.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">it</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="w">
+
+</span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">it</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="m">10</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+
+    </span><span class="n">print</span><span class="p">(</span><span class="n">it</span><span class="p">)</span><span class="w">
+
+    </span><span class="n">it</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">it</span><span class="w">  </span><span class="o">+</span><span class="w"> </span><span class="m">1</span><span class="w">
+
+</span><span class="p">}</span><span class="w">
+
+</span><span class="cd">#' [1] 1</span><span class="w">
+</span><span class="cd">#' [1] 2</span><span class="w">
+</span><span class="cd">#' [1] 3</span><span class="w">
+</span><span class="cd">#' [1] 4</span><span class="w">
+</span><span class="cd">#' [1] 5</span><span class="w">
+</span><span class="cd">#' [1] 6</span><span class="w">
+</span><span class="cd">#' [1] 7</span><span class="w">
+</span><span class="cd">#' [1] 8</span><span class="w">
+</span><span class="cd">#' [1] 9</span><span class="w">
+</span><span class="cd">#' [1] 10</span></code></pre></figure>
+
+<p>Our loop first prints the current value of <code class="language-plaintext highlighter-rouge">it</code> to the console, it then adds 1 to <code class="language-plaintext highlighter-rouge">it</code> and reassigns the new value. The test <code class="language-plaintext highlighter-rouge">it &lt;= 10</code> is performed before the code block runs on each iteration.  Once the while condition evaluates to <code class="language-plaintext highlighter-rouge">TRUE</code>, when <code class="language-plaintext highlighter-rouge">it</code> is greater than or equal to 10, the loop ends.</p>
+
+<h2 id="break">break</h2>
+
+<p>We can use the <code class="language-plaintext highlighter-rouge">break</code> key word inside a loop to cause it to stop executing if a condition is met. Lets write a for loop to find the factors of 42, but (rather inefficiently) we are going to check whether numbers 1 through to 100 are factors of 42. We can include an <code class="language-plaintext highlighter-rouge">if</code> statement to ensure only factors of 42 are printed to the console.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">ii</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="m">100</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+
+    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="m">42</span><span class="w"> </span><span class="o">%%</span><span class="w"> </span><span class="n">ii</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="n">print</span><span class="w"> </span><span class="p">(</span><span class="n">ii</span><span class="p">)</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+
+</span><span class="p">}</span><span class="w">
+
+</span><span class="cd">#' [1] 1</span><span class="w">
+</span><span class="cd">#' [1] 2</span><span class="w">
+</span><span class="cd">#' [1] 3</span><span class="w">
+</span><span class="cd">#' [1] 6</span><span class="w">
+</span><span class="cd">#' [1] 7</span><span class="w">
+</span><span class="cd">#' [1] 14</span><span class="w">
+</span><span class="cd">#' [1] 21</span><span class="w">
+</span><span class="cd">#' [1] 42</span></code></pre></figure>
+
+<p>It worked! But our loop executed 100 times. We can check this by looking at the value of <code class="language-plaintext highlighter-rouge">ii</code>.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">print</span><span class="p">(</span><span class="n">ii</span><span class="p">)</span><span class="w">
+</span><span class="cd">#' 100</span></code></pre></figure>
+
+<p>We know we won’t find any factors once we pass the value of 42 itself, so lets add a break condition. We will use an <code class="language-plaintext highlighter-rouge">if</code> statement to check whether <code class="language-plaintext highlighter-rouge">ii</code> is equal to 42 during each iteration and if it is we will break the loop. To use <code class="language-plaintext highlighter-rouge">break</code> we simply include the key word, in this example, inside the body of the <code class="language-plaintext highlighter-rouge">if</code> statement.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">ii</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="m">100</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+
+    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="m">42</span><span class="w"> </span><span class="o">%%</span><span class="w"> </span><span class="n">ii</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="n">print</span><span class="w"> </span><span class="p">(</span><span class="n">ii</span><span class="p">)</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+
+    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">ii</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">42</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="k">break</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="cd">#' [1] 1</span><span class="w">
+</span><span class="cd">#' [1] 2</span><span class="w">
+</span><span class="cd">#' [1] 3</span><span class="w">
+</span><span class="cd">#' [1] 6</span><span class="w">
+</span><span class="cd">#' [1] 7</span><span class="w">
+</span><span class="cd">#' [1] 14</span><span class="w">
+</span><span class="cd">#' [1] 21</span><span class="w">
+</span><span class="cd">#' [1] 42</span></code></pre></figure>
+
+<p>The output is unchanged, but our loop ‘broke’ once <code class="language-plaintext highlighter-rouge">ii</code> was equal to 42 and no more iterations were performed. Again, we can check this by looking at the value of <code class="language-plaintext highlighter-rouge">ii</code> once the the loop has completed.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">print</span><span class="p">(</span><span class="n">ii</span><span class="p">)</span><span class="w">
+</span><span class="cd">#' 42</span></code></pre></figure>
+
+<h2 id="next">next</h2>
+
+<p>The <code class="language-plaintext highlighter-rouge">next</code> key word causes the loop to skip the remainder of a single iteration, but unlike <code class="language-plaintext highlighter-rouge">break</code> it continues to perform the rest of the remaining iterations. To demonstrate the functionality lets print the numbers 1 to 10, but skip any numbers that are multiples of 3.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">ii</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+
+    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">ii</span><span class="w"> </span><span class="o">%%</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="k">next</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+
+    </span><span class="n">print</span><span class="p">(</span><span class="n">ii</span><span class="p">)</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="cd">#' [1] 1</span><span class="w">
+</span><span class="cd">#' [1] 2</span><span class="w">
+</span><span class="cd">#' [1] 4</span><span class="w">
+</span><span class="cd">#' [1] 5</span><span class="w">
+</span><span class="cd">#' [1] 7</span><span class="w">
+</span><span class="cd">#' [1] 8</span><span class="w">
+</span><span class="cd">#' [1] 10</span></code></pre></figure>
+
+<p>Whenever <code class="language-plaintext highlighter-rouge">ii</code> is divisible by 3 the condition within the <code class="language-plaintext highlighter-rouge">if</code> statement is triggered and the <code class="language-plaintext highlighter-rouge">next</code> command causes the current iteration to end and the next one to begin. When <code class="language-plaintext highlighter-rouge">next</code> is triggered the <code class="language-plaintext highlighter-rouge">print()</code> function is never executed within that iteration.</p>
+
+<h2 id="using-loops---examples">Using loops - examples</h2>
+
+<h3 id="in-the-absence-of-vectorisation">In the absence of vectorisation</h3>
+
+<p>The examples above demonstrate how loops function, but don’t represent very efficient real world uses. In R many functions are ‘vectorised’ which means that operations are performed in parallel. Loops offer a solution for when vectorisation isn’t available. Lets explore this with some simple vectors, <code class="language-plaintext highlighter-rouge">x</code>, <code class="language-plaintext highlighter-rouge">y</code>, and <code class="language-plaintext highlighter-rouge">z</code>.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">x</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="m">5</span><span class="w">
+
+</span><span class="n">y</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">6</span><span class="o">:</span><span class="m">10</span><span class="w">
+
+</span><span class="n">z</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">11</span></code></pre></figure>
+
+<p>Vectorisation is the reason that <code class="language-plaintext highlighter-rouge">x + y</code> gives us <code class="language-plaintext highlighter-rouge">7  9 11 13 15</code>.</p>
+
+<p>In essence <code class="language-plaintext highlighter-rouge">x + y</code> is actually returning;</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">x</span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">y</span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w">
+</span><span class="n">x</span><span class="p">[</span><span class="m">2</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">y</span><span class="p">[</span><span class="m">2</span><span class="p">]</span><span class="w">
+</span><span class="n">x</span><span class="p">[</span><span class="m">3</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">y</span><span class="p">[</span><span class="m">3</span><span class="p">]</span><span class="w">
+</span><span class="n">x</span><span class="p">[</span><span class="m">4</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">y</span><span class="p">[</span><span class="m">4</span><span class="p">]</span><span class="w">
+</span><span class="n">x</span><span class="p">[</span><span class="m">5</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">y</span><span class="p">[</span><span class="m">5</span><span class="p">]</span></code></pre></figure>
+
+<p><code class="language-plaintext highlighter-rouge">z + y</code> is a little different, the value of <code class="language-plaintext highlighter-rouge">z</code> is recycled and used against each element of <code class="language-plaintext highlighter-rouge">y</code>, so we actually get the return of;</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">z</span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">y</span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w">
+</span><span class="n">z</span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">y</span><span class="p">[</span><span class="m">2</span><span class="p">]</span><span class="w">
+</span><span class="n">z</span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">y</span><span class="p">[</span><span class="m">3</span><span class="p">]</span><span class="w">
+</span><span class="n">z</span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">y</span><span class="p">[</span><span class="m">4</span><span class="p">]</span><span class="w">
+</span><span class="n">z</span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">y</span><span class="p">[</span><span class="m">5</span><span class="p">]</span></code></pre></figure>
+
+<p>Vectorisation is also the reason why vectorised functions like <code class="language-plaintext highlighter-rouge">sqrt()</code> act on each element of a vector.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="nf">sqrt</span><span class="p">(</span><span class="m">10</span><span class="o">:</span><span class="m">15</span><span class="p">)</span><span class="w">
+</span><span class="cd">#' 3.162278 3.316625 3.464102 3.605551 3.741657 3.872983</span></code></pre></figure>
+
+<p>However, when a function isn’t vectorised we have to proceed a little differently. The digest package provides the function <code class="language-plaintext highlighter-rouge">digest()</code> which can be used to generate hash digests of R objects. Given its intended usage it is not vectorised. Lets run <code class="language-plaintext highlighter-rouge">digest()</code> over a vector of names.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">digest</span><span class="o">::</span><span class="n">digest</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="s2">"Alan"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Harry"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Frances"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Polly"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Walt"</span><span class="p">))</span><span class="w">
+</span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="s2">"463e094dab0323c06acf39d4c0a9d62c"</span></code></pre></figure>
+
+<p><code class="language-plaintext highlighter-rouge">digest()</code> has taken the entire vector and returned a hash for it (as intended). If we want to get a hash for each element of the vector then we will have to try something else, like a loop.</p>
+
+<p>Using a simple loop we can hash each element of the vector.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="k">for</span><span class="p">(</span><span class="n">name</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s2">"Alan"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Harry"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Frances"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Polly"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Walt"</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="n">print</span><span class="p">(</span><span class="n">digest</span><span class="o">::</span><span class="n">digest</span><span class="p">(</span><span class="n">name</span><span class="p">))</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="cd">#' [1] "59a25be57d59ee4534e4d3d32baebca7"</span><span class="w">
+</span><span class="cd">#' [1] "dd82d09e51606fe5006f38acdb19e9cb"</span><span class="w">
+</span><span class="cd">#' [1] "407f522c0d10c7f1692fd14aaa2d951a"</span><span class="w">
+</span><span class="cd">#' [1] "7597bee67ba5e2cdc44896451977e786"</span><span class="w">
+</span><span class="cd">#' [1] "1caacbe3b8acd3454b3c6a9ae79aa1f6"</span></code></pre></figure>
+
+<h3 id="to-perform-the-same-operation-on-multiple-columns">To perform the same operation on multiple columns</h3>
+
+<p>We can use loops to perform the same operation multiple times on a different input. Consider the following data frame.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.frame</span><span class="p">(</span><span class="w">
+    </span><span class="n">col_a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="m">5</span><span class="p">,</span><span class="w">
+    </span><span class="n">col_b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">6</span><span class="o">:</span><span class="m">10</span><span class="p">,</span><span class="w">
+    </span><span class="n">col_c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">11</span><span class="o">:</span><span class="m">15</span><span class="p">,</span><span class="w">
+    </span><span class="n">col_d</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">16</span><span class="o">:</span><span class="m">20</span><span class="p">,</span><span class="w">
+    </span><span class="n">col_e</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">21</span><span class="o">:</span><span class="m">25</span><span class="p">,</span><span class="w">
+    </span><span class="n">col_f</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">26</span><span class="o">:</span><span class="m">30</span><span class="w">
+</span><span class="p">)</span><span class="w">
+
+</span><span class="n">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="w">
+</span><span class="cd">#'   col_a col_b col_c col_d col_e col_f</span><span class="w">
+</span><span class="cd">#' 1     1     6    11    16    21    26</span><span class="w">
+</span><span class="cd">#' 2     2     7    12    17    22    27</span><span class="w">
+</span><span class="cd">#' 3     3     8    13    18    23    28</span><span class="w">
+</span><span class="cd">#' 4     4     9    14    19    24    29</span><span class="w">
+</span><span class="cd">#' 5     5    10    15    20    25    30</span><span class="w">
+
+</span><span class="c1"># a quick way to check the types of a data frame's colums</span><span class="w">
+</span><span class="n">sapply</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="w"> </span><span class="n">typeof</span><span class="p">)</span><span class="w"> 
+</span><span class="cd">#'     col_a     col_b     col_c     col_d     col_e     col_f </span><span class="w">
+</span><span class="cd">#' "integer" "integer" "integer" "integer" "integer" "integer" </span></code></pre></figure>
+
+<p>If we want to specify the type of <code class="language-plaintext highlighter-rouge">col_a</code>, <code class="language-plaintext highlighter-rouge">col_c</code>, and <code class="language-plaintext highlighter-rouge">col_e</code> as <code class="language-plaintext highlighter-rouge">double</code> we could do something like this;</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">df</span><span class="o">$</span><span class="n">col_a</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">as.double</span><span class="p">(</span><span class="n">df</span><span class="o">$</span><span class="n">col_a</span><span class="p">)</span><span class="w">
+</span><span class="n">df</span><span class="o">$</span><span class="n">col_c</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">as.double</span><span class="p">(</span><span class="n">df</span><span class="o">$</span><span class="n">col_c</span><span class="p">)</span><span class="w">
+</span><span class="n">df</span><span class="o">$</span><span class="n">col_e</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">as.double</span><span class="p">(</span><span class="n">df</span><span class="o">$</span><span class="n">col_e</span><span class="p">)</span></code></pre></figure>
+
+<p>Or in the tidyverse;</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">df</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+    </span><span class="n">dplyr</span><span class="o">::</span><span class="n">mutate</span><span class="p">(</span><span class="w">
+       </span><span class="n">col_a</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">as.double</span><span class="p">(</span><span class="n">col_a</span><span class="p">),</span><span class="w">
+       </span><span class="n">col_c</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">as.double</span><span class="p">(</span><span class="n">col_c</span><span class="p">),</span><span class="w">
+       </span><span class="n">col_e</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">as.double</span><span class="p">(</span><span class="n">col_e</span><span class="p">)</span><span class="w"> 
+    </span><span class="p">)</span></code></pre></figure>
+
+<p>However, with 3 columns to transform the code is already cumbersome, in a larger data set we could easily find the approach becoming difficult to maintain. The tidyverse does offer a solution to reduce the amount of code required here but it involves learning additional functions and adds complexity.</p>
+
+<p>Loops provide an alternative approach here that is well suited to the task at hand, compact, and simple to understand.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">col</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s2">"col_a"</span><span class="p">,</span><span class="w"> </span><span class="s2">"col_c"</span><span class="p">,</span><span class="w"> </span><span class="s2">"col_e"</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w">  
+    </span><span class="n">df</span><span class="p">[,</span><span class="w"> </span><span class="n">col</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">as.double</span><span class="p">(</span><span class="n">df</span><span class="p">[,</span><span class="w"> </span><span class="n">col</span><span class="p">]</span><span class="w"> </span><span class="p">)</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="n">sapply</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="w"> </span><span class="n">typeof</span><span class="p">)</span><span class="w"> </span><span class="c1"># check types</span><span class="w">
+</span><span class="cd">#'     col_a     col_b     col_c     col_d     col_e     col_f </span><span class="w">
+</span><span class="cd">#'  "double" "integer"  "double" "integer"  "double" "integer" </span></code></pre></figure>
+
+<h2 id="next-steps">Next steps</h2>
+
+<p>Loops provide a powerful and flexible way to perform iteration. Correct usage can help to reduce the amount of code you need to write to achieve a desired outcome. Try the tasks below to put your knowledge into practice.</p>
+
+<ol>
+  <li>
+    <p>Write a for loop to calculate the mean value of all columns in the built in <code class="language-plaintext highlighter-rouge">mtcars</code> dataset. Store the means in a vector named <code class="language-plaintext highlighter-rouge">mtcars_means</code>. What is the sum of <code class="language-plaintext highlighter-rouge">mtcars_means</code>?</p>
+  </li>
+  <li>
+    <p>Create 2 objects, <code class="language-plaintext highlighter-rouge">x</code> and <code class="language-plaintext highlighter-rouge">y</code>, and assign the value of <code class="language-plaintext highlighter-rouge">1</code> to each. Write a while loop that;</p>
+
+    <ul>
+      <li>doubles the value of <code class="language-plaintext highlighter-rouge">x</code> in each iteration.</li>
+      <li>adds 1 to the value of <code class="language-plaintext highlighter-rouge">y</code> in each iteration.</li>
+      <li>ends when <code class="language-plaintext highlighter-rouge">y</code> is equal to 20</li>
+    </ul>
+
+    <p>What is the value of <code class="language-plaintext highlighter-rouge">x</code> when the loop ends?</p>
+  </li>
+  <li>
+    <p>Write a loop to print all the numbers between 1 and 100 (inclusive) which are divisible by 33. Try to include the <code class="language-plaintext highlighter-rouge">next</code> keyword. Which numbers printed to the console?</p>
+  </li>
+</ol>
+
+<details>
+  <summary>Answers</summary>
+  
+  1. 435.6938 <br />
+
+  2. 524,288 <br />
+
+  3. 33, 66, and 99 <br />
+    
+</details>]]></content><author><name>&lt;author_id&gt;</name></author><category term="R basics" /><category term="Tutorial" /><summary type="html"><![CDATA[Loops are a fundamental element of computer programming. They facilitate iteration by running a piece of code repeatedly and provide a flexible approach to solving many problems that you may encounter. Loops have gained something of a bad reputation amongst the R community, largely owing to the fact that poor implementation of loops in R can result in code that is slow and inefficient. However, with proper use loops can be a powerful and effective tool for the R programmer. for loops Lets start with a simple example, a loop to print “a”, “b” and “c” to the console. for (x in c("a", "b", "c")) { print(x) } #' [1] "a" #' [1] "b" #' [1] "c" To understand what’s happening with our loop we can break it down into the component parts. The header for (x in c("a", "b", "c")) The header of our for loop is used to define our loop variable, what is going to change during each iteration. During each iteration x will take on a different value from c("a", "b", "c"). In effect, executing the for loop assigns a temporary value to x for each iteration. 1st iteration x = "a" 2nd iteration x = "b" 3rd iteration x = "c" The body print(x) The body of our for loop is used to define the action or actions to be performed during each iteration. The body will always use the current value of x, which changes with each iteration. Therefore, our for loop actually produces 3 different outputs. 1st iteration [1] "a" 2nd iteration [1] "b" 3rd iteration [1] "c" Constructing the header The syntax used in the header of a for loop is a little different from typical R syntax in terms of the way in which it is structured and this can cause confusion. The simplest way to think about writing the loop is to consider the left hand side (LHS) and right hand side (RHS) of in. The value that you place on the LHS of in will change with each iteration to the next element of the vector passed to the RHS of in. There are no rules as to what the LHS value should be named. All the below examples would produce the same result. for (x in c("a", "b", "c")) { print(x) } #' [1] "a" #' [1] "b" #' [1] "c" for (letter in c("a", "b", "c")) { print(letter) } #' [1] "a" #' [1] "b" #' [1] "c" for (xyzw in c("a", "b", "c")) { print(xyzw) } #' [1] "a" #' [1] "b" #' [1] "c" The RHS can realistically be any R object that can be iterated over. The following code examples produce the same output. for (x in c("a", "b", "c")) { print(x) } #' [1] "a" #' [1] "b" #' [1] "c" a_vector &lt;- c("a", "b", "c") for (x in a_vector) { print(x) } #' [1] "a" #' [1] "b" #' [1] "c" Constructing the body The body will contain more traditional R code, but should (almost always) be wrapped in curly braces ({ }). If we try to write a simple loop without enclosing the body with { }, things may not work as intended. Let’s look at a loop with 2 print statements written with and without the curly braces. // with enclosed body for (x in c("a", "b", "c")) { print(x) print(x) } #' [1] "a" #' [1] "a" #' [1] "b" #' [1] "b" #' [1] "c" #' [1] "c" // without enclosed body for (x in c("a", "b", "c")) print(x) print(x) #' [1] "a" #' [1] "b" #' [1] "c" #' [1] "c" In the example with the enclosed body R has executed all of the code contained within the curly braces for each operation, thus our letters have been printed twice. In the example without an enclosed body, R has only included the next line following the header in the loop iterations, our second print statement has therefore only ran once, after the loop has completed. The extra “c” that was printed came from the final value assigned to x. Information:It is important to note that unlike function calls, loops do not execute within an enclosed environment. This means that any temporary assignments made in the body will exist in your workspace once the loop completes. We can see this by running print(x) in isolation. print(x) #' [1] "c" x now exists in our global environment and its value is as per the last element of the vector we iterated over in our loop (c("a", "b", "c")). Storing an output Often we will want to use a loop to apply the same manipulation to multiple elements of a vector. Let’s start with an example of a loop that adds 1 to another number and prints the result to the console. numbers &lt;- 1:5 for (n in numbers) { print(n + 1) } #' [1] 2 #' [1] 3 #' [1] 4 #' [1] 5 #' [1] 6 If we want to store the outputs as a vector rather than print them to the console, however, we can’t create a new object within the loop itself to capture all of the iterations. If we do, the output might not be what you initially expect. numbers &lt;- 1:5 for (n in numbers) { output &lt;- (n + 1) } print(output) #' [1] 6 In the above example each iteration overwrites the previous value of output, so we only capture the value from the final loop iteration. We actually need to create the output vector before we execute the loop. Let’s create an empty vector of the correct type named output with the vector() function. We can then use c() inside the body to append the output of each iteration to output. numbers &lt;- 1:5 output &lt;- vector(mode = "numeric") for (n in numbers) { output &lt;- c(output, (n + 1)) } print(output) #' [1] 2 3 4 5 6 It worked! We managed to store all of our outputs in the output vector. However, just because we can do something doesn’t mean that we should. Its important to understand that this method can be used and it is typically the solution most people will come up with first, but in practice NEVER DO THIS. Instead lets look at pre-allocation. Pre-allocation Whilst the example above achieves our desired outcome it is inefficient and should be avoided. When used with toy data to provide a simple example the approach won’t produce any noticeable performance issues, however, if we scaled this to a larger number of iterations or increased the complexity we would have slow and memory hungry code. This issue is a key driver of negativity within the R community around the use of loops. To understand why this approach doesn’t work well, we need to look at R’s copy on modify behaviours. Every R object exists in memory (the computers RAM specifically), the object has an address so that R knows where to find it, and it has an amount of space allocated to it. The space an object is given is always precisely the amount it requires in its current form. When we add more elements to a vector using c() the new object requires more space than has been assigned to the original one; c(1,2,3,4) won’t fit in the same space as c(1,2,3,4,5). R therefore has to move the object to a new space each time that the vector increases in length and moving is time consuming as it involves making a copy of the original object. There is also a compounding effect in that the bigger the object, the more time it takes to move, so each iteration takes longer. Thankfully, there is a simple solution to the problem in the form of pre-allocation. Pre-allocation allows us to create an object to store our output up front, ensuring that it has enough memory assigned to it from the beginning, and then populating it. Whilst it may sound quite technical the implementation is rather simple. Firstly, we need to identify the size that we require output to be. We know that our loop will produce one value during each iteration, and the number of iterations will be equal to the length of numbers. Let’s start by capturing the length of numbers. numbers &lt;- 1:5 len_numbers &lt;- length(numbers) print(len_numbers) #' [1] 5 We can now create our vector, output, ensuring that it is sufficient in size to capture all of out loop outputs. We need to ensure that our vector is of the correct type using the mode argument of the vector() function. In this case we are working with numeric values so we specify mode = "numeric". We can pass the len_numbers object that we created earlier to the length argument. output &lt;- vector(mode = "numeric", length = len_numbers) print(output) #' [1] 0 0 0 0 0 We now need to rewrite our loop head a little to make use of pre-allocation. Our original for (n in numbers) allows us to work on the elements of numbers directly, however, we are now going to want to access the elements of numbers with the index system which will allow us to assign the output of each iteration to our output vector. We can use the seq_len() function for this. for (n in seq_len(len_numbers)) { output[n] &lt;- numbers[n] + 1 } print(output) #' [1] 2 3 4 5 6 seq_len(len_numbers) returns a vector of the numbers 1 to len_numbers (5). seq_len(len_numbers) '# [1] 1 2 3 4 5 So ns value during the 1st iteration of the loop will be 1, then 2 during the second iteration and so on. We use the value of n along with R’s indexing system to access the individual elements of numbers during each iteration and assign the output to the corresponding element of output. For example; In our 1st iteration; n equals 1 element 1 of numbers (numbers[1]) has 1 added to it (1 + 1 = 2) the value is assigned to element 1 of output (output[1]) In our 2nd iteration; n equals 2 element 2 of numbers (numbers[2]) has 2 added to it (2 + 1 = 3) the value is assigned to element 2 of output (output[2]) Benchmarking pre-allocation To demonstrate the difference between growing a vector and utilising pre-allocation we can use a benchmarking tool. I recommend the microbenchmark package. Lets compare 2 approaches to adding 1 to a vector of length 10,000, one using pre-allocation, and one which grows the output with every iteration. microbenchmark::microbenchmark( no_pre_alloc = { output = vector(mode="numeric") for (i in 1:10000) output &lt;- c(output, i + 1) }, pre_alloc = { output = vector(mode="numeric", length = 1000) for (i in 1:10000) output[i] &lt;- i + 1 }, times = 10 ) Unit: milliseconds expr mean no_pre_alloc 137.423091 pre_alloc 3.563711 The pre-allocation method is 38 times quicker for this example, and that ratio increases further the larger the data involved. while loops Where a for loop typically performs an iteration for each element of a predetermined input, a while loop keeps executing until a condition is met. Let’s write a loop that prints numbers, starting at 1, increases the number by 1 in each iteration, and stops at 10. it = 1 while (it &lt;= 10) { print(it) it &lt;- it + 1 } #' [1] 1 #' [1] 2 #' [1] 3 #' [1] 4 #' [1] 5 #' [1] 6 #' [1] 7 #' [1] 8 #' [1] 9 #' [1] 10 Our loop first prints the current value of it to the console, it then adds 1 to it and reassigns the new value. The test it &lt;= 10 is performed before the code block runs on each iteration. Once the while condition evaluates to TRUE, when it is greater than or equal to 10, the loop ends. break We can use the break key word inside a loop to cause it to stop executing if a condition is met. Lets write a for loop to find the factors of 42, but (rather inefficiently) we are going to check whether numbers 1 through to 100 are factors of 42. We can include an if statement to ensure only factors of 42 are printed to the console. for (ii in 1:100) { if (42 %% ii == 0) { print (ii) } } #' [1] 1 #' [1] 2 #' [1] 3 #' [1] 6 #' [1] 7 #' [1] 14 #' [1] 21 #' [1] 42 It worked! But our loop executed 100 times. We can check this by looking at the value of ii. print(ii) #' 100 We know we won’t find any factors once we pass the value of 42 itself, so lets add a break condition. We will use an if statement to check whether ii is equal to 42 during each iteration and if it is we will break the loop. To use break we simply include the key word, in this example, inside the body of the if statement. for (ii in 1:100) { if (42 %% ii == 0) { print (ii) } if (ii == 42) { break } } #' [1] 1 #' [1] 2 #' [1] 3 #' [1] 6 #' [1] 7 #' [1] 14 #' [1] 21 #' [1] 42 The output is unchanged, but our loop ‘broke’ once ii was equal to 42 and no more iterations were performed. Again, we can check this by looking at the value of ii once the the loop has completed. print(ii) #' 42 next The next key word causes the loop to skip the remainder of a single iteration, but unlike break it continues to perform the rest of the remaining iterations. To demonstrate the functionality lets print the numbers 1 to 10, but skip any numbers that are multiples of 3. for (ii in 1:10) { if (ii %% 3 == 0) { next } print(ii) } #' [1] 1 #' [1] 2 #' [1] 4 #' [1] 5 #' [1] 7 #' [1] 8 #' [1] 10 Whenever ii is divisible by 3 the condition within the if statement is triggered and the next command causes the current iteration to end and the next one to begin. When next is triggered the print() function is never executed within that iteration. Using loops - examples In the absence of vectorisation The examples above demonstrate how loops function, but don’t represent very efficient real world uses. In R many functions are ‘vectorised’ which means that operations are performed in parallel. Loops offer a solution for when vectorisation isn’t available. Lets explore this with some simple vectors, x, y, and z. x &lt;- 1:5 y &lt;- 6:10 z &lt;- 11 Vectorisation is the reason that x + y gives us 7 9 11 13 15. In essence x + y is actually returning; x[1] + y[1] x[2] + y[2] x[3] + y[3] x[4] + y[4] x[5] + y[5] z + y is a little different, the value of z is recycled and used against each element of y, so we actually get the return of; z[1] + y[1] z[1] + y[2] z[1] + y[3] z[1] + y[4] z[1] + y[5] Vectorisation is also the reason why vectorised functions like sqrt() act on each element of a vector. sqrt(10:15) #' 3.162278 3.316625 3.464102 3.605551 3.741657 3.872983 However, when a function isn’t vectorised we have to proceed a little differently. The digest package provides the function digest() which can be used to generate hash digests of R objects. Given its intended usage it is not vectorised. Lets run digest() over a vector of names. digest::digest(c("Alan", "Harry", "Frances", "Polly", "Walt")) [1] "463e094dab0323c06acf39d4c0a9d62c" digest() has taken the entire vector and returned a hash for it (as intended). If we want to get a hash for each element of the vector then we will have to try something else, like a loop. Using a simple loop we can hash each element of the vector. for(name in c("Alan", "Harry", "Frances", "Polly", "Walt")) { print(digest::digest(name)) } #' [1] "59a25be57d59ee4534e4d3d32baebca7" #' [1] "dd82d09e51606fe5006f38acdb19e9cb" #' [1] "407f522c0d10c7f1692fd14aaa2d951a" #' [1] "7597bee67ba5e2cdc44896451977e786" #' [1] "1caacbe3b8acd3454b3c6a9ae79aa1f6" To perform the same operation on multiple columns We can use loops to perform the same operation multiple times on a different input. Consider the following data frame. df &lt;- data.frame( col_a = 1:5, col_b = 6:10, col_c = 11:15, col_d = 16:20, col_e = 21:25, col_f = 26:30 ) print(df) #' col_a col_b col_c col_d col_e col_f #' 1 1 6 11 16 21 26 #' 2 2 7 12 17 22 27 #' 3 3 8 13 18 23 28 #' 4 4 9 14 19 24 29 #' 5 5 10 15 20 25 30 # a quick way to check the types of a data frame's colums sapply(df, typeof) #' col_a col_b col_c col_d col_e col_f #' "integer" "integer" "integer" "integer" "integer" "integer" If we want to specify the type of col_a, col_c, and col_e as double we could do something like this; df$col_a &lt;- as.double(df$col_a) df$col_c &lt;- as.double(df$col_c) df$col_e &lt;- as.double(df$col_e) Or in the tidyverse; df &lt;- df %&gt;% dplyr::mutate( col_a &lt;- as.double(col_a), col_c &lt;- as.double(col_c), col_e &lt;- as.double(col_e) ) However, with 3 columns to transform the code is already cumbersome, in a larger data set we could easily find the approach becoming difficult to maintain. The tidyverse does offer a solution to reduce the amount of code required here but it involves learning additional functions and adds complexity. Loops provide an alternative approach here that is well suited to the task at hand, compact, and simple to understand. for (col in c("col_a", "col_c", "col_e")) { df[, col] &lt;- as.double(df[, col] ) } sapply(df, typeof) # check types #' col_a col_b col_c col_d col_e col_f #' "double" "integer" "double" "integer" "double" "integer" Next steps Loops provide a powerful and flexible way to perform iteration. Correct usage can help to reduce the amount of code you need to write to achieve a desired outcome. Try the tasks below to put your knowledge into practice. Write a for loop to calculate the mean value of all columns in the built in mtcars dataset. Store the means in a vector named mtcars_means. What is the sum of mtcars_means? Create 2 objects, x and y, and assign the value of 1 to each. Write a while loop that; doubles the value of x in each iteration. adds 1 to the value of y in each iteration. ends when y is equal to 20 What is the value of x when the loop ends? Write a loop to print all the numbers between 1 and 100 (inclusive) which are divisible by 33. Try to include the next keyword. Which numbers printed to the console? Answers 1. 435.6938 2. 524,288 3. 33, 66, and 99]]></summary></entry><entry><title type="html">R Basics - Factors</title><link href="http://0.0.0.0:4000/2022/11/22/r-basics-factors.html" rel="alternate" type="text/html" title="R Basics - Factors" /><published>2022-11-22T00:00:00+00:00</published><updated>2022-11-22T00:00:00+00:00</updated><id>http://0.0.0.0:4000/2022/11/22/r-basics-factors</id><content type="html" xml:base="http://0.0.0.0:4000/2022/11/22/r-basics-factors.html"><![CDATA[<p>In statistics we often talk about categorical variables. These are variables with a typically limited and potentially fixed number of possible values. An observation of a categorical variable is based on a qualitative property.</p>
 
 <p>Some common examples of categorical variables are:</p>
 
@@ -2879,373 +3426,4 @@ When importing functions, place the @importFrom tag in the Roxygen header above 
   <li>
     <p><a href="https://ggplot2.tidyverse.org/">ggplot2</a>, the essential plotting package for R.</p>
   </li>
-</ul>]]></content><author><name>&lt;author_id&gt;</name></author><category term="R basics" /><category term="Tutorial" /><summary type="html"><![CDATA[The R package ecosystem is arguably one of the language’s strongest selling points. A package is typically a collection of functions, and sometimes data, along with documentation. R packages are community developed, typically open source, and serve to provide additional functionality or extend and build upon base R’s functionality. The packages available range from huge projects used by millions of people such as dplyr and data.table, to much smaller ones catering to more niche interests. Use of some of the larger packages can have a big effect on the way a user writes and structures code, for example dplyr one of the tidyverse family of packages, encourages adoption of the authors ideals of tidy code and its use can influence the design of a project itself. Other packages are less impactful and serve a more specific purpose. If you want to access open data from NHS Scotland for example, you could read the API documentation, learn how to use the httr package, and write bespoke code to import the data. Alternatively, you could install odns and have it all done for you (disclaimer: I wrote odns). Using packages is a fundamental part of programming with R for many users, but for those just starting out its important to understand what they’re all about. R packages The official documentations states that ; Packages provide a mechanism for loading optional code, data and documentation as needed. The R distribution itself includes about 30 packages. At a basic level we can simply think of packages as a collection of functions and data with documentation. Typically users install a package in order to make use of functionality that isn’t provided by base R and to avoid having to write their own solutions to common and/or complex problems. Anybody can write a package and use it locally, you can also share a package you wrote with friends and colleagues. Some may go on to make the packages they write available publicly on services such as GitHub, and those looking to reach a wider audience may decide to publish their package to CRAN or Bioconductor. Regardless of how widely a package is intended to be used, R actually enforces quite a strict structure for packages in comparison to other programming languages. The benefit of this is that packages are largely easy to use and understand, and as you gain experience, easier to dissect and explore the source code. Package sources CRAN The Comprehensive R Archive Network (CRAN) is the official repository. It hosts a large number of packages, has strict criteria around submission, and packages published there are thoroughly tested and must undergo a manual review process. When using the install.packages() function, the default settings look for the package on CRAN. Bioconductor Biocondutor hosts software tailored to performing reproducible analysis of data with a biological focus, including the analysis of DNA microarray, sequence, flow, SNP, and other data. Like CRAN it also has a review process for submissions. GitHub Whilst other hosting services are available, GitHub is one of the most popular for R development. Anybody can host code on GitHub and there is no review or submission process. GitHub hosts development versions of many packages that are also on CRAN or Bioconductor. Locally (zip or tar.gz file) If a package has been written or developed locally it may be shared with you in a zip or tar.gz archive. Installing packages Install from CRAN Installing packages from CRAN is pretty straightforwards. You pass a string specifying the package name as the pkgs argument of install.packages(), and if the package exists on CRAN it will be downloaded and installed along with other R packages that the target package depends on, imports, or links to (using the default options). To install the odns package; install.packages("odns") It’s also possible to install multiple packages at once. install.packages(c("odns", "httr")) CRAN has mirrors all over the world, near identical copies of the repository hosted across multiple servers. Following a fresh install, using install.packages() may return a prompt asking that you select a mirror. Most people should simply select option ‘1’ (“https://cloud.r-project.org”), which defaults to use a mirror near to you. You can also set the mirror of choice at any time the chooseCRAN() function. --- Please select a CRAN mirror for use in this session --- Secure CRAN mirrors 1: 0-Cloud [https] 2: Australia (Canberra) [https] 3: Australia (Melbourne 1) [https] 4: Australia (Melbourne 2) [https] 5: Australia (Perth) [https] ... Selection: 1 RStudio users also have the option to install packages through the user interface. Clicking Tools &gt; Install Packages... opens up the relevant window, where the package name can be entered, before clicking Install. Install from Bioconductor Installing from Bioconductor requires an additional package BiocManager, which can be installed from CRAN. Once BiocManager is installed, you can install Bioconductor packages using BiocManager::install(). install.packages("BiocManager") BiocManager::install("GenomicFeatures") Install from local archive If you have an R package as an archive (zip or tar.gz), these can be installed using the install.packages() function with a few additional options specified. install.packages("path_to_file/odns.tar.gz", repos = NULL, type = "source") Install from GitHub There are a couple of options for installing packages directly from GitHub, but the simplest is to use the remotes package, which can be installed from CRAN. Once remotes is installed, you can install packages from GitHub using remotes::install_github(). install.packages("remotes") remotes::install_github("jrh-dev/odns") Warning: Using any R package, whatever the source, involves an element of trust. Any package you install could potentially contain malicious code, but there are steps which can be taken to mitigate the dangers. CRAN packages must undergo a series of checks upon submission, new submissions are carefully scrutinised, and packages on CRAN are subjected to ongoing testing on multiple platforms. The CRAN submission process does not provide a watertight guarantee of safety, but it does present a serious obstacle for potential bad actors. Bioconductor's own submission process presents a similar deterrent to CRAN. Installing directly from GitHub or other repositories is inherently risky. There are no checks or tests performed on code hosted on GitHub outside of those chosen by the author. Whilst malware is against GitHubs terms of service, it takes time and reports for it to be identified. Installing popular packages from GitHub is not without risk either. Common approaches to spreading malware include attempting to direct users to install packages from apparently legitimate links such as tidiverse/dplyr. In the past, developers credentials have been compromised and legitimate accounts under the control of bad actors used to push malicious code. In recent years a small number of developers have turned rogue and intentionally poisoned their own repositories. Thankfully, none of these high profile incidents have affected R directly. Malicious additions and changes to popular open source projects should be caught quickly, but whilst we would expect them to be caught before they reach CRAN, they may already have been installed from GitHub many times. GitHub is a fantastic resource and users should not be discouraged from using it, or from testing development versions of packages. However, installing packages from GitHub should be considered an option primarily for intermediate to advanced users with the skill to understand the source code within the packages being used. Personally, I avoid using development or non-CRAN/BioConductor versions of packages in anything other than a sandbox environment. If there were no alternative packages available and I could not write the functionality myself, I would prefer to fork the repository, undertake a full code review, and then use the forked version in my own project. Using packages Once a package is installed you can start using it right away. Without loading the package, you can access its functions with ::. odns::all_packages() #' package_name package_id #' covid-19-vaccination-in-scotland 6dbdd466-… #' enhanced-surveillance-of-covid-19-in-scotland 3c5231ee-… #' hospital-onset-covid-19-cases-in-scotland d67b13ef-… #' weekly-covid-19-statistical-data-in-scotland 524b42b4-… #' covid-19-in-scotland b318bddf-… #' … with 85 more rows Trying to call the function by name, without first loading the package returns an error. all_packages() #' Error in all_packages() : could not find function "all_packages" #' To load the package and access it’s functions without the ::, you can use the library() function. The package name is passed without quotes as the package argument. library(odns) all_packages() #' package_name package_id #' covid-19-vaccination-in-scotland 6dbdd466-… #' enhanced-surveillance-of-covid-19-in-scotland 3c5231ee-… #' hospital-onset-covid-19-cases-in-scotland d67b13ef-… #' weekly-covid-19-statistical-data-in-scotland 524b42b4-… #' covid-19-in-scotland b318bddf-… #' … with 85 more rows When to use :: and library() is a matter of personal preference. Loading a large library with many functions to use one specific function is often not necessary, especially if the functions within that package mask some others that you do want to use. Google’s R style guide provides a useful take on the issue. Qualifying namespaces Users should explicitly qualify namespaces for all external functions. # Good purrr::map() We discourage using the @import Roxygen tag to bring in all functions into a NAMESPACE. Google has a very big R codebase, and importing all functions creates too much risk for name collisions. While there is a small performance penalty for using ::, it makes it easier to understand dependencies in your code. There are some exceptions to this rule. Infix functions (%name%) always need to be imported. Certain rlang pronouns, notably .data, need to be imported. Functions from default R packages, including datasets, utils, grDevices, graphics, stats and methods. If needed, you can @import the full package. When importing functions, place the @importFrom tag in the Roxygen header above the function where the external dependency is used. Google’s R Style Guide Updating packages Over time new versions of packages are released. RStudio users can navigate to the ‘Packages’ pane, and click on the ‘Update’ button to perform a check for newer version of currently installed packages. This allows you to select any packages that you then want to update. The old.packages() function provides a programmatic way to identify installed packages that have newer versions available. old.packages() #' Package LibPath Installed Built ReposVer #' MASS "MASS" "/usr/lib/R/library" "7.3-58" "4.2.1" "7.3-58.1" #' Repository #' MASS "https://cloud.r-project.org/src/contrib" Having identified packages that can be updated, using install.packages() will install the latest version. install.packages("MASS") Caution: When a package is updated it may fix bugs, add new functionality, or offer performance improvements. However, it may also change how some functions work, or remove them entirely. If you update a package that is used in a repeated workflow then this may lead to bugs, or your code may stop working altogether. Always test your workflows when updating packages. When to use a package The wide range of high quality packages available for R are one of its many strengths and a key element of its continued success. However, it is also important to consider dependencies and reproducibility. Adding packages that aren’t required, or that have easy to use alternatives in base R increases the amount of maintenance required for your code base over time. It also makes it harder for others to run your code. Try to use packages sparingly and look critically at whether a package provides the best solution to a problem. Viewing documentation RStudio users can access the documentation for any installed package with ??. ??odns Search Results Package Vignette The documentation for functions or data within a package can be obtained in the same way. ??odns::all_packages Next steps Once you’re comfortable with installing R packages, it’s time to start exploring. Worthy mentions include; The tidyverse, a collection of packages in reality, highly opinionated, but very popular. data.table offers unparalleled performance and a style more in line with base R. lubridate provides useful functions for dealing with dates. ggplot2, the essential plotting package for R.]]></summary></entry><entry><title type="html">Introduction to RStudio</title><link href="http://0.0.0.0:4000/2022/09/15/intro-to-rstudio.html" rel="alternate" type="text/html" title="Introduction to RStudio" /><published>2022-09-15T00:00:00+01:00</published><updated>2022-09-15T00:00:00+01:00</updated><id>http://0.0.0.0:4000/2022/09/15/intro-to-rstudio</id><content type="html" xml:base="http://0.0.0.0:4000/2022/09/15/intro-to-rstudio.html"><![CDATA[<p>In terms of famous duos, neither Tom and Jerry, nor Mario and Luigi, have anything on R and RStudio. The two are so commonly used together that many beginners may initially struggle to understand where one starts and the other ends.</p>
-
-<p>Despite the association though, RStudio is definitely not R, in fact R doesn’t even come bundled with RStudio. Rather RStudio is an Integrated Development Environment (IDE) which aims to make working with R easier.</p>
-
-<p>RStudio is available in both open source and commercial flavours, though much of the functionality is the same for end users, with the paid versions tending to offer more configuration options behind the scenes.</p>
-
-<h2 id="getting-started">Getting Started</h2>
-
-<p>This guide assumes that you have access to RStudio, either installed locally, or in the cloud, and that this is your first time using it. If you have already used RStudio, however, you should still find some useful hints and tips.</p>
-
-<h3 id="default-settings">Default settings</h3>
-
-<p>The default settings for RStudio are sufficient in most cases, however, there are a few settings that I recommend nearly all users change.</p>
-
-<ol>
-  <li>
-    <p>Click <code class="language-plaintext highlighter-rouge">Tools &gt; Global Options</code></p>
-  </li>
-  <li>
-    <p>Navigate to the <code class="language-plaintext highlighter-rouge">General</code> heading from the sidebar, and the <code class="language-plaintext highlighter-rouge">Basic</code> tab.</p>
-  </li>
-  <li>
-    <p>Untick;</p>
-
-    <p>3.1 <strong><em>Restore most recently opened project at startup</em></strong></p>
-
-    <p>3.2 <strong><em>Restore previously open source documents at startup</em></strong></p>
-
-    <p>3.3 <strong><em>Restore .RData into workspace at startup</em></strong></p>
-
-    <p>3.4 <strong><em>Always save history (even when not saving .RData)</em></strong></p>
-  </li>
-  <li>
-    <p>Change the dropdown for <strong><em>Save workspace to .RData on exit:</em></strong> from <strong><em>Ask</em></strong> to <strong><em>Never</em></strong></p>
-  </li>
-</ol>
-
-<table>
-  <thead>
-    <tr>
-      <th style="text-align: center">Default settings</th>
-      <th style="text-align: center">Recommended settings</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align: center"><img src="/assets/img/intro-to-rstudio/img01.png" alt="Image" /></td>
-      <td style="text-align: center"><img src="/assets/img/intro-to-rstudio/img02.png" alt="Image" /></td>
-    </tr>
-  </tbody>
-</table>
-
-<p>These options all relate to whether RStudio will attempt to save and reload your working environment when you close and reopen it. Whilst this would be welcome if it related to scripts alone, it also attempts to save any objects you have created which can sometimes mean multiple gigabytes worth of data. It is nearly always preferable, therefore, to turn this functionality off except for a few edge cases.</p>
-
-<p>Another couple of options worth changing can be found under <code class="language-plaintext highlighter-rouge">Code &gt; Editing</code>, and <code class="language-plaintext highlighter-rouge">Code &gt; Display</code>, where we can enable <strong><em>Use native pipe operator</em></strong> and <strong><em>Use rainbow parentheses</em></strong>.</p>
-
-<p><img src="/assets/img/intro-to-rstudio/gif01.gif" alt="Image" class="shadow" /></p>
-
-<p>The native pipe operator <code class="language-plaintext highlighter-rouge">|&gt;</code> is the native R replacement for <code class="language-plaintext highlighter-rouge">%&gt;%</code> from the <code class="language-plaintext highlighter-rouge">magrittr</code> package. However, it does require R version 4.1+ and a newer version of RStudio.</p>
-
-<p>Rainbow parentheses are also only available in newer versions of RStudio and colour match opening and closing parentheses in an attempt to make it easier to identify pairs.</p>
-
-<h3 id="appearance">Appearance</h3>
-
-<p>The default appearance of RStudio is a little dated, and its certainly not one of the prettiest applications out there. Thankfully, that has little impact on its functionality, however, making a few adjustments can drastically improve the look and feel of RStudio and the dark themes certainly help ease long days staring at a screen.</p>
-
-<p>To select a font and theme you can click <code class="language-plaintext highlighter-rouge">Tools &gt; Global Options &gt; Appearance</code> and browse through the available options.</p>
-
-<p><img src="/assets/img/intro-to-rstudio/gif02.gif" alt="Image" class="shadow" /></p>
-
-<h3 id="pane-layout">Pane layout</h3>
-
-<p>Panes refer to the layout of the RStudio application, which typically divides the screen into four sections, each one being a pane. The layout of the panes can be configured to match your personal preferences.</p>
-
-<p>Like the appearance settings, each person will have their own preference, but experimenting and finding a set-up that feels right for you can make a huge difference to how intuitive your overall experience of using RStudio becomes.</p>
-
-<p>You can change the layout by clicking on the square that looks a little like a waffle and selecting <strong><em>Pane Layout…</em></strong> from the context menu. Alternatively, you can access the same options through <code class="language-plaintext highlighter-rouge">Tools &gt; Global Options &gt; Pane Layout</code>.</p>
-
-<p>The settings <strong><em>Pane Layout</em></strong> section is handily divided up into four squares, the drop down menu in each can be used to specify what is displayed there, and the tick boxes beneath allow you to further shuffle around some of the sub options.</p>
-
-<p><img src="/assets/img/intro-to-rstudio/gif03.gif" alt="Image" class="shadow" /></p>
-
-<h4 id="additional-columns">Additional columns</h4>
-
-<p>Adding an additional column allows us to have two scripts open side by side. It again requires clicking on the little waffle and selecting <strong><em>Pane Layout…</em></strong> or navigating through <code class="language-plaintext highlighter-rouge">Tools &gt; Global Options &gt; Pane Layout</code>.</p>
-
-<p>Then its as simple as clicking <strong><em>Add Column</em></strong>. To remove the column again you can either navigate back to the same place and click <strong><em>Remove Column</em></strong>, or close all of the tabs open in the column, in which case it will disappear on its own.</p>
-
-<p>There is of course an easier way to add a column, using the keyboard shortcut <code class="language-plaintext highlighter-rouge">CTRL + F7</code>.</p>
-
-<p><img src="/assets/img/intro-to-rstudio/gif04.gif" alt="Image" class="shadow" /></p>
-
-<h2 id="useful-tabs">Useful tabs</h2>
-
-<p>Within the four pane layout there are multiple useful tabs. The exact location of these can be configured to your liking. Many of these tabs provide functionality for interacting with your R environment or operating system in a way that makes using R more interactive.</p>
-
-<h3 id="files">Files</h3>
-
-<p>The <strong><em>Files</em></strong> tab provides a minimally featured file manager and provides a handy way to perform common tasks without leaving RStudio. This can be particularly useful when working in the cloud where you may not have access to the remote machine directly.</p>
-
-<p>Using the buttons in the top tool bar, you can;</p>
-
-<ul>
-  <li>Create a new folder</li>
-  <li>Create a new file</li>
-  <li>Upload a file from your local device</li>
-  <li>Delete a file</li>
-  <li>Rename a file</li>
-</ul>
-
-<p><img src="/assets/img/intro-to-rstudio/img05.png" alt="Image" class="shadow" /></p>
-
-<p>Clicking <strong><em>More</em></strong> reveals some further actions. One useful function is <strong><em>Set As Working Directory</em></strong>, which sets the working directory to the folder location currently open in <strong><em>Files</em></strong>.</p>
-
-<p><img src="/assets/img/intro-to-rstudio/img06.png" alt="Image" class="shadow" /></p>
-
-<h3 id="creating-new-files">Creating new files</h3>
-
-<p>In addition to using the <strong><em>New Blank File</em></strong> option within the <strong><em>Files</em></strong> tab, there are a few other ways to create a new files.</p>
-
-<p>The quickest is the keyboard shortcut <code class="language-plaintext highlighter-rouge">CTRL + SHIFT + N</code>.</p>
-
-<p>You can also use the main menu, <code class="language-plaintext highlighter-rouge">File &gt; New File &gt; R Script</code>. A number of file types can be chosen using this option. The exact file types available vary dependent upon the version of RStudio you are running.</p>
-
-<p><img src="/assets/img/intro-to-rstudio/img13.png" alt="Image" class="shadow" /></p>
-
-<p>Saving files can be done in a few ways, using the main menus <code class="language-plaintext highlighter-rouge">File &gt; Save</code>, by clicking on the save icons, or with the keyboard shortcut <code class="language-plaintext highlighter-rouge">CTRL + S</code>. The <strong><em>Save All</em></strong> option (two disk icon) is also helpful and saves all open tabs; the keyboard shortcut is <code class="language-plaintext highlighter-rouge">CTRL + ALT + S</code>.</p>
-
-<h3 id="setting-the-working-directory">Setting the working directory</h3>
-
-<p>The term folder may be more familiar to Windows users, but the terms directory and folder are typically used interchangeably. The concept of setting a working directory is like saying “until I say otherwise, all the files I mention are in this particular directory”.</p>
-
-<p>For example, setting the working directory to <code class="language-plaintext highlighter-rouge">/a/very/long/path/to/my_r_project/</code>, allows us to replace</p>
-
-<p><code class="language-plaintext highlighter-rouge">/a/very/long/path/to/my_r_project/my_script_1.R</code></p>
-
-<p>with</p>
-
-<p><code class="language-plaintext highlighter-rouge">my_script_1.R</code></p>
-
-<p>The working directory can be set programmatically with R using the <code class="language-plaintext highlighter-rouge">setwd()</code> function, and the present working directory checked with <code class="language-plaintext highlighter-rouge">getwd()</code>.</p>
-
-<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">setwd</span><span class="p">(</span><span class="s2">"/a/very/long/path/to/my_r_project/"</span><span class="p">)</span><span class="w">
-
-</span><span class="n">getwd</span><span class="p">()</span><span class="w">
-</span><span class="cd">#' [1] "/a/very/long/path/to/my_r_project"</span></code></pre></figure>
-
-<h3 id="packages">Packages</h3>
-
-<p>The <strong><em>Packages</em></strong> tab contains details of all the packages currently installed.</p>
-
-<p><img src="/assets/img/intro-to-rstudio/img07.png" alt="Image" class="shadow" /></p>
-
-<p>The packages which are currently loaded have a tick in the box next to them. A loaded package has its functions available to use without needing to specify the namespace.</p>
-
-<p>For example if you try to use <code class="language-plaintext highlighter-rouge">mutate()</code> from the <code class="language-plaintext highlighter-rouge">dplyr</code> package without loading the library or using the namespace, you will receive an error.</p>
-
-<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">mutate</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="w"> </span><span class="n">new_col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="m">5</span><span class="p">)</span><span class="w">
-</span><span class="cd">#' Error in mutate(df, new_col = 1:5) : could not find function "mutate"</span></code></pre></figure>
-
-<p>This can be fixed by using the namespace.</p>
-
-<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">dplyr</span><span class="o">::</span><span class="n">mutate</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="w"> </span><span class="n">new_col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="m">5</span><span class="p">)</span><span class="w">
-</span><span class="cd">#'   a b new_col</span><span class="w">
-</span><span class="cd">#' 1 a 1       1</span><span class="w">
-</span><span class="cd">#' 2 b 2       2</span><span class="w">
-</span><span class="cd">#' 3 c 3       3</span><span class="w">
-</span><span class="cd">#' 4 d 4       4</span><span class="w">
-</span><span class="cd">#' 5 e 5       5</span></code></pre></figure>
-
-<p>Alternatively, loading the library means you no longer need to specify the namespace.</p>
-
-<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">library</span><span class="p">(</span><span class="n">dplyr</span><span class="p">)</span><span class="w">
-</span><span class="cd">#' Attaching package: ‘dplyr’</span><span class="w">
-</span><span class="cd">#' </span><span class="w">
-</span><span class="cd">#' The following objects are masked from ‘package:stats’:</span><span class="w">
-</span><span class="cd">#' </span><span class="w">
-</span><span class="cd">#'     filter, lag</span><span class="w">
-</span><span class="cd">#' </span><span class="w">
-</span><span class="cd">#' The following objects are masked from ‘package:base’:</span><span class="w">
-</span><span class="cd">#' </span><span class="w">
-</span><span class="cd">#'     intersect, setdiff, setequal, union</span><span class="w">
-
-</span><span class="n">mutate</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="w"> </span><span class="n">new_col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="m">5</span><span class="p">)</span><span class="w">
-</span><span class="cd">#'   a b new_col</span><span class="w">
-</span><span class="cd">#' 1 a 1       1</span><span class="w">
-</span><span class="cd">#' 2 b 2       2</span><span class="w">
-</span><span class="cd">#' 3 c 3       3</span><span class="w">
-</span><span class="cd">#' 4 d 4       4</span><span class="w">
-</span><span class="cd">#' 5 e 5       5</span></code></pre></figure>
-
-<p>You may have noticed the messages regards masked objects when loading <code class="language-plaintext highlighter-rouge">dplyr</code>. This happens because the base R packages contain functions with the same names as functions within the <code class="language-plaintext highlighter-rouge">dplyr</code> package.</p>
-
-<p><code class="language-plaintext highlighter-rouge">filter()</code> for example a function from the base library <code class="language-plaintext highlighter-rouge">stats</code>. When <code class="language-plaintext highlighter-rouge">dplyr</code> is loaded it masks the <code class="language-plaintext highlighter-rouge">stats</code> version, so a call to <code class="language-plaintext highlighter-rouge">filter()</code> actually uses <code class="language-plaintext highlighter-rouge">dplyr::filter()</code> as opposed to <code class="language-plaintext highlighter-rouge">stats::filter()</code>. To make matters worse, they do not do the same thing.</p>
-
-<p>This can lead to errors and mistakes and the topic is rather contentious. I generally recommend using the namespace for all none base functions, but if you have loaded <code class="language-plaintext highlighter-rouge">dplyr</code> and call <code class="language-plaintext highlighter-rouge">filter()</code>, it is still going to use the <code class="language-plaintext highlighter-rouge">dplyr</code> version.</p>
-
-<p>The only real solution is to be aware of this potential issue, particularly when moving between different projects.</p>
-
-<p>A very useful shortcut in RStudio <code class="language-plaintext highlighter-rouge">CTRL + SHIFT + F10</code>, restarts R, removes all objects from the environment, and unloads all packages. When moving between projects this is a convenient way to ensure you are starting afresh.</p>
-
-<h3 id="help">Help</h3>
-
-<p>The <strong><em>Help</em></strong> tab allows us to browse package and function documentation within RStudio. It’s an incredibly useful feature, allowing you to access the documentation for any function by using the search bar in the top right of the tab, or programmatically by prepending ‘?’ to a function name.</p>
-
-<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="o">&gt;</span><span class="w"> </span><span class="o">?</span><span class="n">print</span></code></pre></figure>
-
-<p><img src="/assets/img/intro-to-rstudio/img08.png" alt="Image" class="shadow" /></p>
-
-<h3 id="environment">Environment</h3>
-
-<p>The <strong><em>Environment</em></strong> tab allows us to view all of the objects that exist in our global environment.</p>
-
-<p>At this stage the differences are not important as they form part of a much broader topic, however, you can see that whilst both <code class="language-plaintext highlighter-rouge">my_dbl</code> and <code class="language-plaintext highlighter-rouge">my_df</code> are objects, their characteristics are very different, and it is those characteristics that determine how they are handled by functions and the ways in which we can manipulate them.</p>
-
-<p>If two objects are created, <code class="language-plaintext highlighter-rouge">user</code> and <code class="language-plaintext highlighter-rouge">df</code>, they will appear in the environment tab.</p>
-
-<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">user</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">Sys.info</span><span class="p">()[</span><span class="s2">"user"</span><span class="p">]</span><span class="w">
-
-</span><span class="n">df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.frame</span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">letters</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">5</span><span class="p">],</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="m">5</span><span class="p">)</span></code></pre></figure>
-
-<p><img src="/assets/img/intro-to-rstudio/img19.png" alt="Image" class="shadow" /></p>
-
-<p>One of RStudios most useful features for data scientists and analysts working interactively is the ability to explore tabular data with the built in viewer.</p>
-
-<p>The small icon that looks like a spreadsheet indicates that you can click on <code class="language-plaintext highlighter-rouge">df</code> in the environment pane to open the object in the viewer. The same can be achieved by running <code class="language-plaintext highlighter-rouge">View(df)</code>.</p>
-
-<p><img src="/assets/img/intro-to-rstudio/img20.png" alt="Image" class="shadow" /></p>
-
-<p>The viewer functionality is ideal for exploring data, checking results, and other interactions with tabular data. It can also be helpful for exploring the format of list objects, especially nested lists.</p>
-
-<p>When working with larger datasets the viewers performance may become an issue. One solution to this is to use the <code class="language-plaintext highlighter-rouge">head()</code> function. <code class="language-plaintext highlighter-rouge">head()</code> returns the first parts of a vector, matrix, table, data frame, or function.</p>
-
-<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="o">&gt;</span><span class="w"> </span><span class="n">View</span><span class="p">(</span><span class="n">head</span><span class="p">(</span><span class="n">df</span><span class="p">))</span></code></pre></figure>
-
-<h3 id="objects-in-r">Objects in R</h3>
-
-<p>Everything that exists in R is an object. An object can have many characteristics recorded about it, and these characteristics control the way in which the object can be used and interacted with.</p>
-
-<p>To further explore this concept lets look at an integer atomic vector and a data.frame, then use some functions to explore their characteristics.</p>
-
-<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">my_dbl</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="m">10L</span><span class="w">
-
-</span><span class="n">my_df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.frame</span><span class="p">(</span><span class="n">col_1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">)</span><span class="w">
-
-</span><span class="c1"># mode function</span><span class="w">
-</span><span class="n">mode</span><span class="p">(</span><span class="n">my_dbl</span><span class="p">)</span><span class="w">
-</span><span class="cd">#' [1] "numeric"</span><span class="w">
-
-</span><span class="n">mode</span><span class="p">(</span><span class="n">my_df</span><span class="p">)</span><span class="w">
-</span><span class="cd">#' [1] "list"</span><span class="w">
-
-</span><span class="c1"># typeof function</span><span class="w">
-</span><span class="n">typeof</span><span class="p">(</span><span class="n">my_dbl</span><span class="p">)</span><span class="w">
-</span><span class="cd">#' [1] "integer"</span><span class="w">
-
-</span><span class="n">typeof</span><span class="p">(</span><span class="n">my_df</span><span class="p">)</span><span class="w">
-</span><span class="cd">#' [1] "list"</span><span class="w">
-
-</span><span class="c1"># class function</span><span class="w">
-</span><span class="nf">class</span><span class="p">(</span><span class="n">my_dbl</span><span class="p">)</span><span class="w">
-</span><span class="cd">#' [1] "integer"</span><span class="w">
-
-</span><span class="nf">class</span><span class="p">(</span><span class="n">my_df</span><span class="p">)</span><span class="w">
-</span><span class="cd">#' [1] "data.frame"</span><span class="w">
-
-</span><span class="c1"># attributes function</span><span class="w">
-</span><span class="nf">attributes</span><span class="p">(</span><span class="n">my_dbl</span><span class="p">)</span><span class="w">
-</span><span class="cd">#' NULL</span><span class="w">
-
-</span><span class="nf">attributes</span><span class="p">(</span><span class="n">my_df</span><span class="p">)</span><span class="w">
-</span><span class="cd">#' $names</span><span class="w">
-</span><span class="cd">#' [1] "col_1"</span><span class="w">
-</span><span class="cd">#' </span><span class="w">
-</span><span class="cd">#' $class</span><span class="w">
-</span><span class="cd">#' [1] "data.frame"</span><span class="w">
-</span><span class="cd">#' </span><span class="w">
-</span><span class="cd">#' $row.names</span><span class="w">
-</span><span class="cd">#' [1]  1  2  3  4  5  6  7  8  9 10</span></code></pre></figure>
-
-<h2 id="source">Source</h2>
-
-<p>The <strong><em>Source</em></strong> pane provides RStudios text editing functionality. It is where you write, and edit code. It is also where the data viewer will open when using the <code class="language-plaintext highlighter-rouge">View()</code> function.</p>
-
-<h4 id="running-code">Running code</h4>
-
-<p>There are a few ways to run code written in the source pane.</p>
-
-<p><code class="language-plaintext highlighter-rouge">CTRL + ENTER</code> Runs the current line, or lines if the block of code spans more than just the single line. If you highlight a portion of code, it causes just the highlighted parts to run.</p>
-
-<p>The <strong><em>Run</em></strong> button in the source pane tool bar functions in the same way as pressing <code class="language-plaintext highlighter-rouge">CTRL + Enter</code>.</p>
-
-<p>It is possible to run entire scripts in this way by highlighting every line and clicking run, however, I would recommend using the keyboard shortcut <code class="language-plaintext highlighter-rouge">CTRL + SHIFT + ENTER</code> to run an entire script using <code class="language-plaintext highlighter-rouge">source()</code>.</p>
-
-<p>We can also run an entire script using the <strong><em>Source</em></strong> button.</p>
-
-<p>RStudios documentation on the differences between <strong><em>Run</em></strong> and <strong><em>Source</em></strong> states;</p>
-
-<blockquote>
-  <p>The difference between running lines from a selection and invoking Source is that when running a selection all lines are inserted directly into the console whereas for Source the file is saved to a temporary location and then sourced into the console from there (thereby creating less clutter in the console).</p>
-</blockquote>
-
-<table>
-  <thead>
-    <tr>
-      <th style="text-align: center">Code executed with <strong><em>Run</em></strong></th>
-      <th style="text-align: center">Code executed with <strong><em>Source</em></strong></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align: center"><img src="/assets/img/intro-to-rstudio/img22.png" alt="Image" /></td>
-      <td style="text-align: center"><img src="/assets/img/intro-to-rstudio/img23.png" alt="Image" /></td>
-    </tr>
-  </tbody>
-</table>
-
-<p>Whilst there are some other subtle differences between running and sourcing code, it is sufficient in most cases to use whichever is easier for you.</p>
-
-<h4 id="code-completion">Code completion</h4>
-
-<p>RStudio provides support for code completion. For example, typing <code class="language-plaintext highlighter-rouge">data.</code> generates a context menu with some useful suggestions, and you can the arrow keys to navigate through them. If you find one that you wish to use, <code class="language-plaintext highlighter-rouge">data.frame</code> in this case, you press <code class="language-plaintext highlighter-rouge">TAB</code> to insert it and complete the code. This can be particularly useful if you partially remember a function name.</p>
-
-<p><img src="/assets/img/intro-to-rstudio/img24.png" alt="Image" class="shadow" /></p>
-
-<p>This also works for objects that have been created.</p>
-
-<p><img src="/assets/img/intro-to-rstudio/img25.png" alt="Image" class="shadow" /></p>
-
-<h4 id="find-and-replace">Find and replace</h4>
-
-<p>The small magnifying glass located on the source pane toolbar opens up the search and replace functionality. The keyboard shortcut <code class="language-plaintext highlighter-rouge">CTRL + F</code> can also be used.</p>
-
-<p>Typing in the search box allows you to find all instances of a word throughout your script, and you can also replace occurrences of a word with an alternative. The functionality can be really useful, especially when working on large code bases.</p>
-
-<p><img src="/assets/img/intro-to-rstudio/img26.png" alt="Image" class="shadow" /></p>
-
-<h2 id="console">Console</h2>
-
-<p>The <strong><em>Console</em></strong> pane allows commands to be written and executed immediately. It also shows the results of code that has been ran or sourced from the source pane.</p>
-
-<p>If you want to check the current working directory for example, you could type <code class="language-plaintext highlighter-rouge">getwd()</code> in an open R script, run the line of code, check the output in the console, and finally delete the the <code class="language-plaintext highlighter-rouge">getwd()</code> function from the script. Alternatively, you can type <code class="language-plaintext highlighter-rouge">getwd()</code> into the console directly and hit <code class="language-plaintext highlighter-rouge">Enter</code>.</p>
-
-<p>Whilst code is running, you will notice a red stop sign icon in the upper right of the console pane. This is a useful indicator that R is running code, and clicking it will attempt to interrupt the current process.</p>
-
-<p><img src="/assets/img/intro-to-rstudio/img27.png" alt="Image" class="shadow" /></p>
-
-<p>The small broom icon clears all text from the console.</p>
-
-<p>The console also supports recalling previous commands using the arrow keys. Whilst using the console, tapping <code class="language-plaintext highlighter-rouge">UP ARROW</code> will retrieve the last command that was ran. You can browse through the available history using the arrow keys.</p>
-
-<h2 id="terminal">Terminal</h2>
-
-<p>The terminal pane allows access to the system shell, the underlying operating system. The functionality that this provides will largely depend on the OS you are running RStudio on top of, but common use cases include using Git for version control, and remote system management.</p>
-
-<h2 id="plots">Plots</h2>
-
-<p>The <strong><em>Plots</em></strong> pane allows you to view plots you have created.</p>
-
-<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">hist</span><span class="p">(</span><span class="n">rnorm</span><span class="p">(</span><span class="m">100</span><span class="p">))</span></code></pre></figure>
-
-<p><img src="/assets/img/intro-to-rstudio/img28.png" alt="Image" class="shadow" /></p>
-
-<p>The <strong><em>Plots</em></strong> pane toolbar provides a few useful functions. The <strong><em>Zoom</em></strong> button opens the plot in a larger pop-out. The <strong><em>Export</em></strong> button provides options to export the plot as an image or pdf, and also allows you to copy the plot to the clipboard.</p>
-
-<h2 id="next-steps">Next steps</h2>
-
-<p>RStudio is a powerful and popular IDE for use with R. It also supports python, making it a good choice as a development environment for data science.</p>
-
-<p>Getting familiar with RStudio often allows users to perform work more efficiently through learning how to make use of the functionality that it provides. Playing around with the layout and appearance can also prove beneficial in creating an environment that is pleasant to work in.</p>]]></content><author><name>&lt;author_id&gt;</name></author><category term="posit" /><category term="RStudio" /><category term="R basics" /><category term="Tutorial" /><category term="Analysis" /><summary type="html"><![CDATA[In terms of famous duos, neither Tom and Jerry, nor Mario and Luigi, have anything on R and RStudio. The two are so commonly used together that many beginners may initially struggle to understand where one starts and the other ends. Despite the association though, RStudio is definitely not R, in fact R doesn’t even come bundled with RStudio. Rather RStudio is an Integrated Development Environment (IDE) which aims to make working with R easier. RStudio is available in both open source and commercial flavours, though much of the functionality is the same for end users, with the paid versions tending to offer more configuration options behind the scenes. Getting Started This guide assumes that you have access to RStudio, either installed locally, or in the cloud, and that this is your first time using it. If you have already used RStudio, however, you should still find some useful hints and tips. Default settings The default settings for RStudio are sufficient in most cases, however, there are a few settings that I recommend nearly all users change. Click Tools &gt; Global Options Navigate to the General heading from the sidebar, and the Basic tab. Untick; 3.1 Restore most recently opened project at startup 3.2 Restore previously open source documents at startup 3.3 Restore .RData into workspace at startup 3.4 Always save history (even when not saving .RData) Change the dropdown for Save workspace to .RData on exit: from Ask to Never Default settings Recommended settings These options all relate to whether RStudio will attempt to save and reload your working environment when you close and reopen it. Whilst this would be welcome if it related to scripts alone, it also attempts to save any objects you have created which can sometimes mean multiple gigabytes worth of data. It is nearly always preferable, therefore, to turn this functionality off except for a few edge cases. Another couple of options worth changing can be found under Code &gt; Editing, and Code &gt; Display, where we can enable Use native pipe operator and Use rainbow parentheses. The native pipe operator |&gt; is the native R replacement for %&gt;% from the magrittr package. However, it does require R version 4.1+ and a newer version of RStudio. Rainbow parentheses are also only available in newer versions of RStudio and colour match opening and closing parentheses in an attempt to make it easier to identify pairs. Appearance The default appearance of RStudio is a little dated, and its certainly not one of the prettiest applications out there. Thankfully, that has little impact on its functionality, however, making a few adjustments can drastically improve the look and feel of RStudio and the dark themes certainly help ease long days staring at a screen. To select a font and theme you can click Tools &gt; Global Options &gt; Appearance and browse through the available options. Pane layout Panes refer to the layout of the RStudio application, which typically divides the screen into four sections, each one being a pane. The layout of the panes can be configured to match your personal preferences. Like the appearance settings, each person will have their own preference, but experimenting and finding a set-up that feels right for you can make a huge difference to how intuitive your overall experience of using RStudio becomes. You can change the layout by clicking on the square that looks a little like a waffle and selecting Pane Layout… from the context menu. Alternatively, you can access the same options through Tools &gt; Global Options &gt; Pane Layout. The settings Pane Layout section is handily divided up into four squares, the drop down menu in each can be used to specify what is displayed there, and the tick boxes beneath allow you to further shuffle around some of the sub options. Additional columns Adding an additional column allows us to have two scripts open side by side. It again requires clicking on the little waffle and selecting Pane Layout… or navigating through Tools &gt; Global Options &gt; Pane Layout. Then its as simple as clicking Add Column. To remove the column again you can either navigate back to the same place and click Remove Column, or close all of the tabs open in the column, in which case it will disappear on its own. There is of course an easier way to add a column, using the keyboard shortcut CTRL + F7. Useful tabs Within the four pane layout there are multiple useful tabs. The exact location of these can be configured to your liking. Many of these tabs provide functionality for interacting with your R environment or operating system in a way that makes using R more interactive. Files The Files tab provides a minimally featured file manager and provides a handy way to perform common tasks without leaving RStudio. This can be particularly useful when working in the cloud where you may not have access to the remote machine directly. Using the buttons in the top tool bar, you can; Create a new folder Create a new file Upload a file from your local device Delete a file Rename a file Clicking More reveals some further actions. One useful function is Set As Working Directory, which sets the working directory to the folder location currently open in Files. Creating new files In addition to using the New Blank File option within the Files tab, there are a few other ways to create a new files. The quickest is the keyboard shortcut CTRL + SHIFT + N. You can also use the main menu, File &gt; New File &gt; R Script. A number of file types can be chosen using this option. The exact file types available vary dependent upon the version of RStudio you are running. Saving files can be done in a few ways, using the main menus File &gt; Save, by clicking on the save icons, or with the keyboard shortcut CTRL + S. The Save All option (two disk icon) is also helpful and saves all open tabs; the keyboard shortcut is CTRL + ALT + S. Setting the working directory The term folder may be more familiar to Windows users, but the terms directory and folder are typically used interchangeably. The concept of setting a working directory is like saying “until I say otherwise, all the files I mention are in this particular directory”. For example, setting the working directory to /a/very/long/path/to/my_r_project/, allows us to replace /a/very/long/path/to/my_r_project/my_script_1.R with my_script_1.R The working directory can be set programmatically with R using the setwd() function, and the present working directory checked with getwd(). setwd("/a/very/long/path/to/my_r_project/") getwd() #' [1] "/a/very/long/path/to/my_r_project" Packages The Packages tab contains details of all the packages currently installed. The packages which are currently loaded have a tick in the box next to them. A loaded package has its functions available to use without needing to specify the namespace. For example if you try to use mutate() from the dplyr package without loading the library or using the namespace, you will receive an error. mutate(df, new_col = 1:5) #' Error in mutate(df, new_col = 1:5) : could not find function "mutate" This can be fixed by using the namespace. dplyr::mutate(df, new_col = 1:5) #' a b new_col #' 1 a 1 1 #' 2 b 2 2 #' 3 c 3 3 #' 4 d 4 4 #' 5 e 5 5 Alternatively, loading the library means you no longer need to specify the namespace. library(dplyr) #' Attaching package: ‘dplyr’ #' #' The following objects are masked from ‘package:stats’: #' #' filter, lag #' #' The following objects are masked from ‘package:base’: #' #' intersect, setdiff, setequal, union mutate(df, new_col = 1:5) #' a b new_col #' 1 a 1 1 #' 2 b 2 2 #' 3 c 3 3 #' 4 d 4 4 #' 5 e 5 5 You may have noticed the messages regards masked objects when loading dplyr. This happens because the base R packages contain functions with the same names as functions within the dplyr package. filter() for example a function from the base library stats. When dplyr is loaded it masks the stats version, so a call to filter() actually uses dplyr::filter() as opposed to stats::filter(). To make matters worse, they do not do the same thing. This can lead to errors and mistakes and the topic is rather contentious. I generally recommend using the namespace for all none base functions, but if you have loaded dplyr and call filter(), it is still going to use the dplyr version. The only real solution is to be aware of this potential issue, particularly when moving between different projects. A very useful shortcut in RStudio CTRL + SHIFT + F10, restarts R, removes all objects from the environment, and unloads all packages. When moving between projects this is a convenient way to ensure you are starting afresh. Help The Help tab allows us to browse package and function documentation within RStudio. It’s an incredibly useful feature, allowing you to access the documentation for any function by using the search bar in the top right of the tab, or programmatically by prepending ‘?’ to a function name. &gt; ?print Environment The Environment tab allows us to view all of the objects that exist in our global environment. At this stage the differences are not important as they form part of a much broader topic, however, you can see that whilst both my_dbl and my_df are objects, their characteristics are very different, and it is those characteristics that determine how they are handled by functions and the ways in which we can manipulate them. If two objects are created, user and df, they will appear in the environment tab. user &lt;- Sys.info()["user"] df &lt;- data.frame(a = letters[1:5], b = 1:5) One of RStudios most useful features for data scientists and analysts working interactively is the ability to explore tabular data with the built in viewer. The small icon that looks like a spreadsheet indicates that you can click on df in the environment pane to open the object in the viewer. The same can be achieved by running View(df). The viewer functionality is ideal for exploring data, checking results, and other interactions with tabular data. It can also be helpful for exploring the format of list objects, especially nested lists. When working with larger datasets the viewers performance may become an issue. One solution to this is to use the head() function. head() returns the first parts of a vector, matrix, table, data frame, or function. &gt; View(head(df)) Objects in R Everything that exists in R is an object. An object can have many characteristics recorded about it, and these characteristics control the way in which the object can be used and interacted with. To further explore this concept lets look at an integer atomic vector and a data.frame, then use some functions to explore their characteristics. my_dbl &lt;- 1:10L my_df &lt;- data.frame(col_1 = 1:10) # mode function mode(my_dbl) #' [1] "numeric" mode(my_df) #' [1] "list" # typeof function typeof(my_dbl) #' [1] "integer" typeof(my_df) #' [1] "list" # class function class(my_dbl) #' [1] "integer" class(my_df) #' [1] "data.frame" # attributes function attributes(my_dbl) #' NULL attributes(my_df) #' $names #' [1] "col_1" #' #' $class #' [1] "data.frame" #' #' $row.names #' [1] 1 2 3 4 5 6 7 8 9 10 Source The Source pane provides RStudios text editing functionality. It is where you write, and edit code. It is also where the data viewer will open when using the View() function. Running code There are a few ways to run code written in the source pane. CTRL + ENTER Runs the current line, or lines if the block of code spans more than just the single line. If you highlight a portion of code, it causes just the highlighted parts to run. The Run button in the source pane tool bar functions in the same way as pressing CTRL + Enter. It is possible to run entire scripts in this way by highlighting every line and clicking run, however, I would recommend using the keyboard shortcut CTRL + SHIFT + ENTER to run an entire script using source(). We can also run an entire script using the Source button. RStudios documentation on the differences between Run and Source states; The difference between running lines from a selection and invoking Source is that when running a selection all lines are inserted directly into the console whereas for Source the file is saved to a temporary location and then sourced into the console from there (thereby creating less clutter in the console). Code executed with Run Code executed with Source Whilst there are some other subtle differences between running and sourcing code, it is sufficient in most cases to use whichever is easier for you. Code completion RStudio provides support for code completion. For example, typing data. generates a context menu with some useful suggestions, and you can the arrow keys to navigate through them. If you find one that you wish to use, data.frame in this case, you press TAB to insert it and complete the code. This can be particularly useful if you partially remember a function name. This also works for objects that have been created. Find and replace The small magnifying glass located on the source pane toolbar opens up the search and replace functionality. The keyboard shortcut CTRL + F can also be used. Typing in the search box allows you to find all instances of a word throughout your script, and you can also replace occurrences of a word with an alternative. The functionality can be really useful, especially when working on large code bases. Console The Console pane allows commands to be written and executed immediately. It also shows the results of code that has been ran or sourced from the source pane. If you want to check the current working directory for example, you could type getwd() in an open R script, run the line of code, check the output in the console, and finally delete the the getwd() function from the script. Alternatively, you can type getwd() into the console directly and hit Enter. Whilst code is running, you will notice a red stop sign icon in the upper right of the console pane. This is a useful indicator that R is running code, and clicking it will attempt to interrupt the current process. The small broom icon clears all text from the console. The console also supports recalling previous commands using the arrow keys. Whilst using the console, tapping UP ARROW will retrieve the last command that was ran. You can browse through the available history using the arrow keys. Terminal The terminal pane allows access to the system shell, the underlying operating system. The functionality that this provides will largely depend on the OS you are running RStudio on top of, but common use cases include using Git for version control, and remote system management. Plots The Plots pane allows you to view plots you have created. hist(rnorm(100)) The Plots pane toolbar provides a few useful functions. The Zoom button opens the plot in a larger pop-out. The Export button provides options to export the plot as an image or pdf, and also allows you to copy the plot to the clipboard. Next steps RStudio is a powerful and popular IDE for use with R. It also supports python, making it a good choice as a development environment for data science. Getting familiar with RStudio often allows users to perform work more efficiently through learning how to make use of the functionality that it provides. Playing around with the layout and appearance can also prove beneficial in creating an environment that is pleasant to work in.]]></summary></entry></feed>
+</ul>]]></content><author><name>&lt;author_id&gt;</name></author><category term="R basics" /><category term="Tutorial" /><summary type="html"><![CDATA[The R package ecosystem is arguably one of the language’s strongest selling points. A package is typically a collection of functions, and sometimes data, along with documentation. R packages are community developed, typically open source, and serve to provide additional functionality or extend and build upon base R’s functionality. The packages available range from huge projects used by millions of people such as dplyr and data.table, to much smaller ones catering to more niche interests. Use of some of the larger packages can have a big effect on the way a user writes and structures code, for example dplyr one of the tidyverse family of packages, encourages adoption of the authors ideals of tidy code and its use can influence the design of a project itself. Other packages are less impactful and serve a more specific purpose. If you want to access open data from NHS Scotland for example, you could read the API documentation, learn how to use the httr package, and write bespoke code to import the data. Alternatively, you could install odns and have it all done for you (disclaimer: I wrote odns). Using packages is a fundamental part of programming with R for many users, but for those just starting out its important to understand what they’re all about. R packages The official documentations states that ; Packages provide a mechanism for loading optional code, data and documentation as needed. The R distribution itself includes about 30 packages. At a basic level we can simply think of packages as a collection of functions and data with documentation. Typically users install a package in order to make use of functionality that isn’t provided by base R and to avoid having to write their own solutions to common and/or complex problems. Anybody can write a package and use it locally, you can also share a package you wrote with friends and colleagues. Some may go on to make the packages they write available publicly on services such as GitHub, and those looking to reach a wider audience may decide to publish their package to CRAN or Bioconductor. Regardless of how widely a package is intended to be used, R actually enforces quite a strict structure for packages in comparison to other programming languages. The benefit of this is that packages are largely easy to use and understand, and as you gain experience, easier to dissect and explore the source code. Package sources CRAN The Comprehensive R Archive Network (CRAN) is the official repository. It hosts a large number of packages, has strict criteria around submission, and packages published there are thoroughly tested and must undergo a manual review process. When using the install.packages() function, the default settings look for the package on CRAN. Bioconductor Biocondutor hosts software tailored to performing reproducible analysis of data with a biological focus, including the analysis of DNA microarray, sequence, flow, SNP, and other data. Like CRAN it also has a review process for submissions. GitHub Whilst other hosting services are available, GitHub is one of the most popular for R development. Anybody can host code on GitHub and there is no review or submission process. GitHub hosts development versions of many packages that are also on CRAN or Bioconductor. Locally (zip or tar.gz file) If a package has been written or developed locally it may be shared with you in a zip or tar.gz archive. Installing packages Install from CRAN Installing packages from CRAN is pretty straightforwards. You pass a string specifying the package name as the pkgs argument of install.packages(), and if the package exists on CRAN it will be downloaded and installed along with other R packages that the target package depends on, imports, or links to (using the default options). To install the odns package; install.packages("odns") It’s also possible to install multiple packages at once. install.packages(c("odns", "httr")) CRAN has mirrors all over the world, near identical copies of the repository hosted across multiple servers. Following a fresh install, using install.packages() may return a prompt asking that you select a mirror. Most people should simply select option ‘1’ (“https://cloud.r-project.org”), which defaults to use a mirror near to you. You can also set the mirror of choice at any time the chooseCRAN() function. --- Please select a CRAN mirror for use in this session --- Secure CRAN mirrors 1: 0-Cloud [https] 2: Australia (Canberra) [https] 3: Australia (Melbourne 1) [https] 4: Australia (Melbourne 2) [https] 5: Australia (Perth) [https] ... Selection: 1 RStudio users also have the option to install packages through the user interface. Clicking Tools &gt; Install Packages... opens up the relevant window, where the package name can be entered, before clicking Install. Install from Bioconductor Installing from Bioconductor requires an additional package BiocManager, which can be installed from CRAN. Once BiocManager is installed, you can install Bioconductor packages using BiocManager::install(). install.packages("BiocManager") BiocManager::install("GenomicFeatures") Install from local archive If you have an R package as an archive (zip or tar.gz), these can be installed using the install.packages() function with a few additional options specified. install.packages("path_to_file/odns.tar.gz", repos = NULL, type = "source") Install from GitHub There are a couple of options for installing packages directly from GitHub, but the simplest is to use the remotes package, which can be installed from CRAN. Once remotes is installed, you can install packages from GitHub using remotes::install_github(). install.packages("remotes") remotes::install_github("jrh-dev/odns") Warning: Using any R package, whatever the source, involves an element of trust. Any package you install could potentially contain malicious code, but there are steps which can be taken to mitigate the dangers. CRAN packages must undergo a series of checks upon submission, new submissions are carefully scrutinised, and packages on CRAN are subjected to ongoing testing on multiple platforms. The CRAN submission process does not provide a watertight guarantee of safety, but it does present a serious obstacle for potential bad actors. Bioconductor's own submission process presents a similar deterrent to CRAN. Installing directly from GitHub or other repositories is inherently risky. There are no checks or tests performed on code hosted on GitHub outside of those chosen by the author. Whilst malware is against GitHubs terms of service, it takes time and reports for it to be identified. Installing popular packages from GitHub is not without risk either. Common approaches to spreading malware include attempting to direct users to install packages from apparently legitimate links such as tidiverse/dplyr. In the past, developers credentials have been compromised and legitimate accounts under the control of bad actors used to push malicious code. In recent years a small number of developers have turned rogue and intentionally poisoned their own repositories. Thankfully, none of these high profile incidents have affected R directly. Malicious additions and changes to popular open source projects should be caught quickly, but whilst we would expect them to be caught before they reach CRAN, they may already have been installed from GitHub many times. GitHub is a fantastic resource and users should not be discouraged from using it, or from testing development versions of packages. However, installing packages from GitHub should be considered an option primarily for intermediate to advanced users with the skill to understand the source code within the packages being used. Personally, I avoid using development or non-CRAN/BioConductor versions of packages in anything other than a sandbox environment. If there were no alternative packages available and I could not write the functionality myself, I would prefer to fork the repository, undertake a full code review, and then use the forked version in my own project. Using packages Once a package is installed you can start using it right away. Without loading the package, you can access its functions with ::. odns::all_packages() #' package_name package_id #' covid-19-vaccination-in-scotland 6dbdd466-… #' enhanced-surveillance-of-covid-19-in-scotland 3c5231ee-… #' hospital-onset-covid-19-cases-in-scotland d67b13ef-… #' weekly-covid-19-statistical-data-in-scotland 524b42b4-… #' covid-19-in-scotland b318bddf-… #' … with 85 more rows Trying to call the function by name, without first loading the package returns an error. all_packages() #' Error in all_packages() : could not find function "all_packages" #' To load the package and access it’s functions without the ::, you can use the library() function. The package name is passed without quotes as the package argument. library(odns) all_packages() #' package_name package_id #' covid-19-vaccination-in-scotland 6dbdd466-… #' enhanced-surveillance-of-covid-19-in-scotland 3c5231ee-… #' hospital-onset-covid-19-cases-in-scotland d67b13ef-… #' weekly-covid-19-statistical-data-in-scotland 524b42b4-… #' covid-19-in-scotland b318bddf-… #' … with 85 more rows When to use :: and library() is a matter of personal preference. Loading a large library with many functions to use one specific function is often not necessary, especially if the functions within that package mask some others that you do want to use. Google’s R style guide provides a useful take on the issue. Qualifying namespaces Users should explicitly qualify namespaces for all external functions. # Good purrr::map() We discourage using the @import Roxygen tag to bring in all functions into a NAMESPACE. Google has a very big R codebase, and importing all functions creates too much risk for name collisions. While there is a small performance penalty for using ::, it makes it easier to understand dependencies in your code. There are some exceptions to this rule. Infix functions (%name%) always need to be imported. Certain rlang pronouns, notably .data, need to be imported. Functions from default R packages, including datasets, utils, grDevices, graphics, stats and methods. If needed, you can @import the full package. When importing functions, place the @importFrom tag in the Roxygen header above the function where the external dependency is used. Google’s R Style Guide Updating packages Over time new versions of packages are released. RStudio users can navigate to the ‘Packages’ pane, and click on the ‘Update’ button to perform a check for newer version of currently installed packages. This allows you to select any packages that you then want to update. The old.packages() function provides a programmatic way to identify installed packages that have newer versions available. old.packages() #' Package LibPath Installed Built ReposVer #' MASS "MASS" "/usr/lib/R/library" "7.3-58" "4.2.1" "7.3-58.1" #' Repository #' MASS "https://cloud.r-project.org/src/contrib" Having identified packages that can be updated, using install.packages() will install the latest version. install.packages("MASS") Caution: When a package is updated it may fix bugs, add new functionality, or offer performance improvements. However, it may also change how some functions work, or remove them entirely. If you update a package that is used in a repeated workflow then this may lead to bugs, or your code may stop working altogether. Always test your workflows when updating packages. When to use a package The wide range of high quality packages available for R are one of its many strengths and a key element of its continued success. However, it is also important to consider dependencies and reproducibility. Adding packages that aren’t required, or that have easy to use alternatives in base R increases the amount of maintenance required for your code base over time. It also makes it harder for others to run your code. Try to use packages sparingly and look critically at whether a package provides the best solution to a problem. Viewing documentation RStudio users can access the documentation for any installed package with ??. ??odns Search Results Package Vignette The documentation for functions or data within a package can be obtained in the same way. ??odns::all_packages Next steps Once you’re comfortable with installing R packages, it’s time to start exploring. Worthy mentions include; The tidyverse, a collection of packages in reality, highly opinionated, but very popular. data.table offers unparalleled performance and a style more in line with base R. lubridate provides useful functions for dealing with dates. ggplot2, the essential plotting package for R.]]></summary></entry></feed>
