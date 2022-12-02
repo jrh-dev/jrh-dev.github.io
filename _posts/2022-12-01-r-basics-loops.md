@@ -125,7 +125,7 @@ for (x in a_vector) {
 
 {% endhighlight %}
 
-## Constructing the body
+### Constructing the body
 
 The body will contain more traditional R code, but should (almost always) be wrapped in curly braces (`{ }`). If we try to write a simple loop without enclosing the body with `{ }`, things may not work as intended. Let's look at a loop with 2 print statements written with and without the curly braces.
 
