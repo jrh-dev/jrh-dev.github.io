@@ -136,3 +136,14 @@ With that in mind I started to develop a collection of training materials that I
     </div>
   </div>
 </div>
+
+<div class="item">
+  <div class="item__content">
+    <div class="item__header">
+      <h4><h4><a href="{% link _posts/2022-12-01-r-basics-loops.md %}">Loops</a></h4></h4>
+    </div>
+    <div class="item__description">
+      <p>Lists are a little different to other data structures you typically encounter in R. They can contain elements of different types, including other lists, and offer a large amount of flexibility. </p>
+    </div>
+  </div>
+</div>
