@@ -5,9 +5,14 @@ toc : true
 tags: [R basics, Tutorial]
 author: <author_id>
 show_edit_on_github: false
+excerpt_separator: <!--more-->
 ---
 
 In [Data Frames Part 1](https://jrh-dev.github.io/posts/r_basics_dataframes_p1/) we looked at creating `data.frame` objects, accessing their columns, and creating subsets of them using their row and column indices. We also looked at some useful functions for interacting with `data.frame` objects's, including `ncol()`, `nrow()`, and `names()`.
+
+In the 2nd part we explore these key data structures in more detail.
+
+<!--more-->
 
 ## Working with data frames
 

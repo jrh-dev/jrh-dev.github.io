@@ -5,12 +5,14 @@ toc : true
 tags: [R basics, Tutorial]
 author: <author_id>
 show_edit_on_github: false
+excerpt_separator: <!--more-->
 ---
 
 Loops are a fundamental element of computer programming. They facilitate iteration by running a piece of code repeatedly and provide a flexible approach to solving many problems that you may encounter.
 
-
 Loops have gained something of a bad reputation amongst the R community, largely owing to the fact that poor implementation of loops in R can result in code that is slow and inefficient. However, with proper use loops can be a powerful and effective tool for the R programmer.
+
+<!--more-->
 
 ## for loops
 

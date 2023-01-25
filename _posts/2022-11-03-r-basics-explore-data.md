@@ -6,9 +6,12 @@ tags: [R basics, Tutorial]
 categories: R Basics
 author: <author_id>
 show_edit_on_github: false
+excerpt_separator: <!--more-->
 ---
 
 R is often used interactively and as users grow in confidence they will often begin to find it simpler and more convenient to explore new data with R directly rather than opening the data in another application. A good IDE such as RStudio can make using R in this way easier. Exploring data before proceeding to perform analysis or further processing allows for making informed decisions regarding how to structure a project and helps to identify the types of techniques which may work well with the data you have.
+
+<!--more-->
 
 ## Getting an overview
 

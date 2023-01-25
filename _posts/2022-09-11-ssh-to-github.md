@@ -5,9 +5,12 @@ toc : true
 tags: [Tutorial, Git, GitHub, SSH]
 author: <author_id>
 show_edit_on_github: false
+excerpt_separator: <!--more-->
 ---
 
 Using Secure Shell Protocol (SSH) is a safe, secure, and efficient way to read and write data from repositories hosted on GitHub. Connecting via SSH authenticates your connection using a private key file stored on your local machine, which can also be password protected for additional security.
+
+<!--more-->
 
 This brief guide demonstrates how to setup SSH for GitHub.
 

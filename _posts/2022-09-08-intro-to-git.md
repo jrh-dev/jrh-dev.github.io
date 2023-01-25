@@ -5,9 +5,10 @@ toc : true
 tags: [Tutorial, Git, Linux, Windows]
 author: <author_id>
 show_edit_on_github: false
+excerpt_separator: <!--more-->
 ---
 
-Git is a free and open source version control system. Its branching model allows for easily trying out ideas and making changes in isolation before merging work together. Its use provides numerous benefits;
+Git is a free and open source version control system. Its branching model allows for easily trying out ideas and making changes in isolation before merging work together. <!--more--> Its use provides numerous benefits;
 
 * Try out ideas and changes in isolation.
 * Store previous versions of code without cluttering the working directory with copies of the same file.

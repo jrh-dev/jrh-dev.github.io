@@ -5,9 +5,12 @@ toc : true
 tags: [R basics, Tutorial]
 author: <author_id>
 show_edit_on_github: false
+excerpt_separator: <!--more-->
 ---
 
 The R package ecosystem is arguably one of the language's strongest selling points. A package is typically a collection of functions, and sometimes data, along with documentation. R packages are community developed, typically open source, and serve to provide additional functionality or extend and build upon base R's functionality.
+
+<!--more-->
 
 The packages available range from huge projects used by millions of people  such as [`dplyr`](https://dplyr.tidyverse.org/) and [`data.table`](https://rdatatable.gitlab.io/data.table/), to much smaller ones catering to more niche interests. Use of some of the larger packages can have a big effect on the way a user writes and structures code, for example `dplyr` one of the ***tidyverse*** family of packages, encourages adoption of the authors ideals of ***tidy code*** and its use can influence the design of a project itself.
 

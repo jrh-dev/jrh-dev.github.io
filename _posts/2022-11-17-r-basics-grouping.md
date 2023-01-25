@@ -5,11 +5,14 @@ toc : true
 tags: [R basics, Tutorial]
 author: <author_id>
 show_edit_on_github: false
+excerpt_separator: <!--more-->
 ---
 
 Data often contains information pertaining to a multitude of groups. Producing summary or aggregated statistics for these groups is a common task. Being able to efficiently perform grouping operations is a powerful tool.
 
 There are many ways to produce summary statistics and aggregations using R, however, the one of most intuitive ways to achieve this is to use the `tidyverse` package `dplyr`. The `dplyr` package offers functions for aggregating and summarising data which are simple to use and that avoid some of the pitfalls found in alternative approaches.
+
+<!--more-->
 
 We can use the built in `iris` dataset to explore grouping in R. For a quick reminder of the contents of `iris`, lets use the `head()` function.
 

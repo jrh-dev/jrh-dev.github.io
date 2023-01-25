@@ -5,9 +5,12 @@ toc : true
 tags: [R basics, Tutorial]
 author: <author_id>
 show_edit_on_github: false
+excerpt_separator: <!--more-->
 ---
 
 When working with data we often find a need to transform it in various ways. This might be for reasons of presentation, to make data compatible with a function that requires the input to be in a specific format, or to make it easier to work with. R provides plenty of options for data transformation and the rich package system means that there is typically a ready made solution for most of the problems that you might encounter.
+
+<!--more-->
 
 # Wide and long format transformations
 

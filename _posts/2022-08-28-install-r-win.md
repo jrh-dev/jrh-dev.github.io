@@ -5,9 +5,12 @@ toc : true
 tags: [R, R basics, OS, Windows]
 author: <author_id>
 show_edit_on_github: false
+excerpt_separator: <!--more-->
 ---
 
 R describes itself as a free software environment for statistical computing and graphics. It is a complete programming language, particularly well suited to statistical and data analysis. R is known for having a comprehensive range of packages available offering extended functionality, and for its active community.
+
+<!--more-->
 
 ## Downloading
 

@@ -5,9 +5,12 @@ toc : true
 tags: [R basics, Tutorial]
 author: <author_id>
 show_edit_on_github: false
+excerpt_separator: <!--more-->
 ---
 
 In statistics we often talk about categorical variables. These are variables with a typically limited and potentially fixed number of possible values. An observation of a categorical variable is based on a qualitative property.
+
+<!--more-->
 
 Some common examples of categorical variables are:
 

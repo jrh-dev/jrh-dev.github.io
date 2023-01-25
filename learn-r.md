@@ -8,9 +8,9 @@ key: page-learn-r
 
 R is a free software environment for statistical computing and graphics. It is a complete programming language, particularly well suited to statistical and data analysis. R is known for having a comprehensive range of packages available offering extended functionality, and for its active community.
 
-I am a data analyst and R developer. I also work extensively with python and generally enjoy technology, building PC's, running multiple linux distros, and self hosting all-sorts of services with various levels of success, though I don't know how to fix printers. I'm largely self-taught when it comes to programming and don't have a traditional CS background.
+I am a data analyst and R developer. I also work extensively with python and generally enjoy technology, building PC's, running multiple linux distros, and self hosting all-sorts of services with various levels of success, though I don't know how to fix printers.
 
-Many of the current resources available for learning R focus heavily on the 'tidyverse', a collection of packages (add-ons to the R language) which push an opinionated view of best practice and coding style. The packages themselves are of very high quality, but I feel many training materials focus too heavily on the 'tidyverse' at the expense of providing a more thorough understanding of the language itself. 
+Many of the current resources available for learning R focus heavily on the 'tidyverse', a collection of packages (add-ons to the R language) which push an opinionated view of best practice and coding style. The packages themselves are of very high quality, but I feel many training materials focus too heavily on the 'tidyverse' at the expense of providing a more thorough understanding of the language itself. I also believe that a lot of designs and best practice developed within the python community can translate well into R and try to advocate for an approach that may feel more familiar to python users whilst recognising R's key strengths.
 
 With that in mind I started to develop a collection of training materials that I hope will allow beginners, and perhaps more experience users alike, to build a strong foundational understanding of the language, that encourages the use of base R, with additional packages where appropriate.
 
@@ -67,17 +67,6 @@ With that in mind I started to develop a collection of training materials that I
     </div>
     <div class="item__description">
       <p>Part 2 of data frame basics provides more details on working with these key data structures and how they fit into a workflow.</p>
-    </div>
-  </div>
-</div>
-
-<div class="item">
-  <div class="item__content">
-    <div class="item__header">
-      <h4><h4><a href="{% link _posts/2022-11-03-r-basics-data-processing.md %}">Data Processing</a></h4></h4>
-    </div>
-    <div class="item__description">
-      <p>Exploring data before proceeding to perform analysis or further processing allows for making informed decisions regarding how to structure a project and helps to identify the types of techniques which may work well with the data you have. This article looks at some useful techniques.</p>
     </div>
   </div>
 </div>

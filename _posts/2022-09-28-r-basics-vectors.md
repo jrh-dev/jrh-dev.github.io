@@ -5,9 +5,10 @@ toc : true
 tags: [R basics, Tutorial]
 author: <author_id>
 show_edit_on_github: false
+excerpt_separator: <!--more-->
 ---
 
-In R, a vector is a series of elements with the same type. There are 4 important types to be aware of, that you will commonly encounter;
+In R, a vector is a series of elements with the same type. There are 4 important types to be aware of, that you will commonly encounter<!--more-->;
 
 * Character
 * Logical

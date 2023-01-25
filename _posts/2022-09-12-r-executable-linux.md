@@ -5,6 +5,7 @@ toc : true
 tags: [R, R advanced, Tips, Automation, Linux]
 author: <author_id>
 show_edit_on_github: false
+excerpt_separator: <!--more-->
 ---
 
 <div style="text-align: left;">
@@ -13,6 +14,8 @@ show_edit_on_github: false
 </div>
 
 If your experience is anything like mine you will find yourself with plenty of repetitive tasks to complete alongside your more interesting and exciting developmental work. Often these tasks are things like pulling up to date extracts and moving outputs around. Wherever possible I like to save time by automating the performing of these tasks, writing short utility scripts and scheduling them with CRON, or running them manually if required on an ad-hoc basis.
+
+<!--more-->
 
 When working on linux I can make running my utility scripts even easier by making them executable.
 

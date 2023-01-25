@@ -9,7 +9,7 @@ show_edit_on_github: false
 
 In terms of famous duos, neither Tom and Jerry, nor Mario and Luigi, have anything on R and RStudio. The two are so commonly used together that many beginners may initially struggle to understand where one starts and the other ends.
 
-Despite the association though, RStudio is definitely not R, in fact R doesn't even come bundled with RStudio. Rather RStudio is an Integrated Development Environment (IDE) which aims to make working with R easier.
+Despite the association though, RStudio is definitely not R, in fact R doesn't even come bundled with RStudio.<!--more--> Rather RStudio is an Integrated Development Environment (IDE) which aims to make working with R easier.
 
 RStudio is available in both open source and commercial flavours, though much of the functionality is the same for end users, with the paid versions tending to offer more configuration options behind the scenes.
 

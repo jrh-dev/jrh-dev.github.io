@@ -28,6 +28,6 @@ key: page-about
 
 Data analyst, R developer, python enjoyer, linux user.
 
-I like to try different tools and tech and often write guides for myself so that I can reproduce work when I inevitably forget how I did it in the first place.
+I like to try different tools and tech and started writing guides for myself as an aid to learning. I have found that teaching others is often the best way to commit something to memory and increase my own understanding. Unfortunately, my family and friends aren’t always interested in learning how to set up SSH keys, or interacting with API's, so as an alternative I write short guides.
 
-I have found that teaching others is often the best way to commit something to memory and increase my own understanding. Unfortunately, my family and friends aren’t always interested in learning how to set up SSH keys, or interacting with APIS. As an alternative I write short guides.
+My main languages are R and python, though there is certainly no shortage in materials for learning python, hence a focus here on R. 

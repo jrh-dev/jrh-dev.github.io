@@ -5,9 +5,12 @@ toc : true
 tags: [R basics, Tutorial]
 author: <author_id>
 show_edit_on_github: false
+excerpt_separator: <!--more-->
 ---
 
 A typical workflow using R will likely involve a number of sequential steps from importing the data into the R environment right through to outputting a completed analysis.
+
+<!--more-->
 
 ## An R workflow
 

@@ -1,11 +1,10 @@
 <!DOCTYPE html><html lang="en">
   <head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><title>Archive - messyR</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><title>R Basics - Lists - messyR</title>
 
-<meta name="description" content="...atypical how to's
-">
-<link rel="canonical" href="http://0.0.0.0:4000/archive.html"><link rel="alternate" type="application/rss+xml" title="messyR" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ --><link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png"><link rel="manifest" href="/assets/site.webmanifest"><link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#fc4d50"><link rel="shortcut icon" href="/assets/favicon.ico">
+<meta name="description" content="Lists are a little different to other data structures you typically encounter in R. They can contain elements of different types, including other lists, and ...">
+<link rel="canonical" href="http://0.0.0.0:4000/2023/01/25/r-basics-lists.html"><link rel="alternate" type="application/rss+xml" title="messyR" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ --><link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png"><link rel="manifest" href="/assets/site.webmanifest"><link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#fc4d50"><link rel="shortcut icon" href="/assets/favicon.ico">
 
 <meta name="msapplication-TileColor" content="#ffc40d"><meta name="msapplication-config" content="/assets/browserconfig.xml">
 
@@ -255,7 +254,7 @@
 </head>
   <body>
     <div class="root" data-is-touch="false">
-      <div class="layout--page js-page-root"><div class="page__main js-page-main page__viewport cell cell--auto">
+      <div class="layout--page js-page-root"><div class="page__main js-page-main page__viewport has-aside cell cell--auto">
 
       <div class="page__main-inner"><div class="page__header d-print-none"><header class="header"><div class="main">
       <div class="header__title">
@@ -485,255 +484,363 @@ c12 0 22 -4 22 -10 0 -16 -54 -12 -76 6 -18 15 -18 15 6 10 14 -3 35 -6 48 -6z"/>
 </svg>
 <a title="...atypical how to's
 " href="/">messyR</a></div><button class="button button--secondary button--circle search-button js-search-toggle"><i class="fas fa-search"></i></button></div><nav class="navigation">
-        <ul><li class="navigation__item"><a href="/learn-r.html">Learn R</a></li><li class="navigation__item navigation__item--active"><a href="/archive.html">Archive</a></li><li class="navigation__item"><a href="/about.html">About</a></li><li><button class="button button--secondary button--circle search-button js-search-toggle"><i class="fas fa-search"></i></button></li></ul>
+        <ul><li class="navigation__item"><a href="/learn-r.html">Learn R</a></li><li class="navigation__item"><a href="/archive.html">Archive</a></li><li class="navigation__item"><a href="/about.html">About</a></li><li><button class="button button--secondary button--circle search-button js-search-toggle"><i class="fas fa-search"></i></button></li></ul>
       </nav></div>
   </header>
 </div><div class="page__content"><div class ="main"><div class="grid grid--reverse">
 
-              <div class="col-aside d-print-none js-col-aside"></div>
+              <div class="col-aside d-print-none js-col-aside"><aside class="page__aside js-page-aside"><div class="toc-aside js-toc-root"></div>
+</aside></div>
 
               <div class="col-main cell cell--auto"><!-- start custom main top snippet -->
 
 <!-- end custom main top snippet -->
-<article itemscope itemtype="http://schema.org/WebPage"><div class="article__header"><header><h1>Archive</h1></header></div><meta itemprop="headline" content="Archive"><meta itemprop="author" content="J Hardy"/><div class="js-article-content"><div class="layout--archive js-all"><div class="site-tags js-tags">
-  <ul class="menu">
-    <li>
-      <button type="button" class="button button--secondary button--pill tag-button tag-button--all" data-encode="">
-        Show All<div class="tag-button__count">19</div>
-      </button>
-    </li><li><button type="button" class="button button--pill tag-button tag-button-1" data-encode="Analysis">
-          <span>Analysis</span><div class="tag-button__count">2</div>
-        </button>
-      </li><li><button type="button" class="button button--pill tag-button tag-button-1" data-encode="Automation">
-          <span>Automation</span><div class="tag-button__count">2</div>
-        </button>
-      </li><li><button type="button" class="button button--pill tag-button tag-button-1" data-encode="Email">
-          <span>Email</span><div class="tag-button__count">1</div>
-        </button>
-      </li><li><button type="button" class="button button--pill tag-button tag-button-1" data-encode="Git">
-          <span>Git</span><div class="tag-button__count">2</div>
-        </button>
-      </li><li><button type="button" class="button button--pill tag-button tag-button-1" data-encode="GitHub">
-          <span>GitHub</span><div class="tag-button__count">1</div>
-        </button>
-      </li><li><button type="button" class="button button--pill tag-button tag-button-1" data-encode="Linux">
-          <span>Linux</span><div class="tag-button__count">2</div>
-        </button>
-      </li><li><button type="button" class="button button--pill tag-button tag-button-1" data-encode="OS">
-          <span>OS</span><div class="tag-button__count">1</div>
-        </button>
-      </li><li><button type="button" class="button button--pill tag-button tag-button-1" data-encode="Power+Automate">
-          <span>Power Automate</span><div class="tag-button__count">1</div>
-        </button>
-      </li><li><button type="button" class="button button--pill tag-button tag-button-1" data-encode="R">
-          <span>R</span><div class="tag-button__count">4</div>
-        </button>
-      </li><li><button type="button" class="button button--pill tag-button tag-button-1" data-encode="R+advanced">
-          <span>R advanced</span><div class="tag-button__count">1</div>
-        </button>
-      </li><li><button type="button" class="button button--pill tag-button tag-button-4" data-encode="R+basics">
-          <span>R basics</span><div class="tag-button__count">15</div>
-        </button>
-      </li><li><button type="button" class="button button--pill tag-button tag-button-1" data-encode="RStudio">
-          <span>RStudio</span><div class="tag-button__count">1</div>
-        </button>
-      </li><li><button type="button" class="button button--pill tag-button tag-button-1" data-encode="SSH">
-          <span>SSH</span><div class="tag-button__count">1</div>
-        </button>
-      </li><li><button type="button" class="button button--pill tag-button tag-button-1" data-encode="Tips">
-          <span>Tips</span><div class="tag-button__count">1</div>
-        </button>
-      </li><li><button type="button" class="button button--pill tag-button tag-button-4" data-encode="Tutorial">
-          <span>Tutorial</span><div class="tag-button__count">16</div>
-        </button>
-      </li><li><button type="button" class="button button--pill tag-button tag-button-1" data-encode="Windows">
-          <span>Windows</span><div class="tag-button__count">2</div>
-        </button>
-      </li><li><button type="button" class="button button--pill tag-button tag-button-1" data-encode="posit">
-          <span>posit</span><div class="tag-button__count">1</div>
-        </button>
-      </li></ul>
-</div>
-<div class="js-result layout--archive__result d-none"><div class="article-list items"><section><h2 class="article-list__group-header">2023</h2><ul class="items"><li class="item" itemscope itemtype="http://schema.org/BlogPosting" data-tags="R+basics,Tutorial">
-        <div class="item__content"><span class="item__meta">Jan 25</span><a itemprop="headline" class="item__header" href="/2023/01/25/apply-functions.html">R Apply Functions</a></div>
-      </li><li class="item" itemscope itemtype="http://schema.org/BlogPosting" data-tags="R+basics,Tutorial">
-        <div class="item__content"><span class="item__meta">Jan 25</span><a itemprop="headline" class="item__header" href="/2023/01/25/r-basics-lists.html">R Basics - Lists</a></div>
-      </li></ul></section><section><h2 class="article-list__group-header">2022</h2><ul class="items"><li class="item" itemscope itemtype="http://schema.org/BlogPosting" data-tags="R+basics,Tutorial">
-        <div class="item__content"><span class="item__meta">Dec 01</span><a itemprop="headline" class="item__header" href="/2022/12/01/r-basics-loops.html">R Basics - Loops</a></div>
-      </li><li class="item" itemscope itemtype="http://schema.org/BlogPosting" data-tags="R+basics,Tutorial">
-        <div class="item__content"><span class="item__meta">Nov 22</span><a itemprop="headline" class="item__header" href="/2022/11/22/r-basics-factors.html">R Basics - Factors</a></div>
-      </li><li class="item" itemscope itemtype="http://schema.org/BlogPosting" data-tags="R+basics,Tutorial">
-        <div class="item__content"><span class="item__meta">Nov 17</span><a itemprop="headline" class="item__header" href="/2022/11/17/r-basics-grouping.html">R Basics - Grouping</a></div>
-      </li><li class="item" itemscope itemtype="http://schema.org/BlogPosting" data-tags="R+basics,Tutorial">
-        <div class="item__content"><span class="item__meta">Nov 10</span><a itemprop="headline" class="item__header" href="/2022/11/10/r-basics-data-transformation.html">R Basics - Data Transformation</a></div>
-      </li><li class="item" itemscope itemtype="http://schema.org/BlogPosting" data-tags="R+basics,Tutorial">
-        <div class="item__content"><span class="item__meta">Nov 03</span><a itemprop="headline" class="item__header" href="/2022/11/03/r-basics-data-processing.html">R Basics - Data Processing</a></div>
-      </li><li class="item" itemscope itemtype="http://schema.org/BlogPosting" data-tags="R+basics,Tutorial">
-        <div class="item__content"><span class="item__meta">Nov 03</span><a itemprop="headline" class="item__header" href="/r/basics/2022/11/03/r-basics-explore-data.html">R Basics - Exploring A Dataset</a></div>
-      </li><li class="item" itemscope itemtype="http://schema.org/BlogPosting" data-tags="R+basics,Tutorial">
-        <div class="item__content"><span class="item__meta">Oct 12</span><a itemprop="headline" class="item__header" href="/2022/10/12/r-basics-dataframes-part-2.html">R Basics - Data Frames Part 2</a></div>
-      </li><li class="item" itemscope itemtype="http://schema.org/BlogPosting" data-tags="R+basics,Tutorial">
-        <div class="item__content"><span class="item__meta">Oct 05</span><a itemprop="headline" class="item__header" href="/2022/10/05/r-basics-dataframes-part-1.html">R Basics - Data Frames Part 1</a></div>
-      </li><li class="item" itemscope itemtype="http://schema.org/BlogPosting" data-tags="R+basics,Tutorial">
-        <div class="item__content"><span class="item__meta">Sep 28</span><a itemprop="headline" class="item__header" href="/2022/09/28/r-basics-vectors.html">R Basics - Vectors</a></div>
-      </li><li class="item" itemscope itemtype="http://schema.org/BlogPosting" data-tags="R+basics,Tutorial">
-        <div class="item__content"><span class="item__meta">Sep 21</span><a itemprop="headline" class="item__header" href="/2022/09/21/r-basics-packages.html">R Basics - Packages</a></div>
-      </li><li class="item" itemscope itemtype="http://schema.org/BlogPosting" data-tags="posit,RStudio,R+basics,Tutorial,Analysis">
-        <div class="item__content"><span class="item__meta">Sep 15</span><a itemprop="headline" class="item__header" href="/2022/09/15/intro-to-rstudio.html">Introduction to RStudio</a></div>
-      </li><li class="item" itemscope itemtype="http://schema.org/BlogPosting" data-tags="R,R+advanced,Tips,Automation,Linux">
-        <div class="item__content"><span class="item__meta">Sep 12</span><a itemprop="headline" class="item__header" href="/2022/09/12/r-executable-linux.html">Making R Scripts Executable on Linux</a></div>
-      </li><li class="item" itemscope itemtype="http://schema.org/BlogPosting" data-tags="Tutorial,Git,GitHub,SSH">
-        <div class="item__content"><span class="item__meta">Sep 11</span><a itemprop="headline" class="item__header" href="/2022/09/11/ssh-to-github.html">Setup an SSH Connection to GitHub</a></div>
-      </li><li class="item" itemscope itemtype="http://schema.org/BlogPosting" data-tags="Tutorial,Git,Linux,Windows">
-        <div class="item__content"><span class="item__meta">Sep 08</span><a itemprop="headline" class="item__header" href="/2022/09/08/intro-to-git.html">Introduction to Git</a></div>
-      </li><li class="item" itemscope itemtype="http://schema.org/BlogPosting" data-tags="R,R+basics,Tutorial,Analysis">
-        <div class="item__content"><span class="item__meta">Sep 08</span><a itemprop="headline" class="item__header" href="/2022/09/08/r-reading-data.html">Reading Data with R</a></div>
-      </li><li class="item" itemscope itemtype="http://schema.org/BlogPosting" data-tags="R,R+basics,OS,Windows">
-        <div class="item__content"><span class="item__meta">Aug 28</span><a itemprop="headline" class="item__header" href="/2022/08/28/install-r-win.html">Install R for Windows 11</a></div>
-      </li><li class="item" itemscope itemtype="http://schema.org/BlogPosting" data-tags="R,Power+Automate,Automation,Email">
-        <div class="item__content"><span class="item__meta">Aug 25</span><a itemprop="headline" class="item__header" href="/2022/08/25/send-email-power-auto.html">Send Emails with R using Power Automate</a></div>
-      </li></div>
-</div>
+<article itemscope itemtype="http://schema.org/Article"><div class="article__header"><header><h1>R Basics - Lists</h1></header></div><meta itemprop="headline" content="R Basics - Lists"><div class="article__info clearfix"><ul class="left-col menu"><li>
+              <a class="button button--secondary button--pill button--sm"
+                href="/archive.html?tag=R+basics">R basics</a>
+            </li><li>
+              <a class="button button--secondary button--pill button--sm"
+                href="/archive.html?tag=Tutorial">Tutorial</a>
+            </li></ul><ul class="right-col menu"><li><i class="fas fa-user"></i> <span>J Hardy</span></li><li><i class="far fa-calendar-alt"></i> <span>Jan 25, 2023</span>
+            </li></ul></div><meta itemprop="author" content="J Hardy"/><meta itemprop="datePublished" content="2023-01-25T00:00:00+00:00">
+    <meta itemprop="keywords" content="R basics,Tutorial"><div class="js-article-content"><div class="layout--article"><!-- start custom article top snippet -->
+
+<!-- end custom article top snippet -->
+<div class="article__content" itemprop="articleBody"><p>Lists are a little different to other data structures you typically encounter in R. They can contain elements of different types, including other lists, and offer a large amount of flexibility.</p>
+
+<!--more-->
+
+<p>Lists can be created with <code class="language-plaintext highlighter-rouge">list()</code> and may be returned by some functions such as <code class="language-plaintext highlighter-rouge">lapply()</code>.</p>
+
+<h2 id="creating-a-list">Creating a list</h2>
+
+<p>The <code class="language-plaintext highlighter-rouge">list()</code> function is the most common way to create a list object.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="o">&gt;</span><span class="w"> </span><span class="n">my_list</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="s2">"string"</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="m">5</span><span class="p">,</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="s2">"string"</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="m">5</span><span class="p">),</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">))</span><span class="w">
+
+</span><span class="o">&gt;</span><span class="w"> </span><span class="n">print</span><span class="p">(</span><span class="n">my_list</span><span class="p">)</span><span class="w">
+</span><span class="cd">#' [[1]]</span><span class="w">
+</span><span class="cd">#' [1] "string"</span><span class="w">
+</span><span class="cd">#' </span><span class="w">
+</span><span class="cd">#' [[2]]</span><span class="w">
+</span><span class="cd">#' [1] 1 2 3 4 5</span><span class="w">
+</span><span class="cd">#' </span><span class="w">
+</span><span class="cd">#' [[3]]</span><span class="w">
+</span><span class="cd">#' [[3]][[1]]</span><span class="w">
+</span><span class="cd">#' [1] "string"</span><span class="w">
+</span><span class="cd">#' </span><span class="w">
+</span><span class="cd">#' [[3]][[2]]</span><span class="w">
+</span><span class="cd">#' [1] 1 2 3 4 5</span><span class="w">
+</span><span class="cd">#' </span><span class="w">
+</span><span class="cd">#' </span><span class="w">
+</span><span class="cd">#' [[4]]</span><span class="w">
+</span><span class="cd">#' [1]  TRUE FALSE</span></code></pre></figure>
+
+<h2 id="accessing-list-elements">Accessing list elements</h2>
+
+<p>Our list object <code class="language-plaintext highlighter-rouge">my_list</code> contains a character vector, a numeric vector, a list, and a logical vector.</p>
+
+<p>We can access elements within our list using double square brackets <code class="language-plaintext highlighter-rouge">[[ ]]</code>. To access the first element of <code class="language-plaintext highlighter-rouge">my_list</code> we would use <code class="language-plaintext highlighter-rouge">[[1]]</code>. As with all indexing in R, the index for list objects starts at 1.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="o">&gt;</span><span class="w"> </span><span class="n">print</span><span class="p">(</span><span class="n">my_list</span><span class="p">[[</span><span class="m">1</span><span class="p">]])</span><span class="w">
+</span><span class="cd">#' [1] "string"</span></code></pre></figure>
+
+<p>The 2nd element of <code class="language-plaintext highlighter-rouge">my_list</code> is a numeric vector, we can interact with it like any other vector by combining the list subsetting with a vector subset. We could use this approach to return the 2nd and 3rd element of the vector.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="o">&gt;</span><span class="w"> </span><span class="n">print</span><span class="p">(</span><span class="n">my_list</span><span class="p">[[</span><span class="m">2</span><span class="p">]][</span><span class="m">2</span><span class="o">:</span><span class="m">3</span><span class="p">])</span><span class="w">
+</span><span class="cd">#' [1] 2 3</span></code></pre></figure>
+
+<p>We can also perform actions over list elements.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># sum the entire vector</span><span class="w">
+</span><span class="o">&gt;</span><span class="w"> </span><span class="n">print</span><span class="p">(</span><span class="nf">sum</span><span class="p">(</span><span class="n">my_list</span><span class="p">[[</span><span class="m">2</span><span class="p">]]))</span><span class="w">
+</span><span class="cd">#' [1] 15</span><span class="w">
+
+</span><span class="c1"># sum a subset of the vector</span><span class="w">
+</span><span class="o">&gt;</span><span class="w"> </span><span class="n">print</span><span class="p">(</span><span class="nf">sum</span><span class="p">(</span><span class="n">my_list</span><span class="p">[[</span><span class="m">2</span><span class="p">]][</span><span class="m">2</span><span class="o">:</span><span class="m">3</span><span class="p">]))</span><span class="w">
+</span><span class="cd">#' [1] 5</span></code></pre></figure>
+
+<p>The 3rd element of <code class="language-plaintext highlighter-rouge">my_list</code> is a list itself, which we can refer to as a nested list. To access an element of the nested list we need to utilise the <code class="language-plaintext highlighter-rouge">[[ ]]</code> syntax twice.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># access the 3rd element of my_list</span><span class="w">
+</span><span class="o">&gt;</span><span class="w"> </span><span class="n">print</span><span class="p">(</span><span class="n">my_list</span><span class="p">[[</span><span class="m">3</span><span class="p">]])</span><span class="w">
+</span><span class="cd">#' [[1]]</span><span class="w">
+</span><span class="cd">#' [1] "string"</span><span class="w">
+</span><span class="cd">#' </span><span class="w">
+</span><span class="cd">#' [[2]]</span><span class="w">
+</span><span class="cd">#' [1] 1 2 3 4 5</span><span class="w">
+
+</span><span class="c1"># access the 1st element of the nested list</span><span class="w">
+</span><span class="o">&gt;</span><span class="w"> </span><span class="n">print</span><span class="p">(</span><span class="n">my_list</span><span class="p">[[</span><span class="m">3</span><span class="p">]][[</span><span class="m">1</span><span class="p">]])</span><span class="w">
+</span><span class="cd">#' [1] "string"</span><span class="w">
+
+</span><span class="c1"># subset the 2nd element of the nested list</span><span class="w">
+</span><span class="o">&gt;</span><span class="w">  </span><span class="n">print</span><span class="p">(</span><span class="n">my_list</span><span class="p">[[</span><span class="m">3</span><span class="p">]][[</span><span class="m">2</span><span class="p">]][</span><span class="m">2</span><span class="o">:</span><span class="m">3</span><span class="p">])</span><span class="w">
+</span><span class="cd">#' [1] 2 3</span></code></pre></figure>
+
+<h2 id="named-lists">Named lists</h2>
+
+<p>We can also create named lists. Notice that we don’t wrap the list element names in quotations (<code class="language-plaintext highlighter-rouge">" "</code>).</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="o">&gt;</span><span class="w"> </span><span class="n">my_list</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="w">
+    </span><span class="n">string_vector</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="n">numeric_vector</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="m">5</span><span class="p">,</span><span class="w">
+    </span><span class="n">list_object</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="s2">"string"</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="m">5</span><span class="p">),</span><span class="w"> 
+    </span><span class="n">logical_vector</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">)</span><span class="w">
+    </span><span class="p">)</span><span class="w">
+
+</span><span class="o">&gt;</span><span class="w"> </span><span class="n">print</span><span class="p">(</span><span class="n">my_list</span><span class="p">)</span><span class="w">
+</span><span class="cd">#' $string_vector</span><span class="w">
+</span><span class="cd">#' [1] "string"</span><span class="w">
+</span><span class="cd">#' </span><span class="w">
+</span><span class="cd">#' $numeric_vector</span><span class="w">
+</span><span class="cd">#' [1] 1 2 3 4 5</span><span class="w">
+</span><span class="cd">#' </span><span class="w">
+</span><span class="cd">#' $list_object</span><span class="w">
+</span><span class="cd">#' $list_object[[1]]</span><span class="w">
+</span><span class="cd">#' [1] "string"</span><span class="w">
+</span><span class="cd">#' </span><span class="w">
+</span><span class="cd">#' $list_object[[2]]</span><span class="w">
+</span><span class="cd">#' [1] 1 2 3 4 5</span><span class="w">
+</span><span class="cd">#' </span><span class="w">
+</span><span class="cd">#' </span><span class="w">
+</span><span class="cd">#' $logical_vector</span><span class="w">
+</span><span class="cd">#' [1]  TRUE FALSE</span></code></pre></figure>
+
+<p>We can now access the elements of <code class="language-plaintext highlighter-rouge">my_list</code> using the name and <code class="language-plaintext highlighter-rouge">$</code> operator, though the index system still works.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="o">&gt;</span><span class="w"> </span><span class="n">print</span><span class="p">(</span><span class="n">my_list</span><span class="o">$</span><span class="n">string_vector</span><span class="p">)</span><span class="w">
+</span><span class="cd">#' [1] "string"</span><span class="w">
+
+</span><span class="o">&gt;</span><span class="w"> </span><span class="n">identical</span><span class="p">(</span><span class="n">my_list</span><span class="o">$</span><span class="n">string_vector</span><span class="p">,</span><span class="w"> </span><span class="n">my_list</span><span class="p">[[</span><span class="m">1</span><span class="p">]])</span><span class="w">
+</span><span class="cd">#' [1] TRUE</span></code></pre></figure>
+
+<p>We can also apply names to an existing list with the <code class="language-plaintext highlighter-rouge">names()</code> function.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="o">&gt;</span><span class="w"> </span><span class="n">my_list</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="s2">"string"</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="m">5</span><span class="p">,</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="s2">"string"</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="m">5</span><span class="p">),</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">))</span><span class="w">
+
+</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">names</span><span class="p">(</span><span class="n">my_list</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s2">"string_vector"</span><span class="p">,</span><span class="w"> </span><span class="s2">"numeric_vector"</span><span class="p">,</span><span class="w"> </span><span class="s2">"list_object"</span><span class="p">,</span><span class="w"> </span><span class="s2">"logical_vector"</span><span class="p">)</span><span class="w">
+
+</span><span class="o">&gt;</span><span class="w"> </span><span class="n">print</span><span class="p">(</span><span class="n">my_list</span><span class="p">)</span><span class="w">
+</span><span class="cd">#' $string_vector</span><span class="w">
+</span><span class="cd">#' [1] "string"</span><span class="w">
+</span><span class="cd">#' </span><span class="w">
+</span><span class="cd">#' $numeric_vector</span><span class="w">
+</span><span class="cd">#' [1] 1 2 3 4 5</span><span class="w">
+</span><span class="cd">#' </span><span class="w">
+</span><span class="cd">#' $list_object</span><span class="w">
+</span><span class="cd">#' $list_object[[1]]</span><span class="w">
+</span><span class="cd">#' [1] "string"</span><span class="w">
+</span><span class="cd">#' </span><span class="w">
+</span><span class="cd">#' $list_object[[2]]</span><span class="w">
+</span><span class="cd">#' [1] 1 2 3 4 5</span><span class="w">
+</span><span class="cd">#' </span><span class="w">
+</span><span class="cd">#' $logical_vector</span><span class="w">
+</span><span class="cd">#' [1]  TRUE FALSE</span></code></pre></figure>
+
+<h2 id="appending-to-a-list">Appending to a list</h2>
+
+<h3 id="append">append()</h3>
+<p>We can add to a list using <code class="language-plaintext highlighter-rouge">append()</code>. Lets append a <code class="language-plaintext highlighter-rouge">data.frame</code> object to <code class="language-plaintext highlighter-rouge">my_list</code>.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="o">&gt;</span><span class="w"> </span><span class="n">print</span><span class="p">(</span><span class="n">append</span><span class="p">(</span><span class="n">my_list</span><span class="p">,</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="n">df_object</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">data.frame</span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="m">5</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">6</span><span class="o">:</span><span class="m">10</span><span class="p">)))</span><span class="w">
+</span><span class="cd">#' $string_vector</span><span class="w">
+</span><span class="cd">#' [1] "string"</span><span class="w">
+</span><span class="cd">#' </span><span class="w">
+</span><span class="cd">#' $numeric_vector</span><span class="w">
+</span><span class="cd">#' [1] 1 2 3 4 5</span><span class="w">
+</span><span class="cd">#' </span><span class="w">
+</span><span class="cd">#' $list_object</span><span class="w">
+</span><span class="cd">#' $list_object[[1]]</span><span class="w">
+</span><span class="cd">#' [1] "string"</span><span class="w">
+</span><span class="cd">#' </span><span class="w">
+</span><span class="cd">#' $list_object[[2]]</span><span class="w">
+</span><span class="cd">#' [1] 1 2 3 4 5</span><span class="w">
+</span><span class="cd">#' </span><span class="w">
+</span><span class="cd">#' </span><span class="w">
+</span><span class="cd">#' $logical_vector</span><span class="w">
+</span><span class="cd">#' [1]  TRUE FALSE</span><span class="w">
+</span><span class="cd">#' </span><span class="w">
+</span><span class="cd">#' $df_object</span><span class="w">
+</span><span class="cd">#'   a  b</span><span class="w">
+</span><span class="cd">#' 1 1  6</span><span class="w">
+</span><span class="cd">#' 2 2  7</span><span class="w">
+</span><span class="cd">#' 3 3  8</span><span class="w">
+</span><span class="cd">#' 4 4  9</span><span class="w">
+</span><span class="cd">#' 5 5 10</span></code></pre></figure>
+
+<p class="info">
+<strong><i>Information:</i></strong> If you are coming to R from another language such as python, you need to be aware that <code>append()</code> does not take care of assignment and doesn't modify <code>my_list</code> in place, so you do need to assign the output of <code>append()</code> to store it (i.e. <code>my_list &lt;- append(...</code>).
+<br /><br />
+You should also be aware that with an object such as a <code>data.frame</code>, you need to ensure it is within a list itself when being appended to an existing list. If we omit this step then the individual columns will be appended rather than the <code>data.frame</code> as a whole. This is because beneath the surface, <code>data.frames</code> are actually list objects.
+</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="o">&gt;</span><span class="w"> </span><span class="n">print</span><span class="p">(</span><span class="n">append</span><span class="p">(</span><span class="n">my_list</span><span class="p">,</span><span class="w"> </span><span class="n">data.frame</span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="m">5</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">6</span><span class="o">:</span><span class="m">10</span><span class="p">))</span><span class="w">
+</span><span class="cd">#'$string_vector</span><span class="w">
+</span><span class="cd">#'[1] "string"</span><span class="w">
+</span><span class="cd">#'</span><span class="w">
+</span><span class="cd">#'$numeric_vector</span><span class="w">
+</span><span class="cd">#'[1] 1 2 3 4 5</span><span class="w">
+</span><span class="cd">#'</span><span class="w">
+</span><span class="cd">#'$list_object</span><span class="w">
+</span><span class="cd">#'$list_object[[1]]</span><span class="w">
+</span><span class="cd">#'[1] "string"</span><span class="w">
+</span><span class="cd">#'</span><span class="w">
+</span><span class="cd">#'$list_object[[2]]</span><span class="w">
+</span><span class="cd">#'[1] 1 2 3 4 5</span><span class="w">
+</span><span class="cd">#'</span><span class="w">
+</span><span class="cd">#'</span><span class="w">
+</span><span class="cd">#'$logical_vector</span><span class="w">
+</span><span class="cd">#'[1]  TRUE FALSE</span><span class="w">
+</span><span class="cd">#'</span><span class="w">
+</span><span class="cd">#'$a</span><span class="w">
+</span><span class="cd">#'[1] 1 2 3 4 5</span><span class="w">
+</span><span class="cd">#'</span><span class="w">
+</span><span class="cd">#'$b</span><span class="w">
+</span><span class="cd">#'[1]  6  7  8  9 10</span></code></pre></figure>
+
+<h3 id="c">c()</h3>
+
+<p>We can also append to a list with <code class="language-plaintext highlighter-rouge">c()</code>.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="o">&gt;</span><span class="w">  </span><span class="n">my_list</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="n">my_list</span><span class="p">,</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="n">df_object</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">data.frame</span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="m">5</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">6</span><span class="o">:</span><span class="m">10</span><span class="p">)))</span><span class="w">
+
+</span><span class="o">&gt;</span><span class="w"> </span><span class="n">print</span><span class="p">(</span><span class="n">my_list</span><span class="p">)</span><span class="w">
+</span><span class="cd">#' $string_vector</span><span class="w">
+</span><span class="cd">#' [1] "string"</span><span class="w">
+</span><span class="cd">#' </span><span class="w">
+</span><span class="cd">#' $numeric_vector</span><span class="w">
+</span><span class="cd">#' [1] 1 2 3 4 5</span><span class="w">
+</span><span class="cd">#' </span><span class="w">
+</span><span class="cd">#' $list_object</span><span class="w">
+</span><span class="cd">#' $list_object[[1]]</span><span class="w">
+</span><span class="cd">#' [1] "string"</span><span class="w">
+</span><span class="cd">#' </span><span class="w">
+</span><span class="cd">#' $list_object[[2]]</span><span class="w">
+</span><span class="cd">#' [1] 1 2 3 4 5</span><span class="w">
+</span><span class="cd">#' </span><span class="w">
+</span><span class="cd">#' </span><span class="w">
+</span><span class="cd">#' $logical_vector</span><span class="w">
+</span><span class="cd">#' [1]  TRUE FALSE</span><span class="w">
+</span><span class="cd">#' </span><span class="w">
+</span><span class="cd">#' $df_object</span><span class="w">
+</span><span class="cd">#'   a  b</span><span class="w">
+</span><span class="cd">#' 1 1  6</span><span class="w">
+</span><span class="cd">#' 2 2  7</span><span class="w">
+</span><span class="cd">#' 3 3  8</span><span class="w">
+</span><span class="cd">#' 4 4  9</span><span class="w">
+</span><span class="cd">#' 5 5 10</span></code></pre></figure>
+
+<h2 id="removing-list-elements">Removing list elements</h2>
+
+<p>Removing list elements can be achieved with the <code class="language-plaintext highlighter-rouge">NULL</code> keyword. Lets remove the <code class="language-plaintext highlighter-rouge">data.frame</code> object we added earlier as the 5th element of <code class="language-plaintext highlighter-rouge">my_list</code>.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="o">&gt;</span><span class="w"> </span><span class="n">my_list</span><span class="p">[[</span><span class="m">5</span><span class="p">]]</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="kc">NULL</span><span class="w">
+
+</span><span class="o">&gt;</span><span class="w"> </span><span class="n">print</span><span class="p">(</span><span class="n">my_list</span><span class="p">)</span><span class="w">
+</span><span class="o">$</span><span class="n">string_vector</span><span class="w">
+</span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+
+</span><span class="o">$</span><span class="n">numeric_vector</span><span class="w">
+</span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">5</span><span class="w">
+
+</span><span class="o">$</span><span class="n">list_object</span><span class="w">
+</span><span class="o">$</span><span class="n">list_object</span><span class="p">[[</span><span class="m">1</span><span class="p">]]</span><span class="w">
+</span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+
+</span><span class="o">$</span><span class="n">list_object</span><span class="p">[[</span><span class="m">2</span><span class="p">]]</span><span class="w">
+</span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">5</span><span class="w">
+
+
+</span><span class="o">$</span><span class="n">logical_vector</span><span class="w">
+</span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w">  </span><span class="kc">TRUE</span><span class="w"> </span><span class="kc">FALSE</span></code></pre></figure>
+
+<p>We’re not limited to removing just elements from the end of the list. We can use the same technique to remove the 2nd element of <code class="language-plaintext highlighter-rouge">my_list</code>.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="o">&gt;</span><span class="w"> </span><span class="n">my_list</span><span class="p">[[</span><span class="m">2</span><span class="p">]]</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="kc">NULL</span><span class="w">
+
+</span><span class="o">&gt;</span><span class="w"> </span><span class="n">print</span><span class="p">(</span><span class="n">my_list</span><span class="p">)</span><span class="w">
+</span><span class="o">$</span><span class="n">string_vector</span><span class="w">
+</span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+
+</span><span class="o">$</span><span class="n">list_object</span><span class="w">
+</span><span class="o">$</span><span class="n">list_object</span><span class="p">[[</span><span class="m">1</span><span class="p">]]</span><span class="w">
+</span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+
+</span><span class="o">$</span><span class="n">list_object</span><span class="p">[[</span><span class="m">2</span><span class="p">]]</span><span class="w">
+</span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">5</span><span class="w">
+
+
+</span><span class="o">$</span><span class="n">logical_vector</span><span class="w">
+</span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w">  </span><span class="kc">TRUE</span><span class="w"> </span><span class="kc">FALSE</span></code></pre></figure>
+
+<h2 id="iterating-over-lists">Iterating over lists</h2>
+
+<p>There are functions, such as <code class="language-plaintext highlighter-rouge">lapply()</code> that exist to iterate over lists which can help to provide optimised performance, though these will be covered elsewhere.</p>
+
+<p>Iteration over a list with a loop works in much the same way as with other R objects.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="o">&gt;</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">element</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">my_list</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="n">print</span><span class="p">(</span><span class="n">element</span><span class="p">)</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+
+</span><span class="cd">#'[1] "string"</span><span class="w">
+</span><span class="cd">#'</span><span class="w">
+</span><span class="cd">#'[[1]]</span><span class="w">
+</span><span class="cd">#'[1] "string"</span><span class="w">
+</span><span class="cd">#'</span><span class="w">
+</span><span class="cd">#'[[2]]</span><span class="w">
+</span><span class="cd">#'[1] 1 2 3 4 5</span><span class="w">
+</span><span class="cd">#'</span><span class="w">
+</span><span class="cd">#'[1]  TRUE FALSE</span></code></pre></figure>
+
+<h2 id="next-steps">Next steps</h2>
+
+<p>Lists are an important data structure within R and are particularly useful for solving some more advanced programming problems as well as for optimisation.</p>
+
+<p>Their versatility makes them perfect for use in a variety of situations.</p>
+
+<p>Try creating some lists consisting of different R objects and accessing the objects.</p>
+</div><section class="article__sharing d-print-none"></section><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2023-01-25T00:00:00+00:00"><!-- start custom article footer snippet -->
+
+<!-- end custom article footer snippet -->
+<div class="article__subscribe"><div class="subscribe"><i class="fas fa-rss"></i> <a type="application/rss+xml" href="/feed.xml">Subscribe</a></div>
+</div><div class="article__license"><div class="license">
+    <p>This work is licensed under a <a itemprop="license" rel="license" href="https://creativecommons.org/licenses/by-nc/4.0/">Attribution-NonCommercial 4.0 International</a> license.
+      <a rel="license" href="https://creativecommons.org/licenses/by-nc/4.0/">
+        <img alt="Attribution-NonCommercial 4.0 International" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" />
+      </a>
+    </p>
+  </div></div></footer>
+<div class="article__section-navigator clearfix"><div class="previous"><span>PREVIOUS</span><a href="/2023/01/25/apply-functions.html">R Apply Functions</a></div></div></div>
+
 </div>
 
 <script>(function() {
   var SOURCES = window.TEXT_VARIABLES.sources;
-  function queryString() {
-    // This function is anonymous, is executed immediately and
-    // the return value is assigned to QueryString!
-    var i = 0, queryObj = {}, pair;
-    var queryStr = window.location.search.substring(1);
-    var queryArr = queryStr.split('&');
-    for (i = 0; i < queryArr.length; i++) {
-      pair = queryArr[i].split('=');
-      // If first entry with this name
-      if (typeof queryObj[pair[0]] === 'undefined') {
-        queryObj[pair[0]] = pair[1];
-        // If second entry with this name
-      } else if (typeof queryObj[pair[0]] === 'string') {
-        queryObj[pair[0]] = [queryObj[pair[0]], pair[1]];
-        // If third or later entry with this name
-      } else {
-        queryObj[pair[0]].push(pair[1]);
-      }
-    }
-    return queryObj;
-  }
-
-  var setUrlQuery = (function() {
-    var baseUrl =  window.location.href.split('?')[0];
-    return function(query) {
-      if (typeof query === 'string') {
-        window.history.replaceState(null, '', baseUrl + query);
-      } else {
-        window.history.replaceState(null, '', baseUrl);
-      }
-    };
-  })();
-
   window.Lazyload.js(SOURCES.jquery, function() {
-    var $tags = $('.js-tags');
-    var $articleTags = $tags.find('button');
-    var $tagShowAll = $tags.find('.tag-button--all');
-    var $result = $('.js-result');
-    var $sections = $result.find('section');
-    var sectionArticles = [];
-    var $lastFocusButton = null;
-    var sectionTopArticleIndex = [];
-    var hasInit = false;
+    $(function() {
+      var $this ,$scroll;
+      var $articleContent = $('.js-article-content');
+      var hasSidebar = $('.js-page-root').hasClass('layout--page--sidebar');
+      var scroll = hasSidebar ? '.js-page-main' : 'html, body';
+      $scroll = $(scroll);
 
-    $sections.each(function() {
-      sectionArticles.push($(this).find('.item'));
+      $articleContent.find('.highlight').each(function() {
+        $this = $(this);
+        $this.attr('data-lang', $this.find('code').attr('data-lang'));
+      });
+      $articleContent.find('h1[id], h2[id], h3[id], h4[id], h5[id], h6[id]').each(function() {
+        $this = $(this);
+        $this.append($('<a class="anchor d-print-none" aria-hidden="true"></a>').html('<i class="fas fa-anchor"></i>'));
+      });
+      $articleContent.on('click', '.anchor', function() {
+        $scroll.scrollToAnchor('#' + $(this).parent().attr('id'), 400);
+      });
     });
-
-    function init() {
-      var i, index = 0;
-      for (i = 0; i < $sections.length; i++) {
-        sectionTopArticleIndex.push(index);
-        index += $sections.eq(i).find('.item').length;
-      }
-      sectionTopArticleIndex.push(index);
-    }
-
-    function searchButtonsByTag(_tag/*raw tag*/) {
-      if (!_tag) {
-        return $tagShowAll;
-      }
-      var _buttons = $articleTags.filter('[data-encode="' + _tag + '"]');
-      if (_buttons.length === 0) {
-        return $tagShowAll;
-      }
-      return _buttons;
-    }
-    function buttonFocus(target) {
-      if (target) {
-        target.addClass('focus');
-        $lastFocusButton && !$lastFocusButton.is(target) && $lastFocusButton.removeClass('focus');
-        $lastFocusButton = target;
-      }
-    }
-
-    function tagSelect (tag/*raw tag*/, target) {
-      var result = {}, $articles;
-      var i, j, k, _tag;
-
-      for (i = 0; i < sectionArticles.length; i++) {
-        $articles = sectionArticles[i];
-        for (j = 0; j < $articles.length; j++) {
-          if (tag === '' || tag === undefined) {
-            result[i] || (result[i] = {});
-            result[i][j] = true;
-          } else {
-            var tags = $articles.eq(j).data('tags').split(',');
-            for (k = 0; k < tags.length; k++) {
-              if (tags[k] === tag) {
-                result[i] || (result[i] = {});
-                result[i][j] = true; break;
-              }
-            }
-          }
-        }
-      }
-
-      for (i = 0; i < sectionArticles.length; i++) {
-        result[i] && $sections.eq(i).removeClass('d-none');
-        result[i] || $sections.eq(i).addClass('d-none');
-        for (j = 0; j < sectionArticles[i].length; j++) {
-          if (result[i] && result[i][j]) {
-            sectionArticles[i].eq(j).removeClass('d-none');
-          } else {
-            sectionArticles[i].eq(j).addClass('d-none');
-          }
-        }
-      }
-
-      hasInit || ($result.removeClass('d-none'), hasInit = true);
-
-
-      if (target) {
-        buttonFocus(target);
-        _tag = target.attr('data-encode');
-        if (_tag === '' || typeof _tag !== 'string') {
-          setUrlQuery();
-        } else {
-          setUrlQuery('?tag=' + _tag);
-        }
-      } else {
-        buttonFocus(searchButtonsByTag(tag));
-      }
-    }
-
-    var query = queryString(), _tag = query.tag;
-    init(); tagSelect(_tag);
-    $tags.on('click', 'button', function() {
-      tagSelect($(this).data('encode'), $(this));
-    });
-
   });
 })();
 </script>
-
-
 </div><section class="page__comments d-print-none"></section></article><!-- start custom main bottom snippet -->
 
 <!-- end custom main bottom snippet -->
@@ -1281,6 +1388,68 @@ window.Lazyload.js([SOURCES.jquery, PAHTS.search_js], function() {
 /*(function () {
 
 })();*/
+</script><script>
+  /* toc must before affix, since affix need to konw toc' height. */(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  var TOC_SELECTOR = window.TEXT_VARIABLES.site.toc.selectors;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    var $window = $(window);
+    var $articleContent = $('.js-article-content');
+    var $tocRoot = $('.js-toc-root'), $col2 = $('.js-col-aside');
+    var toc;
+    var tocDisabled = false;
+    var hasSidebar = $('.js-page-root').hasClass('layout--page--sidebar');
+    var hasToc = $articleContent.find(TOC_SELECTOR).length > 0;
+
+    function disabled() {
+      return $col2.css('display') === 'none' || !hasToc;
+    }
+
+    tocDisabled = disabled();
+
+    toc = $tocRoot.toc({
+      selectors: TOC_SELECTOR,
+      container: $articleContent,
+      scrollTarget: hasSidebar ? '.js-page-main' : null,
+      scroller: hasSidebar ? '.js-page-main' : null,
+      disabled: tocDisabled
+    });
+
+    $window.on('resize', window.throttle(function() {
+      tocDisabled = disabled();
+      toc && toc.setOptions({
+        disabled: tocDisabled
+      });
+    }, 100));
+
+  });
+})();
+(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    var $window = $(window), $pageFooter = $('.js-page-footer');
+    var $pageAside = $('.js-page-aside');
+    var affix;
+    var tocDisabled = false;
+    var hasSidebar = $('.js-page-root').hasClass('layout--page--sidebar');
+
+    affix = $pageAside.affix({
+      offsetBottom: $pageFooter.outerHeight(),
+      scrollTarget: hasSidebar ? '.js-page-main' : null,
+      scroller: hasSidebar ? '.js-page-main' : null,
+      scroll: hasSidebar ? $('.js-page-main').children() : null,
+      disabled: tocDisabled
+    });
+
+    $window.on('resize', window.throttle(function() {
+      affix && affix.setOptions({
+        disabled: tocDisabled
+      });
+    }, 100));
+
+    window.pageAsideAffix = affix;
+  });
+})();
 </script>
     </div>
     <script>(function () {

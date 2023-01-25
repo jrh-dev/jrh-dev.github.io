@@ -5,9 +5,12 @@ toc : true
 tags: [R, R basics, Tutorial, Analysis]
 author: <author_id>
 show_edit_on_github: false
+excerpt_separator: <!--more-->
 ---
 
 Before we can start working with data we need to import it into the R environment. Base R (the language as installed without any additional libraries) provides a number of functions for reading data in multiple formats, but the performance benefits and ease of use of some functions provided by external libraries makes them the go to choice for many users.
+
+<!--more-->
 
 The following examples cover reading some of the most common types of data into R. Whilst by no means an exhaustive list of all the available options, the functions detailed are performant, stable, and easy to use.
 

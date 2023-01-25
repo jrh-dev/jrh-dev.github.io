@@ -5,9 +5,12 @@ toc : true
 tags: [R, Power Automate, Automation, Email]
 author: <author_id>
 show_edit_on_github: false
+excerpt_separator: <!--more-->
 ---
 
 Power Automate allows us to build automated workflows and can link into many applications. This guide demonstrates using Power Automate to create an API endpoint that we can use to trigger the sending of an email from Outlook using R. The automated process, or ***flow*** in Microsoft parlance, provides a simple and secure way to send emails using R without the installation of additional packages.
+
+<!--more-->
 
 ## Creating a ***flow***
 

@@ -5,9 +5,11 @@ toc : true
 tags: [R basics, Tutorial]
 author: <author_id>
 show_edit_on_github: false
+excerpt_separator: <!--more-->
 ---
 
 Data frames are a fundamental part of R and the functionality they provide plays an integral role in many analysis and data science based workflows. Data frames are rectangular, 2 dimensional table structures, resembling rows and columns which makes them flexible and intuitive to work with.
+<!--more-->
 
 ## Creating a data.frame
  Many functions commonly used to read tabular data into R will by default return a `data.frame`. We can also use the ``data.frame`()` function to create a `data.frame` with any number of columns. Imagine that you have the names, ages, and postcodes of 5 people. A `data.frame` with 5 rows and 3 columns would be an ideal way to store this information.
