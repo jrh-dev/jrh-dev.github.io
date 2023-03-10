@@ -2,7 +2,7 @@
 layout: article
 title : "Refactoring - Writing readable code"
 toc : true
-tags: [R, Tutorial]
+tags: [R, Opinion]
 author: <author_id>
 show_edit_on_github: false
 excerpt_separator: <!--more-->
@@ -15,6 +15,7 @@ Finding the time to refactor these blocks of code is nearly always worthwhile an
 Lets consider the following example data, which mimics a real world dataset I recently encountered.
 
 {% highlight r %}
+
 my_data = data.frame(
   code = glue(
     "{sample(LETTERS, 10000, TRUE)}",
