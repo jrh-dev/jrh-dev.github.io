@@ -226,9 +226,9 @@ The `squares` argument of `my_fun()` is a good candidate for setting a default v
 my_fun <- function(num_1, num_2, num_3, squares = FALSE) {
 
   if (squares) {
-    return(num_1 + num_2 + num_3)
-  } else {
     return(num_1^2 + num_2^2 + num_3^2)
+  } else {
+    return(num_1 + num_2 + num_3)
   }
 
 }
