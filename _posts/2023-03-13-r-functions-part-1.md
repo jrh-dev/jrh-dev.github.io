@@ -355,17 +355,19 @@ To get to grips with functions try writing a function for each of the following 
   
   1. You might have written something similar to this;
     
-  <code>
+  <pre><code>
     comb_str(str_1, str_2) {
       return(glue::glue("{str_1} {str_2}"))
     }
-  </code>
-    
+  </code></pre>
+  
+  
   2. You might have written something similar to this;
   
-  <code>
+  <pre><code>
     percent_increase <- function(x, y) {
       return(round(((y - x) / x) * 100, 2))
     }
-  </code>
+  </code></pre>
+    
 </details>
