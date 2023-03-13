@@ -170,9 +170,9 @@ my_fun(10,20,30)
 [1] 10
 ```
 
-Whether to rely on automatic returns or include an explicit `return()` is a choice for the individual. [Google's R style guide](https://google.github.io/styleguide/Rguide.html) (which I highly recommend) advises that we ***"do not rely on R’s implicit return feature. It is better to be clear about your intent to return() an object."***.
+Whether to rely on automatic returns or include an explicit `return()` is a choice for the individual. [Google's R style guide](https://google.github.io/styleguide/Rguide.html) (which I highly recommend) advises that we *"do not rely on R’s implicit return feature. It is better to be clear about your intent to return() an object."*.
 
-I strongly agree with the Google style guide in this area. To borrow from the zen of python ***"explicit is better than implicit"***.
+I strongly agree with the Google style guide in this area. To borrow from the zen of python *"explicit is better than implicit"*.
 
 Including the return statement makes your intentions clearer to your future self and collaborators and avoids misinterpretation. I advise to ***always*** include `return()` inside any function that you create. If you create a function solely for it's side effects (for example a function to write an object to disk) you should include `return(invisible())` as the final line.
 
@@ -354,15 +354,18 @@ To get to grips with functions try writing a function for each of the following 
   <summary>Answers</summary>
   
   1. You might have written something similar to this;
-
+    
+  <code>
     comb_str(str_1, str_2) {
       return(glue::glue("{str_1} {str_2}"))
     }
+  </code>
     
   2. You might have written something similar to this;
-
+  
+  <code>
     percent_increase <- function(x, y) {
       return(round(((y - x) / x) * 100, 2))
     }
-    
+  </code>
 </details>
