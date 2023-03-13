@@ -186,9 +186,9 @@ When `squares = FALSE` we want our function to return the sum of its arguments, 
 my_fun <- function(num_1, num_2, num_3, squares) {
 
   if (squares) {
-    return(num_1 + num_2 + num_3)
-  } else {
     return(num_1^2 + num_2^2 + num_3^2)
+  } else {
+    return(num_1 + num_2 + num_3)
   }
 
 }
@@ -241,9 +241,9 @@ Now, when we call the function, we can omit the `squares` argument entirely, and
 my_fun <- function(num_1, num_2, num_3, squares = TRUE) {
 
   if (squares) {
-    return(num_1 + num_2 + num_3)
-  } else {
     return(num_1^2 + num_2^2 + num_3^2)
+  } else {
+    return(num_1 + num_2 + num_3)
   }
 
 }
