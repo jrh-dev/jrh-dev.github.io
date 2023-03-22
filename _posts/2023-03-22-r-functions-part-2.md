@@ -119,7 +119,7 @@ library(assertthat)
 
 my_fun <- function(x) {
 
-    assert_that(is.numeric("1"), msg = "x must be numeric")
+    assert_that(is.numeric(x), msg = "x must be numeric")
 
     Sys.sleep(10)
   
