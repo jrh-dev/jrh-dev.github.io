@@ -218,7 +218,7 @@ low_mpg_cars.show()
 
 ## Analysis and manipulation
 
-### Investigate a dataframe's structure with `columns` and `printSchema()`
+### Investigate a dataframe's structure
 
 To get a list containing the names of a dataframe's columns, use the `columns` method.
 
@@ -258,7 +258,7 @@ mtcars_df.count()
 32
 ```
 
-### Order data with `orderBy()`, `F.desc()` and `F.asc()`
+### Order data
 
 We can use the `orderBy()` method along with `F.desc()` and `F.asc()` to order a dataframe. The example's below demonstrate the ways in which this can be achieved.
 
@@ -308,7 +308,7 @@ mtcars_df.orderBy(F.asc("mpg")).show(1)
 only showing top 1 row
 ```
 
-### Add unique ID's with `monotonically_increasing_id()`
+### Add unique ID's
 
 The `monotonically_increasing_id()` function can be used to add unique ID's to a dataframe. When working with a large DataFrame, `monotonically_increasing_id()` can be computation and memory intensive.
 
@@ -327,7 +327,7 @@ mtcars_df.withColumn("id", F.monotonically_increasing_id()).show(5)
 only showing top 5 rows
 ```
 
-### Distinct rows with `distinct()`
+### Distinct rows
 
 We can get the distinct values from one or more columns with `distinct()`.
 
@@ -348,7 +348,7 @@ mtcars_df.select("carb", "cyl").distinct().count()
 9
 ```
 
-### Drop rows with duplicate values with `drop_duplicates()`
+### Drop rows with duplicate values
 
 We can drop duplicate rows, whether duplicated in their entirety or across specific columns using the `drop_duplicates()` function. Note that when specifying columns to deduplicate on, the first unique record will be kept, so order is often important.
 
@@ -391,7 +391,7 @@ mtcars_df.drop_duplicates(['carb', "cyl"]).show()
 ```
 
 
-### Merge two dataframe's with `union()`
+### Merge dataframe's
 
 PySpark's `union()` function is a transformation used to merge two or more dataframe's with the same schema or structure. If the schemas are not the same then the function returns an error.
 
@@ -412,7 +412,7 @@ union_distinct_df.count()
 32
 ```
 
-### Filter rows in a dataframe with `filter()`, `where()`, `startswith()`, and `like()`
+### Filter rows in a dataframe
 
 We can use the `filter()` or `where()` functions to filter a dataframe. We can combine `filter()` and `where()` with functions like `startswith()` and `like()`. 
 
@@ -468,7 +468,7 @@ mtcars_df.where(mtcars_df.model.like('M%') & (mtcars_df.mpg > 21)).show()
 +---------+----+---+-----+---+----+----+----+---+---+----+----+
 ```
 
-### Select columns in a dataframe with `select()`
+### Select columns
 
 We can use `select()` to keep specified columns.
 
@@ -487,7 +487,7 @@ mtcars_df.select("model", "mpg").show(5)
 only showing top 5 rows
 ```
 
-### Drop columns in a dataframe with `drop()`
+### Drop columns
 
 We can use `drop()` to drop specified columns.
 
@@ -507,7 +507,7 @@ only showing top 5 rows
 ```
 
 
-### Negate a condition with `~`
+### Negate a condition
 
 We can use the `~` symbol to negate boolean expressions or conditions.
 
@@ -556,7 +556,7 @@ mtcars_df.filter(~(mtcars_df.cyl == 6)).show()
 +-------------------+----+---+-----+---+----+-----+-----+---+---+----+----+
 ```
 
-### Round a number with `F.round()`
+### Round a number
 
 The `round()` function is used to round the values in a column to a specified number of decimal places. 
 
@@ -575,7 +575,7 @@ mtcars_df.select(F.round("wt", 1)).show(5)
 only showing top 5 rows
 ```
 
-### Add or mutate an existing column with `withColumn()`
+### Add or mutate an existing column
 
 We can use the `withColumn()` function to add a new column to a dataframe or to replace an existing column with a new one based on a specified transformation.
 
@@ -599,7 +599,7 @@ only showing top 5 rows
 ```
 
 
-### Cast a column to a specified type with `cast()`
+### Cast a column to a specified type
 
 We can change a column type with `cast()`
 
@@ -615,9 +615,9 @@ root
  |-- cyl: float (nullable = true)
 ```
 
-### Aggregation and grouping with `agg()` and `groupby()`
+### Aggregation and grouping
 
-#### Group minimum and maximums with `F.min()` and `F.max()`
+#### Group minimum and maximums
 
 The `agg()` method is often (though not exclusively) used in combination with the `groupBy()` method to group data by one or more columns and then perform aggregate calculations on the groups.
 
@@ -663,7 +663,7 @@ mtcars_df.agg(F.max("mpg")).show()
 +--------+
 ```
 
-#### Specify the name of aggregated columns with `alias()`
+#### Specify the name of aggregated columns
 
 The `alias()` method can be used to rename a column or to assign an alias to an expression.
 
@@ -680,7 +680,7 @@ mtcars_df.groupBy("cyl").agg(F.min("mpg").alias("min_mpg"), F.max("mpg").alias("
 |  8|   10.4|   19.2|
 +---+-------+-------+
 ```
-### Join two dataframe's with `join()`
+### Join dataframe's
 
 We can use the `join()` method to join two dataframe's. First, lets store the min and max mpg values by cylinder in a new dataframe.
 
@@ -724,7 +724,7 @@ mtcars_df.join(cyl_min_max_df, on="cyl", how="anti").show(5)
 +---+-----+---+----+---+----+---+----+---+---+----+----+
 ```
 
-### Improve join performance with `F.broadcast()`
+### Improve join performance
 
 We can use the `F.broadcast()` function to improve join performance. When we broadcast a dataframe, it is sent to all worker nodes in the cluster so that the join operation can be performed locally. This can reduce the amount of data that needs to be transferred over the network and thus speed up the join operation.
 
@@ -749,7 +749,7 @@ only showing top 5 rows
 
 Note that you will need to be using a distributed computing environment to benefit from using `broadcast()`.
 
-### Create user defined functions (UDF) with `F.udf()`
+### Create user defined functions (UDF)
 
 #### Standalone udf's
 
